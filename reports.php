@@ -131,8 +131,9 @@
 			</div>
 			
 			<div class="col p-2">
-				<form class="form-inline">
-					<input class="form-control mr-sm-2 w-100" type="search" placeholder="Search" aria-label="Search">
+				<form class="form-inline" method="POST">
+					<input class="form-control mr-sm-2 w-100" type="text" placeholder="Search" name="search">
+					<input type="submit" name="submit">
 				</form>
 			</div>
 			
