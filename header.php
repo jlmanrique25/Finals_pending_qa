@@ -137,7 +137,7 @@
 					include 'backend/count_task_assigned_admin.p.php';
 					
 				?></span></a></li>
-				<li><a href="assign_new_task.php?site=Assign%20new%20task" class="link-dark rounded">Assign new task</a></li>
+				<li><a href="assign_new_task.php?site=Assign%20new%20task" class="link-dark rounded">Assign New Task</a></li>
 				<?php if($_SESSION['role'] == "Head"){?>
 				<li><a href="assign_issue_reports.php?site=Unassigned%20Reports" class="link-dark rounded">Assign Issue Report</a></li>
 				<?php	}

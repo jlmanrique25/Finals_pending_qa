@@ -144,7 +144,7 @@
 		</div>
 	</div>
 	
-	<table class="table rounded-3 shadow-lg table-hover mb-5">
+	<table class="table rounded-3 shadow table-hover mb-5">
 	  <thead class="thead-dark">
 		<tr>
 		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
