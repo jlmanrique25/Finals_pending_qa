@@ -11,12 +11,13 @@
 		$by = "asc";
 	}
 	
+	$sql_search = "";
 	if($_GET['site'] == "Reports"){
 		if(isset($_POST['submit'])){
 			$search = mysqli_real_escape_string($conn, $_POST['search']);
 			$sql_search = "SELECT *
 			FROM `dates`,`reports`, `equipment`, `location`, `users`
-			WHERE equipment.equipment_name LIKE '%$search%' OR reports.report_status LIKE '%$search%'OR location.floor LIKE '%$search%' OR users.username LIKE '%$search%'  OR task LIKE '%$search%'  AND date_identity = 'report' AND date_type = 'created' AND dates.report_issue_id = reports.report_id AND reports.machine_id = equipment.equipment_id AND location.location_id = equipment.location_id  AND YEAR(date_time) = year(now()) AND users.users_id = assigned_user
+			WHERE equipment.equipment_name LIKE '%$search%' OR reports.report_status LIKE '%$search%'OR location.floor LIKE '%$search%' OR users.username LIKE '%$search%'  OR task LIKE '%$search%'
 	ORDER BY `dates`.`date_time` DESC LIMIT ".$min.",10 ";
 		}
 	}else if($_GET['site'] == "Issues"){

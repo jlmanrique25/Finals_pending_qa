@@ -5,23 +5,19 @@
 	}
 	
 	if($_GET['site'] == "Reports"){
-		if(!isset($_GET['status'])){
-			
-			$sql_status = "SELECT report_id, task, machine_id, task_due, date_submitted, report_status, for_repair, assigned_user, dates.date_identity,dates.date_type, dates.report_issue_id, date_time, equipment.equipment_name, equipment.equipment_id, location.location_id, location.floor, location.room_number, reports.report_status, users.username, users.users_id FROM `dates`,`reports`, `equipment`, `location`, `users` WHERE date_identity = 'report' AND date_type = 'created' AND dates.report_issue_id = reports.report_id AND reports.machine_id = equipment.equipment_id AND location.location_id = equipment.location_id AND YEAR(date_time) = year(now()) AND users.users_id = assigned_user AND report_status = 'done'ORDER by date_created DESC LIMIT ".$min.",10";
-	
-		}else{
-			
-			$sql_status = "SELECT report_id, task, machine_id, task_due, date_submitted, report_status, for_repair, assigned_user, dates.date_identity,dates.date_type, dates.report_issue_id, date_time, equipment.equipment_name, equipment.equipment_id, location.location_id, location.floor, location.room_number, reports.report_status, users.username, users.users_id FROM `dates`,`reports`, `equipment`, `location`, `users` WHERE date_identity = 'report' AND date_type = 'created' AND dates.report_issue_id = reports.report_id AND reports.machine_id = equipment.equipment_id AND location.location_id = equipment.location_id AND YEAR(date_time) = year(now()) AND users.users_id = assigned_user AND report_status = 'unresolved'ORDER by date_created DESC LIMIT ".$min.",10";
+		if(isset($_GET['status'])){
+			$resolve_status = $_GET['status'];
+			$sql_status = "SELECT report_id, task, machine_id, task_due, date_submitted, report_status, for_repair, assigned_user, dates.date_identity,dates.date_type, dates.report_issue_id, date_time, equipment.equipment_name, equipment.equipment_id, location.location_id, location.floor, location.room_number, reports.report_status, users.username, users.users_id 
+				FROM `dates`,`reports`, `equipment`, `location`, `users` 
+				WHERE reports.report_status = '". $resolve_status. "'
+				ORDER by date_created DESC LIMIT ".$min.",10";
 	
 		}
 	}else if($_GET['site'] == "Issues"){
-		
-		if(!isset($_GET['status'])){
-			$sql_status = "SELECT issue_id, machine_id, issue, issue_status, date_due, date_created, date_issue_resolved, assigned_to, equipment.equipment_id, equipment.equipment_name, users.users_id, users.username, dates.date_time, dates.report_issue_id, dates.date_identity FROM `issue`, `equipment`, `users`, `dates` WHERE year(date_time) = year(now()) AND issue.machine_id = equipment.equipment_id AND assigned_to = users.users_id AND issue.issue_status = 1 ORDER by date_created DESC LIMIT ".$min.",10";
-		}else{
-			$sql_status = "SELECT issue_id, machine_id, issue, issue_status, date_due, date_created, date_issue_resolved, assigned_to, equipment.equipment_id, equipment.equipment_name, users.users_id, users.username, dates.date_time, dates.report_issue_id, dates.date_identity FROM `issue`, `equipment`, `users`, `dates` WHERE year(date_time) = year(now()) AND issue.machine_id = equipment.equipment_id AND assigned_to = users.users_id AND issue.issue_status = 0 ORDER by date_created DESC LIMIT ".$min.",10";
+		if(isset($_GET['status'])){
+			$resolve_status = $_GET['status'];
+			$sql_status = "SELECT issue_id, machine_id, issue, issue_status, date_due, date_created, date_issue_resolved, assigned_to, equipment.equipment_id, equipment.equipment_name, users.users_id, users.username, dates.date_time, dates.report_issue_id, dates.date_identity FROM `issue`, `equipment`, `users`, `dates` WHERE year(date_time) = year(now()) AND issue.machine_id = equipment.equipment_id AND assigned_to = users.users_id AND issue.issue_status = ".$_GET['status']." ORDER by date_created DESC LIMIT ".$min.",10";
 		}
-		
 		
 	}
 	
@@ -67,7 +63,6 @@
 				<tr role="button" data-href="index.php?page=1&site=Dashboard">
 				  <td><?php echo $row_status['issue'];?></td>
 				  <td><?php echo $row_status['equipment_name'];?></td>
-				  <td><?php echo $row_status['date_created'];?></td>
 				  <?php if(is_null($row_status['issue_status'])){
 					  echo '<td>--</td>';
 				  }else{
@@ -79,6 +74,7 @@
 						}
 					  ?></td><?php
 				  }?>
+				  <td><?php echo $row_status['date_created'];?></td>
 				  <td><?php echo $row_status['date_due'];?></td>
 				  <?php if(!$row_status['date_issue_resolved']){
 					  echo '<td>--</td>';

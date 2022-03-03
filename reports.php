@@ -17,16 +17,97 @@
 					Floor
 				  </button>
 				   <div class="dropdown-menu">
-					<a class="dropdown-item" href="#">1st Floor</a>
-					<a class="dropdown-item" href="#">2nd Floor</a>
-					<a class="dropdown-item" href="#">3rd Floor</a>
-					<a class="dropdown-item" href="#">4th Floor</a>
-					<a class="dropdown-item" href="#">5th Floor</a>
-					<a class="dropdown-item" href="#">6th Floor</a>
-					<a class="dropdown-item" href="#">7th Floor</a>
-					<a class="dropdown-item" href="#">8th Floor</a>
-					<a class="dropdown-item" href="#">9th Floor</a>
-					<a class="dropdown-item" href="#">10th Floor</a>
+					
+					<a  class="dropdown-item" 
+					<?php
+					if(!isset($_GET['floor'])){
+						echo 'active';
+					}else if($_GET['floor'] == '1st'){
+						echo 'active';
+					}
+					?> href="reports.php?site=Reports&page=1&floor=1st">1st Floor</a>
+
+					<a  class="dropdown-item" 
+					<?php
+					if(!isset($_GET['floor'])){
+						echo 'active';
+					}else if($_GET['floor'] == '2nd'){
+						echo 'active';
+					}
+					?> href="reports.php?site=Reports&page=1&floor=2nd">2nd Floor</a>
+
+					<a  class="dropdown-item" 
+					<?php
+					if(!isset($_GET['floor'])){
+						echo 'active';
+					}else if($_GET['floor'] == '3rd'){
+						echo 'active';
+					}
+					?> href="reports.php?site=Reports&page=1&floor=3rd">3rd Floor</a>
+
+					<a  class="dropdown-item" 
+					<?php
+					if(!isset($_GET['floor'])){
+						echo 'active';
+					}else if($_GET['floor'] == '4th'){
+						echo 'active';
+					}
+					?> href="reports.php?site=Reports&page=1&floor=4th">4th Floor</a>
+					
+					<a  class="dropdown-item" 
+					<?php
+					if(!isset($_GET['floor'])){
+						echo 'active';
+					}else if($_GET['floor'] == '5th'){
+						echo 'active';
+					}
+					?> href="reports.php?site=Reports&page=1&floor=5th">5th Floor</a>
+					
+					<a  class="dropdown-item" 
+					<?php
+					if(!isset($_GET['floor'])){
+						echo 'active';
+					}else if($_GET['floor'] == '6th'){
+						echo 'active';
+					}
+					?> href="reports.php?site=Reports&page=1&floor=6th">6th Floor</a>
+					
+					<a  class="dropdown-item" 
+					<?php
+					if(!isset($_GET['floor'])){
+						echo 'active';
+					}else if($_GET['floor'] == '7th'){
+						echo 'active';
+					}
+					?> href="reports.php?site=Reports&page=1&floor=7th">7th Floor</a>
+					
+					<a  class="dropdown-item" 
+					<?php
+					if(!isset($_GET['floor'])){
+						echo 'active';
+					}else if($_GET['floor'] == '8th'){
+						echo 'active';
+					}
+					?> href="reports.php?site=Reports&page=1&floor=8th">8th Floor</a>
+					
+					<a  class="dropdown-item" 
+					<?php
+					if(!isset($_GET['floor'])){
+						echo 'active';
+					}else if($_GET['floor'] == '9th'){
+						echo 'active';
+					}
+					?> href="reports.php?site=Reports&page=1&floor=9th">9th Floor</a>
+					
+					<a  class="dropdown-item" 
+					<?php
+					if(!isset($_GET['floor'])){
+						echo 'active';
+					}else if($_GET['floor'] == '10th'){
+						echo 'active';
+					}
+					?> href="reports.php?site=Reports&page=1&floor=10th">10th Floor</a>
+					
 				  </div>
 				</div>
 			</div>
@@ -36,6 +117,7 @@
 					Report Status
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					
 					<a class="dropdown-item" 
 					<?php
 					if(!isset($_GET['status'])){
@@ -43,7 +125,7 @@
 					}else if($_GET['status'] == 'done'){
 						echo 'active';
 					}
-				?> href="reports.php?site=Reports&page=1&status=done">Done</a>
+					?> href="reports.php?site=Reports&page=1&status=done">Done</a>
 					
 					<a class="dropdown-item" 
 					<?php
@@ -60,12 +142,28 @@
 			<div class="col p-2">
 				<div class="dropdown">
 				  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					For repair
+					Equipment
 				  </button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" href="#">Action</a>
-					<a class="dropdown-item" href="#">Another action</a>
-					<a class="dropdown-item" href="#">Something else here</a>
+					
+					<a class="dropdown-item" 
+					<?php
+					if(!isset($_GET['machine'])){
+						echo 'active';
+					}else if($_GET['machine'] == 'HVAC'){
+						echo 'active';
+					}
+					?> href="reports.php?site=Reports&page=1&equipment=HVAC">HVAC</a>
+					
+					<a class="dropdown-item" 
+					<?php
+					if(!isset($_GET['machine'])){
+						echo 'active';
+					}else if($_GET['machine'] == 'Genset'){
+						echo 'active';
+					}
+				?> href="reports.php?site=Reports&page=1&status=equipment=Genset">Generator Set</a>
+
 				  </div>
 				</div>
 			</div>
@@ -144,7 +242,7 @@
 		</div>
 	</div>
 	
-	<table class="table rounded-3 shadow table-hover mb-5">
+	<table class="table rounded-3 shadow-lg table-hover mb-5">
 	  <thead class="thead-dark">
 		<tr>
 		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
@@ -303,16 +401,24 @@
 		</tr>
 	  </thead>
 	  <tbody>
-	  
+
+
 		<?php
-			include 'backend/get_reports.p.php';
+			include 'backend/dropdown_filter_status.p.php'; 
 		?>
+	
+		<?php
+			include 'backend/search.php'; 
+		?>
+		<?php 
+			include 'backend/get_reports.p.php'
+		?>
+
+		
 	  </tbody>
 	</table>
-	
 	<?php
 		include 'backend/table_pagination_reports.p.php';
 	?>
-	
 </div>
 
