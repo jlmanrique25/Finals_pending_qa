@@ -6,7 +6,7 @@
 ?>
 
 <head>
-	<title>Tasks</title>
+	<title>My Tasks</title>
 
 </head>
 <div class="container-fluid py-4 overflow-hidden">
@@ -36,7 +36,7 @@
 		}
 	?>
 
-	<a href="assign_issue.php" type="button" class="btn btn-danger btn-lg my-2">Report an equipment issue</a>
+	<a href="assign_issue.php?site=Report%20Equipment%20Issue" type="button" class="btn btn-danger btn-lg my-2">Report an equipment issue</a>
 	
 		  
 		  <?php

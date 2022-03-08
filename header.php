@@ -187,9 +187,9 @@
 			
 			<ul class="nav nav-pills flex-column mb-auto">
 			  <li class="nav-item">
-				<a href="tasks.php?site=Tasks&page=1" class="nav-link <?php 
+				<a href="tasks.php?site=My%20Tasks&page=1" class="nav-link <?php 
 					if(isset($_GET['site'])){
-						if($_GET['site'] == "Tasks"){
+						if($_GET['site'] == "My Tasks"){
 							echo 'active';
 						}
 					}
@@ -199,9 +199,9 @@
 				</a>
 			  </li>
 			  <li>
-				<a href="technician_reports.php?site=Reports&page=1" class="nav-link <?php 
+				<a href="technician_reports.php?site=My%20Reports&page=1" class="nav-link <?php 
 					if(isset($_GET['site'])){
-						if($_GET['site'] == "Reports"){
+						if($_GET['site'] == "My Reports"){
 							echo 'active';
 						}
 					}else{
@@ -213,9 +213,9 @@
 				</a>
 			  </li>
 			  <li>
-				<a href="technician_reports.php?site=Issue%20Reports&page=1" class="nav-link <?php 
+				<a href="technician_reports.php?site=My%20Issues%20Reported&page=1" class="nav-link <?php 
 					if(isset($_GET['site'])){
-						if($_GET['site'] == "Issue Reports"){
+						if($_GET['site'] == "My Issues Reported"){
 							echo 'active';
 						}
 					}else{

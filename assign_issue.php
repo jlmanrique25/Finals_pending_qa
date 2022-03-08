@@ -5,10 +5,15 @@
 ?>
 
 <head>
-	<title>Create Issue Report</title>
+	<style>
+		#main_content {
+			padding: 7%;
+		}
+	</style>
+	<title>Report Equipment Issue</title>
 </head>
 
-	<div class="container-fluid py-4">
+	<div class="container-fluid py-4" id="main_content">
         <div class="info"><?php
 				if(!isset($_GET['edit'])){
 					?>
