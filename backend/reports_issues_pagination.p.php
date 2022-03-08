@@ -1,10 +1,10 @@
 <?php
 	
-	if($_GET['site'] == "Reports"){
+	if($_GET['site'] == "My Reports"){
 		$sql = "SELECT count(*) as total
 		FROM `reports`, `users`,`location`,`equipment` 
 		WHERE users.users_id = ".$_SESSION['userId']." AND reports.assigned_user = ".$_SESSION['userId']." AND equipment.equipment_id = reports.machine_id AND equipment.location_id = location.location_id AND reports.report_status = 'done'";
-	}else if($_GET['site'] == "Issue Reports"){
+	}else if($_GET['site'] == "My Issues Reported"){
 		$sql = "SELECT count(*) as total
 		FROM `issue`, `users`,`location`,`equipment` 
 		WHERE users.users_id = 6 AND issue.submitted_by = 6 AND equipment.equipment_id = issue.machine_id AND equipment.location_id = location.location_id";
@@ -20,7 +20,7 @@
 		
 		$pages = ceil($row['total']/10);
 		
-		if($_GET['site'] == "Reports"){
+		if($_GET['site'] == "My Reports"){
 			?>
 			<nav aria-label="Page navigation example">
 				  <ul class="pagination justify-content-center">
@@ -29,7 +29,7 @@
 						echo '#';
 					}else{
 						$new_page = $_GET['page'] - 1;
-						echo 'technician_reports.php?site=Reports&page='.$new_page.'';
+						echo 'technician_reports.php?site=My%20Reports&page='.$new_page.'';
 					}
 				  ?>">Previous</a></li>
 		<?php
@@ -46,7 +46,7 @@
 							if( 1 == $i){
 							echo 'class="page-item active"';}
 						}
-					?>><a class="page-link" href="technician_reports.php?page=<?php echo $i;?>&site=Reports"><?php echo $i;
+					?>><a class="page-link" href="technician_reports.php?page=<?php echo $i;?>&site=My%20Reports"><?php echo $i;
 					?></a></li>
 					
 			  
@@ -58,7 +58,7 @@
 						echo '#';
 					}else{
 						$new_page = $_GET['page'] + 1;
-						echo 'technician_reports.php?site=Reports&page='.$new_page.'';
+						echo 'technician_reports.php?site=My%20Reports&page='.$new_page.'';
 					}
 				  ?>">Next</a></li>
 				  </ul>
@@ -69,7 +69,7 @@
 		
 		
 		
-		}else if($_GET['site'] == "Issue Reports"){
+		}else if($_GET['site'] == "My Issues Reported"){
 			?>
 			<nav aria-label="Page navigation example">
 				  <ul class="pagination justify-content-center">
@@ -78,7 +78,7 @@
 						echo '#';
 					}else{
 						$new_page = $_GET['page'] - 1;
-						echo 'technician_reports.php?site=Issue%20Reports&page='.$new_page.'';
+						echo 'technician_reports.php?site=My%20Issues%20Reported&page='.$new_page.'';
 					}
 				  ?>">Previous</a></li>
 		<?php
@@ -95,7 +95,7 @@
 							if( 1 == $i){
 							echo 'class="page-item active"';}
 						}
-					?>><a class="page-link" href="technician_reports.php?site=Issue%20Reports&page=<?php echo $i;?>"><?php echo $i;
+					?>><a class="page-link" href="technician_reports.php?site=My%20Issues%20Reported&page=<?php echo $i;?>"><?php echo $i;
 					?></a></li>
 					
 			  
@@ -107,7 +107,7 @@
 						echo '#';
 					}else{
 						$new_page = $_GET['page'] + 1;
-						echo 'technician_reports.php?site=Issue%20Reports&page='.$new_page.'';
+						echo 'technician_reports.php?site=My%20Issues%20Reported&page='.$new_page.'';
 					}
 				  ?>">Next</a></li>
 				  </ul>
