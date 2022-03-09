@@ -112,7 +112,13 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 							******/	
 							
 							?>
-							
+							<head>
+								<style>
+									a, a:hover {
+										text-decoration: none;
+									}
+								</style>
+							</head>
 								<a class="d-flex text-muted pt-3" style="white-space: normal;" href="#">
 									<svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em"></text></svg>
 
@@ -132,6 +138,14 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 							
 							******/
 							?>
+
+							<head>
+								<style>
+									a, a:hover {
+										text-decoration: none;
+									}
+								</style>
+							</head>
 							
 							<a class="d-flex text-muted pt-3" style="white-space: normal;" href="#">
 							  <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#e70e02"/><text x="50%" y="50%" fill="#007bff" dy=".3em"></text></svg>
@@ -153,6 +167,14 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 							
 							******/
 							?>
+
+							<head>
+								<style>
+									a, a:hover {
+										text-decoration: none;
+									}
+								</style>
+							</head>
 							<a class="d-flex text-muted pt-3" style="white-space: normal;" href="#">
 							  <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#e70e02"/><text x="50%" y="50%" fill="#007bff" dy=".3em"></text></svg>
 
@@ -174,6 +196,14 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 							******/
 							
 							?>
+
+							<head>
+								<style>
+									a, a:hover {
+										text-decoration: none;
+									}
+								</style>
+							</head>
 							<a class="d-flex text-muted pt-3" style="white-space: normal;" href="#">
 							  <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#e70e02"/><text x="50%" y="50%" fill="#007bff" dy=".3em"></text></svg>
 
