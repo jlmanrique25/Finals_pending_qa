@@ -10,6 +10,6 @@
 	
 	mysqli_query($conn, $sql);
 	
-	header("Location: ../technician_reports.php?site=Unassigned%20Reports&del=true");
+	header("Location: ../assign_issue_reports.php?site=Unassigned%20Reports&del=true");
 	exit();
 ?>
