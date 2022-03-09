@@ -3,7 +3,7 @@ session_start();
 include 'backend/dbh.p.php';
 include 'header.php';
 
-if($_GET['site'] == "My Past Reports" || $_GET['site'] == "Past Reports"){
+if($_GET['site'] == "My Past Reports" || $_GET['site'] == "Reports"){
 //getting specific reports record
 $sql_report = "SELECT * FROM `reports` WHERE report_id = ".$_GET['r']."";
 $stmt = mysqli_stmt_init($conn);

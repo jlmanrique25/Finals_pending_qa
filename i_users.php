@@ -51,8 +51,6 @@
 				?>
 			</tbody>
 	</table>
-	
-</div>
 
 <?php
 
@@ -75,7 +73,7 @@
 						echo '#';
 					}else{
 						$new_page = $_GET['page'] - 1;
-						echo 'i_users.php?site=Inactive%20Users&page='.$new_page.'';
+						echo 'i_users.php?site=Free%20Employees&page='.$new_page.'';
 					}
 				  ?>">Previous</a></li>
 		<?php
@@ -92,7 +90,7 @@
 							if( 1 == $i){
 							echo 'class="page-item active"';}
 						}
-					?>><a class="page-link" href="i_users.php?site=Inactive%20Users&page=<?php echo $i;?>"><?php echo $i;
+					?>><a class="page-link" href="i_users.php?site=Free%Employees&page=<?php echo $i;?>"><?php echo $i;
 					?></a></li>
 					
 			  
@@ -104,7 +102,7 @@
 						echo '#';
 					}else{
 						$new_page = $_GET['page'] + 1;
-						echo 'i_users.php?site=Inactive%20Users&page='.$new_page.'';
+						echo 'i_users.php?site=Free%20Employees&page='.$new_page.'';
 					}
 				  ?>">Next</a></li>
 				  </ul>
@@ -113,3 +111,8 @@
 		}
 	}
 ?>
+</div>
+
+<!-- <div class="col-md-12 text-center">
+	<a href="dashboard.php" class="btn btn-info" role="button">Back to Dashboard</a>
+</div> -->

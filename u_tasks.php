@@ -37,7 +37,7 @@
 					if($results->num_rows > 0){
 						while($row = mysqli_fetch_array($results)){
 							?>
-								<tr role="button" data-href="machines.php?page=1&site=Equipment%20Information&e_id=<?php echo $row['equipment_id']?>&t=issues">
+								<tr role="button" data-href="viewPendingTasks.php?r=<?php echo $row['report_id'];?>&e=<?php echo $row['machine_id'];?>&site=Pending%20Task">
 									<td><?php echo $row['task'];?></td>
 									<td><?php echo $row['equipment_name'];?></td>
 									<td><?php echo $row['asset'];?></td>
@@ -77,7 +77,7 @@
 						echo '#';
 					}else{
 						$new_page = $_GET['page'] - 1;
-						echo 'u_tasks.php?site=Unfinished%20Tasks&page='.$new_page.'';
+						echo 'u_tasks.php?site=Pending%20Tasks&page='.$new_page.'';
 					}
 				  ?>">Previous</a></li>
 		<?php
@@ -94,7 +94,7 @@
 							if( 1 == $i){
 							echo 'class="page-item active"';}
 						}
-					?>><a class="page-link" href="u_tasks.php?site=Unfinished%20Tasks&page=<?php echo $i;?>"><?php echo $i;
+					?>><a class="page-link" href="u_tasks.php?site=Pending%20Tasks&page=<?php echo $i;?>"><?php echo $i;
 					?></a></li>
 					
 			  
@@ -106,7 +106,7 @@
 						echo '#';
 					}else{
 						$new_page = $_GET['page'] + 1;
-						echo 'u_tasks.php?site=Unfinished%20Tasks&page='.$new_page.'';
+						echo 'u_tasks.php?site=Pending%20Tasks&page='.$new_page.'';
 					}
 				  ?>">Next</a></li>
 				  </ul>

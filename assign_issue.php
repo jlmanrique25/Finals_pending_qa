@@ -204,7 +204,7 @@
     	?>
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <h4 class="alert-heading">Issue Submitted Succesfully</h4>
-				  <!-- <p>Wanna check out the issue? <a href="technician_reports.php?site=Issue%20Report&page=1">click here</a>.<br> -->
+				  <p>Wanna check out the issue? <a href="technician_reports.php?site=Issue%20Report&page=1">click here</a>.<br>
 				  The issue you have submitted is the following:<?php
 				  
 					$sql = 'SELECT * FROM issue, equipment, location WHERE issue_id = '.$_GET['id'].' and machine_id = equipment_id AND location.location_id = equipment.location_id';
