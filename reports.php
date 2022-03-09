@@ -25,7 +25,7 @@
 					}else if($_GET['floor'] == '1st'){
 						echo 'active';
 					}
-					?> href="reports.php?site=Reports&page=1&floor=1st">1st Floor</a>
+					?> href="reports.php?site=Reports&page=1&floor=1st%20floor&time=day">1st Floor</a>
 
 					<a  class="dropdown-item" 
 					<?php
@@ -34,7 +34,7 @@
 					}else if($_GET['floor'] == '2nd'){
 						echo 'active';
 					}
-					?> href="reports.php?site=Reports&page=1&floor=2nd">2nd Floor</a>
+					?> href="reports.php?site=Reports&page=1&floor=2nd%20floor&time=day">2nd Floor</a>
 
 					<a  class="dropdown-item" 
 					<?php
@@ -43,7 +43,7 @@
 					}else if($_GET['floor'] == '3rd'){
 						echo 'active';
 					}
-					?> href="reports.php?site=Reports&page=1&floor=3rd">3rd Floor</a>
+					?> href="reports.php?site=Reports&page=1&floor=3rd%20floor&time=day">3rd Floor</a>
 
 					<a  class="dropdown-item" 
 					<?php
@@ -52,7 +52,7 @@
 					}else if($_GET['floor'] == '4th'){
 						echo 'active';
 					}
-					?> href="reports.php?site=Reports&page=1&floor=4th">4th Floor</a>
+					?> href="reports.php?site=Reports&page=1&floor=4th%20floor&time=day">4th Floor</a>
 					
 					<a  class="dropdown-item" 
 					<?php
@@ -61,7 +61,7 @@
 					}else if($_GET['floor'] == '5th'){
 						echo 'active';
 					}
-					?> href="reports.php?site=Reports&page=1&floor=5th">5th Floor</a>
+					?> href="reports.php?site=Reports&page=1&floor=5th%20floor&time=day">5th Floor</a>
 					
 					<a  class="dropdown-item" 
 					<?php
@@ -70,7 +70,7 @@
 					}else if($_GET['floor'] == '6th'){
 						echo 'active';
 					}
-					?> href="reports.php?site=Reports&page=1&floor=6th">6th Floor</a>
+					?> href="reports.php?site=Reports&page=1&floor=6th%floor&time=day">6th Floor</a>
 					
 					<a  class="dropdown-item" 
 					<?php
@@ -79,7 +79,7 @@
 					}else if($_GET['floor'] == '7th'){
 						echo 'active';
 					}
-					?> href="reports.php?site=Reports&page=1&floor=7th">7th Floor</a>
+					?> href="reports.php?site=Reports&page=1&floor=7th%20floor&time=day">7th Floor</a>
 					
 					<a  class="dropdown-item" 
 					<?php
@@ -88,7 +88,7 @@
 					}else if($_GET['floor'] == '8th'){
 						echo 'active';
 					}
-					?> href="reports.php?site=Reports&page=1&floor=8th">8th Floor</a>
+					?> href="reports.php?site=Reports&page=1&floor=8th%20floor&time=day">8th Floor</a>
 					
 					<a  class="dropdown-item" 
 					<?php
@@ -97,7 +97,7 @@
 					}else if($_GET['floor'] == '9th'){
 						echo 'active';
 					}
-					?> href="reports.php?site=Reports&page=1&floor=9th">9th Floor</a>
+					?> href="reports.php?site=Reports&page=1&floor=9th%20floor&time=day">9th Floor</a>
 					
 					<a  class="dropdown-item" 
 					<?php
@@ -106,7 +106,7 @@
 					}else if($_GET['floor'] == '10th'){
 						echo 'active';
 					}
-					?> href="reports.php?site=Reports&page=1&floor=10th">10th Floor</a>
+					?> href="reports.php?site=Reports&page=1&floor=10th%floor&time=day">10th Floor</a>
 					
 				  </div>
 				</div>
@@ -125,7 +125,7 @@
 					}else if($_GET['status'] == 'done'){
 						echo 'active';
 					}
-					?> href="reports.php?site=Reports&page=1&status=done">Done</a>
+					?> href="reports.php?site=Reports&page=1&status=done&time=day">Done</a>
 					
 					<a class="dropdown-item" 
 					<?php
@@ -134,7 +134,7 @@
 					}else if($_GET['status'] == 'unresolved'){
 						echo 'active';
 					}
-				?> href="reports.php?site=Reports&page=1&status=unresolved">Unresolved</a>
+				?> href="reports.php?site=Reports&page=1&status=unresolved&time=day">Unresolved</a>
 
 				  </div>
 				</div>
@@ -153,7 +153,7 @@
 					}else if($_GET['machine'] == 'HVAC'){
 						echo 'active';
 					}
-					?> href="reports.php?site=Reports&page=1&equipment=HVAC">HVAC</a>
+					?> href="reports.php?site=Reports&page=1&equipment=HVAC&time=day">HVAC</a>
 					
 					<a class="dropdown-item" 
 					<?php
@@ -162,7 +162,7 @@
 					}else if($_GET['machine'] == 'Genset'){
 						echo 'active';
 					}
-				?> href="reports.php?site=Reports&page=1&status=equipment=Genset">Generator Set</a>
+				?> href="reports.php?site=Reports&page=1&equipment=Genset&time=day">Generator Set</a>
 
 				  </div>
 				</div>
@@ -404,17 +404,21 @@
 
 
 		<?php
-			include 'backend/dropdown_filter_status.p.php'; 
+			//include 'backend/dropdown_filter_status.p.php'; 
 		?>
 	
 		<?php
-			include 'backend/search.php'; 
+			//include 'backend/search.php'; 
 		?>
+
 		<?php 
 			include 'backend/get_reports.p.php'
 		?>
 
-		
+		<?php 
+			include 'backend/dropdown_filters.p.php'
+		?>
+
 	  </tbody>
 	</table>
 	<?php
