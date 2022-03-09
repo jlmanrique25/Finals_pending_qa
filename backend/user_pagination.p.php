@@ -36,7 +36,7 @@ $stmt = mysqli_stmt_init($conn);
 							if( 1 == $i){
 							echo 'class="page-item active"';}
 						}
-					?>><a class="page-link" href="equipment.php?page=<?php echo $i;?>&site=Reports&time=<?php echo $_GET['time']?>"><?php echo $i;
+					?>><a class="page-link" href="users.php?page=<?php echo $i;?>&site=Reports"><?php echo $i;
 					?></a></li>
 					
 			  

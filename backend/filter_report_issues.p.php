@@ -56,7 +56,6 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 							$user_assignee = $row_users['username'];
 							
 							?>
-							
 							<!--
 								ASSIGNING TASKS
 							-->
