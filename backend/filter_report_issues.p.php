@@ -242,6 +242,13 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 								$row_user = mysqli_fetch_array($result_user);
 								
 								?>
+								<head>
+								<style>
+									a, a:hover {
+										text-decoration: none;
+									}
+								</style>
+								</head>
 								<a class="d-flex text-muted pt-3" style="white-space: normal;" href="#">
 								  <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#ffdd00"/><text x="50%" y="50%" fill="#007bff" dy=".3em"></text></svg>
 
@@ -258,23 +265,29 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 							
 						}else{
 							?>
+							<head>
+								<style>
+									a, a:hover {
+										text-decoration: none;
+									}
+								</style>
+							</head>
 							<a class="d-flex text-muted pt-3" style="white-space: normal;" href="#">
 							  <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#e85d04"/><text x="50%" y="50%" fill="#007bff" dy=".3em"></text></svg>
 
 							  <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
 								<div class="d-flex justify-content-between">
 								  <strong class="text-gray-dark">KEOMS</strong>
-								  <p class="mb-2"><?php 
-								  if ($row_issue['date_created'] != null) {
-									echo $row_issue['date_created'];
-								  } else {
-									  echo '';
-								  }
-								  ?></p>
+								  <?php if(isset($row_issue['date_created']) & isset($row_issue['username']) & isset($row_issue['issue'])) { ?>
+								  <p><?php echo $row_issue['date_created']?></p>
 								</div>
 								<span class="d-block">Employee 
 								<?php echo $row_issue['username']?> submitted an  Unassigned issue: 
 								<?php echo $row_issue['issue']?></span>
+								<?php } else {?>
+									<p class="mb-2">This issue has been deleted</p>
+								</div>	
+								<?php  }?>
 							  </div>
 							</a>
 							<?php
@@ -298,7 +311,13 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 							$row_users = mysqli_fetch_array($result_issue);
 							
 							?>
-							
+							<head>
+								<style>
+									a, a:hover {
+										text-decoration: none;
+									}
+								</style>
+							</head>
 							<a class="d-flex text-muted pt-3" style="white-space: normal;" href="#">
 							  <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#2dc653"/><text x="50%" y="50%" fill="#007bff" dy=".3em"></text></svg>
 
