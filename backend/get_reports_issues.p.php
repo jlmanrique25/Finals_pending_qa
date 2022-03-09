@@ -73,9 +73,18 @@
 						<?php 
 						
 						if($row['issue_status'] || !is_null($row['assigned_to'])){
-							echo $row['assigned_to'];
+							//getting the username of specific record
+							$sql_user = "SELECT * FROM `users` WHERE users_id = ".$row['assigned_to']."";
+	
+							if(!mysqli_stmt_prepare($stmt, $sql_user)){
+								echo 'error connecting to database users';
+							}else{	
+							$result_user = mysqli_query($conn, $sql_user);
+							$row_user = mysqli_fetch_assoc($result_user);
+							}
+							echo $row_user['username'];
 						}else{
-							echo 'to be assigned';
+							echo 'To be assigned';
 						}
 							?> 
 						

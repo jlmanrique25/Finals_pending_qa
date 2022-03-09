@@ -9,7 +9,7 @@
 	}else{
 		mysqli_query($conn, $sql);
 		
-		header('Location: ../issue_report.php?i_id='.$_GET['id'].'&redo=success');
+		header('Location: ../issue_report.php?i_id='.$_GET['id'].'&redo=success'.'&site=Issue%20Report');
 		exit();
 	}
 ?>

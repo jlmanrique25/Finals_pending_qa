@@ -19,6 +19,8 @@
 		$row = mysqli_fetch_assoc($result);
 		
 	}
+	
+	if($_GET['site'] == "Issue Report"){
 ?>
 <head>
 	<style>
@@ -323,3 +325,5 @@
 		}, 3000)
 	});
 </script>
+
+	<?php } ?>

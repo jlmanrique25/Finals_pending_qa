@@ -143,7 +143,7 @@
 				<?php	}
 				?>
 				<li><a href="add_new_equipment.php?site=Add%20New%20Equipment" class="link-dark rounded">Add New Equipment</a></li>
-				<li><a href="assign_issue.php?site=Report%20Issue" class="link-dark rounded">Create Issue Report</a></li>
+				<li><a href="assign_issue.php?site=Create%20Issue%20Report" class="link-dark rounded">Create Issue Report</a></li>
 				<?php if($_SESSION['role'] == "Head"){?>
 				<li><a href="users.php?page=1&site=Users" class="link-dark rounded">Manage Users</a></li>
 				<?php	}

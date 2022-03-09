@@ -10,14 +10,21 @@
 
 </head>
 
-<div class="container-fluid py-4">
+	<?php
+		if(isset($_GET['del']) && $_GET['del'] == 'true'){
+			?>
 			<div class="alert alert-success" role="alert" id="update_alert">
 			  <strong> issue deleted</strong >
 
 			 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			  </button>
+
 			</div>
+			<?php
+		}
+	?>
+	
 	<?php
 		if(isset($_GET['update'])&& $_GET['update'] == "success"){
 			include 'backend/dbh.p.php';
@@ -43,8 +50,8 @@
 			<?php
 		}
 	?>
-	
-	<table class="table rounded-3 shadow-lg table-hover mb-5">
+	<div class= "container py-4 overflow-hidden">
+	<table class="table rounded-3 shadow table-hover mb-5">
 	  <thead class="thead-dark">
 		<tr>
 		  <th scope="col">Issue</th>
@@ -64,6 +71,7 @@
 	<?php
 			include 'backend/unassigned_issues_pagination.p.php';
 		?>
+</div>
 </div>
 <script type ="text/javascript">
 	$(document).ready(function(){

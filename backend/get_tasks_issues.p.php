@@ -38,7 +38,7 @@
 			while($row = mysqli_fetch_array($result)){
 				if ($_SESSION['role'] == "Head" || $_SESSION['role'] == "Admin"){
 				?>
-					<tr role="button" data-href="issue_report.php?i_id=<?php echo $row['issue_id'];?>&<?php echo $row['equipment_name'];?>">
+					<tr role="button" data-href="issue_report.php?i_id=<?php echo $row['issue_id'];?>&<?php echo $row['equipment_name'];?>&site=Issue%20Report">
 						<td><?php echo $row['issue'];?></td>
 						<td><?php echo $row['equipment_name'];?></td>
 						<td><?php echo $row['floor'];?></td>

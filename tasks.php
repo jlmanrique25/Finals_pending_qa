@@ -86,7 +86,7 @@
 		include 'backend/tasks_issues_pagination.p.php';
 	?>
 </div>
-
+</div>
 <script type ="text/javascript">
 	$(document).ready(function(){
 		setTimeout(function() {
