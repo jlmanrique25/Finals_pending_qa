@@ -55,7 +55,7 @@
 							include 'backend/idle_users.p.php';
 						?></p>
 						<div class=" text-left">
-							<h4 class="mb-0 text-uppercase">Inactive employees</h6>
+							<h4 class="mb-0 text-uppercase">free employees</h6>
 							<p class="mb-0 text-light">The number of users with no assigned tasks</p>
 						</div>
 					</a>
@@ -67,7 +67,7 @@
 							include 'backend/count_unfinished.p.php';
 						?></p>
 						<div class=" text-left">
-							<h4 class="mb-0 text-uppercase">unfinished tasks</h6>
+							<h4 class="mb-0 text-uppercase">pending tasks</h6>
 							<p class="mb-0 text-light">The number of unresolved tasks of employees</p>
 						</div>
 					</a>

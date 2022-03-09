@@ -64,12 +64,12 @@
 		
 		
 		  <li class="mb-1">
-			<a class="btn btn-toggle align-items-center rounded" href="index.php?site=Dashboard&page=1">
+			<a class="btn btn align-items-center rounded" href="index.php?site=Dashboard&page=1">
 			  Dashboard
 			</a>
 		  </li>
 		  <li class="mb-1">
-			<a class="btn btn-toggle align-items-center rounded" href="reports.php?site=Reports&page=1&time=day">
+			<a class="btn btn align-items-center rounded" href="reports.php?site=Reports&page=1&time=day">
 			  Reports
 			</a>
 		  <!--
@@ -88,7 +88,7 @@
 		  </li>
 		  
 		  <li class="mb-1">
-		  <a class="btn btn-toggle align-items-center rounded" href="issues.php?site=Issues&page=1&time=month">
+		  <a class="btn align-items-center rounded" href="issues.php?site=Issues&page=1&time=month">
 			  Issues
 			</a>
 		  <!--
@@ -107,7 +107,7 @@
 		  </li>
 		  
 		  <li class="mb-1">
-			<a class="btn btn-toggle align-items-center rounded" href="equipment.php?site=Equipment&page=1">
+			<a class="btn align-items-center rounded" href="equipment.php?site=Equipment&page=1">
 			  Equipment Inventory
 			</a>
 			<!--
