@@ -11,6 +11,13 @@
 </head>
 
 <div class="container-fluid py-4">
+			<div class="alert alert-success" role="alert" id="update_alert">
+			  <strong> issue deleted</strong >
+
+			 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
 	<?php
 		if(isset($_GET['update'])&& $_GET['update'] == "success"){
 			include 'backend/dbh.p.php';

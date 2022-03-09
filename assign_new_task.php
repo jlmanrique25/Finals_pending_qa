@@ -4,8 +4,12 @@
 ?>
 
 <head>
+	<style>
+		#main_content {
+			padding: 7%;
+		}
+	</style>
 	<title>Assign new task</title>
-
 </head>
 <?php 
     if(isset($_GET['status']) && $_GET['status'] == 'submitted')
@@ -18,7 +22,7 @@
     <?php
 	}
 ?>
-	<div class="container-fluid py-4">
+	<div class="container-fluid py-4" id="main_content">
         <div class="info">
 					<form action="backend/create_task.p.php" method="post">
 						<?php

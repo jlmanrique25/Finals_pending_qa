@@ -1,6 +1,10 @@
 <head>
+	<style>
+		#main_content {
+			padding: 7%;
+		}
+	</style>
 	<title>Add New Equipment</title>
-
 </head>
 <?php
 	session_start();
@@ -17,7 +21,7 @@
     <?php
 	}
 ?>
-	<div class="container-fluid py-4">
+	<div class="container-fluid py-4" id="main_content">
         <div class="info">
 					<form action="backend/get_new_equipment.p.php" method="post">
 						<h2>Equipment Details</h2>
