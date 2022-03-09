@@ -264,7 +264,13 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 							  <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
 								<div class="d-flex justify-content-between">
 								  <strong class="text-gray-dark">KEOMS</strong>
-								  <p class="mb-2"><?php echo $row_issue['date_created']?></p>
+								  <p class="mb-2"><?php 
+								  if ($row_issue['date_created'] != null) {
+									echo $row_issue['date_created'];
+								  } else {
+									  echo '';
+								  }
+								  ?></p>
 								</div>
 								<span class="d-block">Employee 
 								<?php echo $row_issue['username']?> submitted an  Unassigned issue: 
