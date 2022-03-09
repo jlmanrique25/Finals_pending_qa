@@ -297,13 +297,13 @@
 			echo 'Date Submitted: ', $row['date_issue_resolved'], '</h5>';
 			?>
 			
-			<button class="btn btn-success mb-2 btn-lg" type="submit" name="submit"><i class="fas fa-clipboard-check"></i> Re-Open Issue</button>
+			<!-- <button class="btn btn-success mb-2 btn-lg" type="submit" name="submit"><i class="fas fa-clipboard-check"></i> Re-Open Issue</button> -->
 			<?php
 		}else{
 			echo 'Submit before: ',$row['date_due'], '</h5>';
 			?>
 			
-			<button class="btn btn-success mb-2 btn-lg" type="submit" name="submit"><i class="fas fa-clipboard-check"></i> Submit</button>
+			<!-- <button class="btn btn-success mb-2 btn-lg" type="submit" name="submit"><i class="fas fa-clipboard-check"></i> Submit</button> -->
 			<?php
 		}
 		?>
