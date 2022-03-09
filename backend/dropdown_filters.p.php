@@ -40,7 +40,7 @@
 		if($results->num_rows > 0){
 			while($row = mysqli_fetch_array($results)){
 				?>
-				<tr role="button" data-href="#">
+				<tr role="button">
 				  <td><?php echo $row['task'];?></td>
 				  <td><?php echo $row['equipment_name'];?></td>
 				  <td><?php echo $row['floor'];?></td>
@@ -67,8 +67,12 @@
 				</tr>
 			<?php }
 		} else { ?>
-			<td colspan="7" class="text-center"> There are no reports here</td>
+			<tr>
+				<td colspan="7" class="text-center"> There are no reports here</td>
+			</tr>
 		<?php }
-	}
+	} 
+} else if($_GET['site'] == "Issues"){ 
+
 }
 ?>

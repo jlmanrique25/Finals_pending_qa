@@ -1,4 +1,10 @@
 <head>
+	<style>
+		#filters{
+			display: flex;
+			align-items: baseline;
+		}
+	</style>
 	<title>Reports</title>
 	<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
@@ -10,7 +16,7 @@
 
 <div class="container-fluid py-4 overflow-hidden">
 	<div class="container-fluid">
-		<div class="row">
+		<div class="row" id="filters">
 			<div class="col p-2">
 				<div class="btn-group">
 				  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -167,7 +173,7 @@
 				  </div>
 				</div>
 			</div>
-			<div class="col p-2">
+			<div class="col p-2" id="dates">
 				<form action="backend/date.p.php" method="post">
 					<label>Start date</label>
 					<input class="form-control mr-sm-2 w-100" type="date" placeholder="Search" aria-label="Search" name = 'start' value="<?php
@@ -176,9 +182,8 @@
 							echo $d;
 						}
 					?>">
-
 			</div>
-			<div class="col p-2">
+			<div class="col p-2" id="dates">
 					<label>End date</label>
 					<input class="form-control mr-sm-2 w-100" type="date" placeholder="Search" aria-label="Search" name = 'end' value ="<?php
 						if(isset($_GET['e'])){
@@ -187,8 +192,7 @@
 						}
 					?>">
 			</div>
-			<div class="col p-2">
-
+			<div class="col p-2" id="dates">
 					<button class="btn btn-primary mb-2" type="submit" name="submit">Go</button>
 				</form>
 			</div>
