@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$db = "pending_project";
+$db = "final_pending";
 
 //establishing a database connection
 $conn = new mysqli($servername, $username, $password, $db);
