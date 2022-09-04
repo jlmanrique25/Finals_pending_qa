@@ -55,7 +55,7 @@
 							include 'backend/idle_users.p.php';
 						?></p>
 						<div class=" text-left">
-							<h4 class="mb-0 text-uppercase">free employees</h6>
+							<h4 class="mb-0 text-uppercase">Available Staff</h6>
 							<p class="mb-0 text-light">The number of users with no assigned tasks</p>
 						</div>
 					</a>
