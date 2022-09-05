@@ -90,7 +90,7 @@
 		  </div>
 		  <!--START OF CODE FOR UPDATE FIELD-->
 		  <div class="my-3 p-3 bg-body rounded shadow-sm">
-			<h6 class="border-bottom pb-2 mb-0">Recent updates (last 7 days)</h6>
+			<h6 class="border-bottom pb-2 mb-0">Activities (last 7 days)</h6>
 			
 			<!--
 			!!!!!!

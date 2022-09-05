@@ -29,7 +29,7 @@
 					<th scope="col">Asset</th>
 					<th scope="col">Date Created</th>
 					<th scope="col">Date due</th>
-					<th scope="col">Assigned to</th>
+					<th scope="col">Assignee</th>
 				</tr>
 			</thead>
 			<tbody>
