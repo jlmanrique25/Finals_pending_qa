@@ -51,6 +51,9 @@
 		}
 	?>
 	<div class= "container py-4 overflow-hidden">
+
+	<h2>This page consists of <text style="font-weight:bold;">Unassigned Issue Reports</text> </h2> <br>
+
 	<table class="table rounded-3 shadow table-hover mb-5">
 	  <thead class="thead-dark">
 		<tr>

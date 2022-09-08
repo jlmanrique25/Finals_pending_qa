@@ -11,6 +11,8 @@
 </head>
 <div class="container-fluid py-4 overflow-hidden">
 
+	<h2>This page consists of <text style="font-weight:bold;">Unresolved Issue Reports</text> </h2> <br>
+
 	<?php
 		if(isset($_GET['submition']) && $_GET['submition'] == "success"){
 			include 'backend/dbh.p.php';

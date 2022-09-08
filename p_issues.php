@@ -20,8 +20,13 @@
 ?>
 
 <div class="container-fluid py-4 overflow-hidden">
-	<i class="fa-solid fa-chevrons-left"></i><a class="btn btn-primary"  href="index.php?site=Dashboard&page=1"><< Back</a>
+	<i class="fa-solid fa-chevrons-left"></i><input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back">
 	<br /><br />
+
+	<h2>This page consists of <text style="font-weight:bold;">Unresolved Issue Reports</text> </h2> 
+
+	<br>
+
 	<table id="p_issues_table" width="100%">
 			<thead class="thead-dark">
 				<tr>

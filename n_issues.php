@@ -21,8 +21,14 @@
 ?>
 
 <div class="container-fluid py-4 overflow-hidden">
-	<i class="fa-solid fa-chevrons-left"></i><a class="btn btn-primary"  href="index.php?site=Dashboard&page=1"><< Back</a>
-	<br /><br />
+	<i class="fa-solid fa-chevrons-left"></i>
+
+	<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back"><br><br>
+
+	<h2>This page consists of <text style="font-weight:bold;">recently added Issue Reports</text> </h2> 
+
+	<br>
+
 	<table class="table rounded-3 shadow-lg table-hover mb-5">
 		<thead class="thead-dark">
 				<tr>

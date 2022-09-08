@@ -7,6 +7,9 @@
 	include 'header.php';
 ?>
 <div class= "container py-4 overflow-hidden">
+
+	<h2>List of <text style="font-weight:bold;">Users and their Roles</text> </h2> <br>
+
 	<table class="table rounded-3 shadow table-hover mb-5">
 	  <thead class="thead-dark">
 		<tr>

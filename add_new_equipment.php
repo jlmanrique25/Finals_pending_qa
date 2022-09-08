@@ -22,6 +22,9 @@
 	}
 ?>
 	<div class="container-fluid py-4" id="main_content">
+
+	<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back"><br><br>
+
         <div class="info">
 					<form class="needs-validation" action="backend/get_new_equipment.p.php" method="post" novalidate>
 						<h2>Equipment Details</h2>
@@ -29,11 +32,11 @@
 						<div class="form-group">
 							<div class="row">
 								<div class="col">
-									<label>Enter Equipment Name</label>
+									<label>Enter Equipment Name<text style="color:red;"> *</text></label>
 									<input type="text" class="form-control" name="equipment_name" placeholder="E.g. FUJI-75 Aircon" required>
 								</div>
 								<div class="col">
-									<label>Choose Asset</label>
+									<label>Choose Asset<text style="color:red;"> *</text></label>
 									<select class="form-control" name="asset" required>
 										<option value="">--</option>
 										<option value="HVAC">HVAC</option>
@@ -45,7 +48,7 @@
 							</div><br>
 							<div class="row">
 								<div class="col">
-									<label>Brand of the Equipment</label>
+									<label>Brand of the Equipment<text style="color:red;"> *</text></label>
 									<input type="text" class="form-control" name="brand" placeholder="E.g. Toshiba" required>
 									<div class="invalid-feedback">
 								      Please fill in this field
@@ -58,14 +61,14 @@
 							</div><br>
 							<div class="row">
 								<div class="col">
-									<label>Model no.</label>
+									<label>Model no.<text style="color:red;"> *</text></label>
 									<input type="text" class="form-control" name="model_no" placeholder="E.g. FUJI752022" required>
 									<div class="invalid-feedback">
 								      Please fill in this field
 								    </div>
 								</div>
 								<div class="col">
-									<label>Serial no.</label>
+									<label>Serial no.<text style="color:red;"> *</text></label>
 									<input type="number" class="form-control" name="serial_no" placeholder="E.g. 61977" required>
 									<div class="invalid-feedback">
 								      Please fill in this field
@@ -74,7 +77,7 @@
 							</div><br>
 							<div class="row">
 								<div class="col">
-									<label>Date of purchase</label>
+									<label>Date of purchase<text style="color:red;"> *</text></label>
 									<input type="date" class="form-control" name="date_of_purchase"required>
 								</div>
 								<div class="invalid-feedback">
@@ -85,7 +88,7 @@
 						<hr class="rounded">
 							<div class="row">
 								<div class="col">
-									<label>Floor</label>
+									<label>Floor<text style="color:red;"> *</text></label>
 									<select class="form-control" name="floor" required>
 										<option value="">--</option>
 										<option value="Basement 3">Basement 3</option>
@@ -109,14 +112,14 @@
 								    </div>
 								</div>
 								<div class="col">
-									<label>Room number</label>
+									<label>Room number<text style="color:red;"> *</text></label>
 									<input type="text" class="form-control" name="room_number" placeholder="E.g. 309-A" required>
 									<div class="invalid-feedback">
 								      Please fill in this field
 								    </div>
 								</div>
 								<div class="col">
-									<label>Room Classification</label>
+									<label>Room Classification<text style="color:red;"> *</text></label>
 									<input type="text" class="form-control" name="room_classification" placeholder="E.g. computer lab" required>
 									<div class="invalid-feedback">
 								      Please fill in this field

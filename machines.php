@@ -25,6 +25,9 @@
 			$row_loc = mysqli_fetch_assoc($result_loc);
 			?>
 	<div class="container-fluid py-4 overflow-hidden">
+
+	<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back"> <br><br>
+
 		<header class="d-flex align-items-center pb-3  border-bottom border-dark">
 		<p class="d-flex align-items-center text-dark text-decoration-none  fw-b">
 		  <span class="fs-3 fw-bold"><?php echo $row_equipment['equipment_name']?></span>

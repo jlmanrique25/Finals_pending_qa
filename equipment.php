@@ -5,8 +5,16 @@
 	include 'header.php';
     ?>
 </head>
+	
 
 <div class="container-fluid py-4 overflow-hidden">
+
+	<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back"><br><br>
+
+	<h2>This page consists of <text style="font-weight:bold;">information about the Equipment</text> </h2> 
+
+	<br> 
+
 	<table id="equipment_table">
 	  <thead class="thead-dark">
 		<tr>

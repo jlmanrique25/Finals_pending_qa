@@ -20,7 +20,12 @@
 	
 ?>
 <div class="container py-4 overflow-hidden">
-	<i class="icon-backward"></i><a class="btn btn-primary"  href="index.php?site=Dashboard&page=1"><< Back</a><br /><br />
+	<i class="icon-backward"></i><input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back"><br /><br />
+
+	<h2>List of <text style="font-weight:bold;">Employees without Assigned Tasks</text> </h2> 
+
+	<br>
+
 	<table class="table rounded-3 shadow-lg table-hover mb-5">
 		<thead class="thead-dark">
 				<tr>

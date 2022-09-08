@@ -7,7 +7,11 @@
 ?>
 
 <div class="container-fluid py-4 overflow-hidden">
-	<div class="container-fluid">
+<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back"><br><br>
+
+	<h2>This page consists of all the recorded <text style="font-weight:bold;">Issue Reports</text> </h2> 
+
+	<!-- <div class="container-fluid">
 		<div class="row">
 			<div class="col p-2">
 				<div class="btn-group">
@@ -237,7 +241,7 @@
 			
 			
 			
-		</div>
+		</div> -->
 	</div>
 	
 	<!--<table class="table rounded-3 shadow-lg table-hover mb-5" id="issues_table"> -->
