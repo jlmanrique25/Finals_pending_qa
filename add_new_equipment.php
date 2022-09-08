@@ -23,49 +23,63 @@
 ?>
 	<div class="container-fluid py-4" id="main_content">
         <div class="info">
-					<form action="backend/get_new_equipment.p.php" method="post">
+					<form class="needs-validation" action="backend/get_new_equipment.p.php" method="post" novalidate>
 						<h2>Equipment Details</h2>
 						<hr class="rounded">
 						<div class="form-group">
 							<div class="row">
 								<div class="col">
-									<label>Equipment Name</label>
-									<input type="text" class="form-control" name="equipment_name" placeholder="Equipment Name">
+									<label>Enter Equipment Name</label>
+									<input type="text" class="form-control" name="equipment_name" placeholder="E.g. FUJI-75 Aircon" required>
 								</div>
 								<div class="col">
-									<label>Asset</label>
+									<label>Choose Asset</label>
 									<select class="form-control" name="asset" required>
 										<option value="">--</option>
 										<option value="HVAC">HVAC</option>
 										<option value="Genset">Genset</option>
-									</select>
+									</select><div class="invalid-feedback">
+								      Please choose from the list
+								    </div>
 								</div>
 							</div><br>
 							<div class="row">
 								<div class="col">
-									<label>Brand</label>
-									<input type="text" class="form-control" name="brand" placeholder="Brand">
+									<label>Brand of the Equipment</label>
+									<input type="text" class="form-control" name="brand" placeholder="E.g. Toshiba" required>
+									<div class="invalid-feedback">
+								      Please fill in this field
+								    </div>
 								</div>
 								<div class="col">
-									<label>Machine Description</label>
-									<input type="text" class="form-control" name="machine_description" placeholder="Machine Description">
+									<label>Machine Description (Optional)</label>
+									<input type="text" class="form-control" name="machine_description" placeholder="Describe here the equipment">
 								</div>
 							</div><br>
 							<div class="row">
 								<div class="col">
 									<label>Model no.</label>
-									<input type="text" class="form-control" name="model_no" placeholder="Model no.">
+									<input type="text" class="form-control" name="model_no" placeholder="E.g. FUJI752022" required>
+									<div class="invalid-feedback">
+								      Please fill in this field
+								    </div>
 								</div>
 								<div class="col">
 									<label>Serial no.</label>
-									<input type="number" class="form-control" name="serial_no" placeholder="Serial no.">
+									<input type="number" class="form-control" name="serial_no" placeholder="E.g. 61977" required>
+									<div class="invalid-feedback">
+								      Please fill in this field
+								    </div>
 								</div>
 							</div><br>
 							<div class="row">
 								<div class="col">
 									<label>Date of purchase</label>
-									<input type="date" class="form-control" name="date_of_purchase">
+									<input type="date" class="form-control" name="date_of_purchase"required>
 								</div>
+								<div class="invalid-feedback">
+								      Please fill in this field
+								 </div>
 							</div><br>
 						<h2>Equipment Location</h2>
 						<hr class="rounded">
@@ -90,19 +104,30 @@
 										<option value="11th floor">11th floor</option>
 										<option value="12th floor">12th floor</option>
 									</select>
+									<div class="invalid-feedback">
+								      Please choose from the list
+								    </div>
 								</div>
 								<div class="col">
 									<label>Room number</label>
-									<input type="text" class="form-control" name="room_number" placeholder="Room number">
+									<input type="text" class="form-control" name="room_number" placeholder="E.g. 309-A" required>
+									<div class="invalid-feedback">
+								      Please fill in this field
+								    </div>
 								</div>
 								<div class="col">
 									<label>Room Classification</label>
-									<input type="text" class="form-control" name="room_classification" placeholder="Room classification">
+									<input type="text" class="form-control" name="room_classification" placeholder="E.g. computer lab" required>
+									<div class="invalid-feedback">
+								      Please fill in this field
+								    </div>
+								</div>
 								</div>
 							</div><br>
 						</div>
 						
-						<button class="btn btn-primary mb-2" type="submit" name="submit">Submit</button>
+						<button class="btn btn-primary mb-2" type="submit" name="submit" onclick="alert('Are you sure you want to submit?')">Submit</button>
+						<button type="reset" class="btn btn-danger mb-2" onclick="alert('Are you sure you want to reset?')">Reset</button>
 					</form>
 				</div>
     
@@ -130,5 +155,29 @@
 			}
 		});
 		$("#typeOfMachine").trigger("change");
+	</script>
+
+	<!-- script for field validations -->
+	<script type="text/javascript">
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+		(function () {
+		  'use strict'
+
+		  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+		  var forms = document.querySelectorAll('.needs-validation')
+
+		  // Loop over them and prevent submission
+		  Array.prototype.slice.call(forms)
+		    .forEach(function (form) {
+		      form.addEventListener('submit', function (event) {
+		        if (!form.checkValidity()) {
+		          event.preventDefault()
+		          event.stopPropagation()
+		        }
+
+		        form.classList.add('was-validated')
+		      }, false)
+		    })
+		})()
 	</script>
 	</div> 
