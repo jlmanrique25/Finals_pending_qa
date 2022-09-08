@@ -19,8 +19,8 @@
 		$results = mysqli_query($conn, $sql_i);
 	
 ?>
-
 <div class="container py-4 overflow-hidden">
+	<i class="icon-backward"></i><a class="btn btn-primary"  href="index.php?site=Dashboard&page=1"><< Back</a><br /><br />
 	<table class="table rounded-3 shadow-lg table-hover mb-5">
 		<thead class="thead-dark">
 				<tr>
@@ -46,7 +46,11 @@
 							<?php
 						}
 					}else{
-						echo ' there are no results';
+						echo '<tr>
+					<td colspan="7" class="text-center"> 
+					There are no available employees
+					</td>
+				</tr>';
 					}
 				?>
 			</tbody>

@@ -1,0 +1,22 @@
+{
+  "name": "finals_pending",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DemeterCaubang/Finals_pending.git"
+  },
+  "author": "jasffer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DemeterCaubang/Finals_pending/issues"
+  },
+  "homepage": "https://github.com/DemeterCaubang/Finals_pending#readme",
+  "devDependencies": {
+    "grunt": "^1.5.3"
+  }
+}

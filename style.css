@@ -62,4 +62,9 @@
 		
 		
 	/** END OF DESIGN OF HEADER AND SIDEBAR **/
+	
+	 .TF.sticky th {
+        /* override to position sticky headers underneath page header element */
+        top: 51px !important;
+    }
 </style>

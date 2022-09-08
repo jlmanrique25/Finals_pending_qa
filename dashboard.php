@@ -13,12 +13,12 @@
 		  ?></h4>
 			<div class="row mb-2">
 				<div class="col text-light p-2">
-					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="n_issues.php?site=New%20Unassigned%20Issues&page=1" role="button"
+					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="n_issues.php?site=New%20Issues&page=1" role="button"
 					style="margin-bottom:4px;white-space: normal;">
 						<p class="display-3  font-weight-bold"><?php include 'backend/count_new_issues.p.php';?></p>
 						<div class=" text-left">
 							<h4 class="mb-0 text-uppercase">new issues</h6>
-							<p class="mb-0 text-light">The total number of new but unresolved or unassigned issues of the day</p>
+							<p class="mb-0 text-light">The total number of new unresolved or unassigned issues of the day</p>
 						</div>
 						
 					</a>
@@ -73,15 +73,15 @@
 					</a>
 				</div>
 				<div class="col text-light p-2">
-					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="equipment_issues.php?site=Equipment%20with%20issues&page=1" role="button"
+					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="o_tasks.php?site=Overdue%20Tasks&page=1" role="button"
 					style="margin-bottom:4px; white-space: normal;">
 						<p class="display-3 font-weight-bold"><?php
 							include 'backend/count_equipment_issues.p.php';
 						?>
 						</p>
 						<div class=" text-left">
-							<h4 class="mb-0 text-uppercase">equipment issues</h6>
-							<p class="mb-0 text-light">The number of equipment with issues</p>
+							<h4 class="mb-0 text-uppercase">Overdue tasks</h6>
+							<p class="mb-0 text-light">Total number of overdue unresolved tasks</p>
 						</div>
 					</a>
 				</div>

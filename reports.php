@@ -15,393 +15,20 @@
 ?>
 
 <div class="container-fluid py-4 overflow-hidden">
-	<div class="container-fluid">
-		<div class="row" id="filters">
-			<div class="col p-2">
-				<div class="btn-group">
-				  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Floor
-				  </button>
-				   <div class="dropdown-menu">
-					
-					<a  class="dropdown-item" 
-					<?php
-					if(!isset($_GET['floor'])){
-						echo 'active';
-					}else if($_GET['floor'] == '1st'){
-						echo 'active';
-					}
-					?> href="reports.php?site=Reports&page=1&floor=1st%20floor&time=day">1st Floor</a>
-
-					<a  class="dropdown-item" 
-					<?php
-					if(!isset($_GET['floor'])){
-						echo 'active';
-					}else if($_GET['floor'] == '2nd'){
-						echo 'active';
-					}
-					?> href="reports.php?site=Reports&page=1&floor=2nd%20floor&time=day">2nd Floor</a>
-
-					<a  class="dropdown-item" 
-					<?php
-					if(!isset($_GET['floor'])){
-						echo 'active';
-					}else if($_GET['floor'] == '3rd'){
-						echo 'active';
-					}
-					?> href="reports.php?site=Reports&page=1&floor=3rd%20floor&time=day">3rd Floor</a>
-
-					<a  class="dropdown-item" 
-					<?php
-					if(!isset($_GET['floor'])){
-						echo 'active';
-					}else if($_GET['floor'] == '4th'){
-						echo 'active';
-					}
-					?> href="reports.php?site=Reports&page=1&floor=4th%20floor&time=day">4th Floor</a>
-					
-					<a  class="dropdown-item" 
-					<?php
-					if(!isset($_GET['floor'])){
-						echo 'active';
-					}else if($_GET['floor'] == '5th'){
-						echo 'active';
-					}
-					?> href="reports.php?site=Reports&page=1&floor=5th%20floor&time=day">5th Floor</a>
-					
-					<a  class="dropdown-item" 
-					<?php
-					if(!isset($_GET['floor'])){
-						echo 'active';
-					}else if($_GET['floor'] == '6th'){
-						echo 'active';
-					}
-					?> href="reports.php?site=Reports&page=1&floor=6th%floor&time=day">6th Floor</a>
-					
-					<a  class="dropdown-item" 
-					<?php
-					if(!isset($_GET['floor'])){
-						echo 'active';
-					}else if($_GET['floor'] == '7th'){
-						echo 'active';
-					}
-					?> href="reports.php?site=Reports&page=1&floor=7th%20floor&time=day">7th Floor</a>
-					
-					<a  class="dropdown-item" 
-					<?php
-					if(!isset($_GET['floor'])){
-						echo 'active';
-					}else if($_GET['floor'] == '8th'){
-						echo 'active';
-					}
-					?> href="reports.php?site=Reports&page=1&floor=8th%20floor&time=day">8th Floor</a>
-					
-					<a  class="dropdown-item" 
-					<?php
-					if(!isset($_GET['floor'])){
-						echo 'active';
-					}else if($_GET['floor'] == '9th'){
-						echo 'active';
-					}
-					?> href="reports.php?site=Reports&page=1&floor=9th%20floor&time=day">9th Floor</a>
-					
-					<a  class="dropdown-item" 
-					<?php
-					if(!isset($_GET['floor'])){
-						echo 'active';
-					}else if($_GET['floor'] == '10th'){
-						echo 'active';
-					}
-					?> href="reports.php?site=Reports&page=1&floor=10th%floor&time=day">10th Floor</a>
-					
-				  </div>
-				</div>
-			</div>
-			<div class="col p-2">
-				<div class="dropdown">
-				  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Report Status
-				  </button>
-				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					
-					<a class="dropdown-item" 
-					<?php
-					if(!isset($_GET['status'])){
-						echo 'active';
-					}else if($_GET['status'] == 'done'){
-						echo 'active';
-					}
-					?> href="reports.php?site=Reports&page=1&status=done&time=day">Done</a>
-					
-					<a class="dropdown-item" 
-					<?php
-					if(!isset($_GET['status'])){
-						echo 'active';
-					}else if($_GET['status'] == 'unresolved'){
-						echo 'active';
-					}
-				?> href="reports.php?site=Reports&page=1&status=unresolved&time=day">Unresolved</a>
-
-				  </div>
-				</div>
-			</div>
-			<div class="col p-2">
-				<div class="dropdown">
-				  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Equipment
-				  </button>
-				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					
-					<a class="dropdown-item" 
-					<?php
-					if(!isset($_GET['machine'])){
-						echo 'active';
-					}else if($_GET['machine'] == 'HVAC'){
-						echo 'active';
-					}
-					?> href="reports.php?site=Reports&page=1&equipment=HVAC&time=day">HVAC</a>
-					
-					<a class="dropdown-item" 
-					<?php
-					if(!isset($_GET['machine'])){
-						echo 'active';
-					}else if($_GET['machine'] == 'Genset'){
-						echo 'active';
-					}
-				?> href="reports.php?site=Reports&page=1&equipment=Genset&time=day">Generator Set</a>
-
-				  </div>
-				</div>
-			</div>
-			<div class="col p-2" id="dates">
-				<form action="backend/date.p.php" method="post">
-					<label>Start date</label>
-					<input class="form-control mr-sm-2 w-100" type="date" placeholder="Search" aria-label="Search" name = 'start' value="<?php
-						if(isset($_GET['s'])){
-							$d = date('Y-m-d', strtotime($_GET['s']));
-							echo $d;
-						}
-					?>">
-			</div>
-			<div class="col p-2" id="dates">
-					<label>End date</label>
-					<input class="form-control mr-sm-2 w-100" type="date" placeholder="Search" aria-label="Search" name = 'end' value ="<?php
-						if(isset($_GET['e'])){
-							$d = date('Y-m-d', strtotime($_GET['e']));
-							echo $d;
-						}
-					?>">
-			</div>
-			<div class="col p-2" id="dates">
-					<button class="btn btn-primary mb-2" type="submit" name="submit">Go</button>
-				</form>
-			</div>
-			<div class="col p-2">
-				<div class="btn-group btn-group" role="group">
-			  <a type="button" class="btn btn-info 
-				<?php
-					if(!isset($_GET['time'])){
-						echo 'active';
-					}else if($_GET['time'] == 'day'){
-						echo 'active';
-					}
-				?>
-			  " href="reports.php?site=Reports&page=1&time=day">Daily</a>
-			  <a type="button" class="btn btn-info <?php
-					if(isset($_GET['time'])){
-						if($_GET['time'] == 'week'){
-							echo 'active';
-						}
-					}
-				?>" href="reports.php?site=Reports&page=1&time=week">This Week</a>
-			  <a type="button" class="btn btn-info <?php
-					if(isset($_GET['time'])){
-						if($_GET['time'] == 'month'){
-							echo 'active';
-						}
-					}
-				?>" href="reports.php?site=Reports&page=1&time=month">This Month</a>
-				
-				<a type="button" class="btn btn-info <?php
-					if(isset($_GET['time'])){
-						if($_GET['time'] == 'year'){
-							echo 'active';
-						}
-					}
-				?>" href="reports.php?site=Reports&page=1&time=year">This year</a>
-				</div>
-			</div>
-			
-			<div class="col p-2">
-				<form class="form-inline" method="POST">
-					<input class="form-control mr-sm-2 w-100" type="text" placeholder="Search" name="search">
-					<input type="submit" name="submit">
-				</form>
-			</div>
-			
-			
-			
-			
-			
-		</div>
-	</div>
 	
-	<table class="table rounded-3 shadow-lg table-hover mb-5">
+	
+	<table  id="reports_table">
 	  <thead class="thead-dark">
 		<tr>
-		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
-			if(isset($_GET['time'])){
-				echo $_GET['time'];
-			}else{
-				echo 'day';
-			}
-		  ?>&page=1&order=task&by=<?php
-			if(isset($_GET['by'])){
-				if($_GET['by'] == 'asc'){
-					echo 'desc';
-				}else{
-					echo 'asc';
-				}
-			}else{
-				echo 'asc';
-			}
-		  ?>">Task</a></th>
-		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
-			if(isset($_GET['time'])){
-				echo $_GET['time'];
-			}else{
-				echo 'day';
-			}
-		  ?>&page=1&order=equipment_name&by=<?php
-			if(isset($_GET['by'])){
-				if($_GET['by'] == 'asc'){
-					echo 'desc';
-				}else{
-					echo 'asc';
-				}
-			}else{
-				echo 'asc';
-			}
-		  ?>">Equipment</a></th>
-		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
-			if(isset($_GET['time'])){
-				echo $_GET['time'];
-			}else{
-				echo 'day';
-			}
-		  ?>&page=1&order=floor&by=<?php
-			if(isset($_GET['by'])){
-				if($_GET['by'] == 'asc'){
-					echo 'desc';
-				}else{
-					echo 'asc';
-				}
-			}else{
-				echo 'asc';
-			}
-		  ?>">Floor</a></th>
-		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
-			if(isset($_GET['time'])){
-				echo $_GET['time'];
-			}else{
-				echo 'day';
-			}
-		  ?>&page=1&order=room_number&by=<?php
-			if(isset($_GET['by'])){
-				if($_GET['by'] == 'asc'){
-					echo 'desc';
-				}else{
-					echo 'asc';
-				}
-			}else{
-				echo 'asc';
-			}
-		  ?>">Room Number</a></th>
-		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
-			if(isset($_GET['time'])){
-				echo $_GET['time'];
-			}else{
-				echo 'day';
-			}
-		  ?>&page=1&order=report_status&by=<?php
-			if(isset($_GET['by'])){
-				if($_GET['by'] == 'asc'){
-					echo 'desc';
-				}else{
-					echo 'asc';
-				}
-			}else{
-				echo 'asc';
-			}
-		  ?>">Report Status</a></th>
-		 <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
-			if(isset($_GET['time'])){
-				echo $_GET['time'];
-			}else{
-				echo 'day';
-			}
-		  ?>&page=1&order=report_status&by=<?php
-			if(isset($_GET['by'])){
-				if($_GET['by'] == 'asc'){
-					echo 'desc';
-				}else{
-					echo 'asc';
-				}
-			}else{
-				echo 'asc';
-			}
-		  ?>">Date Created</a></th>
-		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
-			if(isset($_GET['time'])){
-				echo $_GET['time'];
-			}else{
-				echo 'day';
-			}
-		  ?>&page=1&order=date_submitted&by=<?php
-			if(isset($_GET['by'])){
-				if($_GET['by'] == 'asc'){
-					echo 'desc';
-				}else{
-					echo 'asc';
-				}
-			}else{
-				echo 'asc';
-			}
-		  ?>">Date Submitted</a></th>
-		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
-			if(isset($_GET['time'])){
-				echo $_GET['time'];
-			}else{
-				echo 'day';
-			}
-		  ?>&page=1&order=for_repair&by=<?php
-			if(isset($_GET['by'])){
-				if($_GET['by'] == 'asc'){
-					echo 'desc';
-				}else{
-					echo 'asc';
-				}
-			}else{
-				echo 'asc';
-			}
-		  ?>">For Repair</a></th>
-		  <th scope="col"><a class="nav-link text-light" href="reports.php?site=Reports&time=<?php
-			if(isset($_GET['time'])){
-				echo $_GET['time'];
-			}else{
-				echo 'day';
-			}
-		  ?>&page=1&order=username&by=<?php
-			if(isset($_GET['by'])){
-				if($_GET['by'] == 'asc'){
-					echo 'desc';
-				}else{
-					echo 'asc';
-				}
-			}else{
-				echo 'asc';
-			}
-		  ?>">Assigned To</a></th>
+		  <th scope="col">Task</th>
+		  <th scope="col">Equipment</th>
+		  <th scope="col">Floor</th>
+		  <th scope="col">Room Number</i></th>
+		  <th scope="col">Report Status</th>
+		 <th scope="col">Date Created</th>
+		  <th scope="col">Date Submitted</th>
+		  <th scope="col">For Repair</th>
+		  <th scope="col">Assignee</th>
 		</tr>
 	  </thead>
 	  <tbody>
@@ -416,17 +43,56 @@
 		?>
 
 		<?php 
-			include 'backend/get_reports.p.php'
+			include 'backend/fetch_reports.p.php'
 		?>
 
 		<?php 
-			include 'backend/dropdown_filters.p.php'
+			//include 'backend/dropdown_filters.p.php'
 		?>
 
 	  </tbody>
 	</table>
-	<?php
-		include 'backend/table_pagination_reports.p.php';
-	?>
+	
 </div>
+
+<script src="tablefilter/tablefilter.js"></script>
+
+<script data-config>
+	var filtersConfig = {
+		base_path: 'tablefilter/',
+		responsive: true,
+		paging: {
+          results_per_page: ['Records: ', [10, 25, 50, 100]]
+        },
+		col_2: 'select',
+		col_4: 'select',
+		col_7: 'select',
+		col_8: 'select',
+		alternate_rows: true,
+		rows_counter: true,
+		sticky_headers: true,
+		btn_reset: true,
+		loader: true,
+		status_bar: true,
+		mark_active_columns: true,
+		highlight_keywords: true,
+
+		col_types: ['string',
+					'string',
+					'string',
+					'string',
+					'string',
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					'string',
+					'string'
+		],
+		watermark: ['(e.g. Not functioning)', '(e.g. Generator Set 1)', '', '404-A', '','(e.g. >2022-01-01)', '(e.g. >2022-01-01)', '',''],
+		msg_filter: 'Filtering...',
+        extensions:[{ name: 'sort' }]
+	};
+
+	var tf = new TableFilter('reports_table', filtersConfig);
+    tf.init();
+</script>
 

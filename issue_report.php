@@ -30,6 +30,8 @@
 	</style>
 </head>
 <div class="container-fluid py-4" id="main_content">
+	<i class="fa-solid fa-chevrons-left"></i><button class="btn btn-primary" type="button" onclick="history.back()"><< Back</button>
+	<br /><br />
 	<h2><?php echo $row['issue'], " : equipment ", $row['equipment_name'];?><h2>
 	<hr class="rounded">
 	<h5>Date issue created: <?php echo $row['date_created']?></h5>

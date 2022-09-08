@@ -31,6 +31,7 @@
 					}else{
 						echo 'operating';
 					}?></td>
+					<td><a href="machines.php?page=1&site=Equipment Information&e_id=<?php echo $row['equipment_id'];?>&t=reports" class="btn btn-info">View equipment</a></td>
 				</tr>
 			<?php
 			}
@@ -46,3 +47,4 @@
 	
 	
 ?>
+

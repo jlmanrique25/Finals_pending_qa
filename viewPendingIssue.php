@@ -8,7 +8,7 @@
 	
 	$sql = "SELECT issue.issue_id, issue.machine_id, issue.issue, issue.issue description, issue.submitted_by, issue.date_due, issue.date_created, equipment.equipment_id, equipment.equipment_name, users.users_id, users.username, issue.issue_status, issue.recommendation, issue.endorsed_by, issue.date_endorsed_for_repair, issue.date_reinstalled, issue.contracted_company, issue.company_representative, issue.company_representative, issue.service_report_number, issue.date_issue_resolved, assigned_to
 	FROM `issue`,`users`,`equipment`
-	WHERE issue_id = ".$_GET['i_id']." AND issue.machine_id = equipment.equipment_id AND users.users_id = issue.submitted_by";
+	WHERE issue_id = ".$_GET['i_id']." AND issue.machine_id = equipment.equipment_id AND users.users_id = issue.assigned_to";
 	
 	$stmt = mysqli_stmt_init($conn);
 	
@@ -17,6 +17,7 @@
 	}else{
 		$result = mysqli_query($conn, $sql);
 		$row = mysqli_fetch_assoc($result);
+		
 		
 	}
 	

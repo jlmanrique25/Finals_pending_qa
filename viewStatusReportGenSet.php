@@ -77,7 +77,8 @@ if($_GET['site'] == "Report Submitted"){
 </head>
 
 <div class="container-fluid py-4">
-	
+	<i class="fa-solid fa-chevrons-left"></i><button class="btn btn-primary" type="button" onclick="history.back()"><< Back</button>
+	<br /><br />
 		<!-- assigned task info -->
 		<h2><?php echo $row_report['task']; ?> : equipment <?php echo $row_equipment['equipment_name']; ?></h2>
 		<hr class="rounded" />

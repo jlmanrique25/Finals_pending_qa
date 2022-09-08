@@ -71,7 +71,7 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 
 							  <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
 								<div class="d-flex justify-content-between">
-								  <strong class="text-gray-dark"><?php echo $assignor_role; ?>: <?php echo $user_assignor;?></strong>
+								  <strong class="text-gray-dark"><?php echo $user_assignor;?></strong>
 								  <p class="mb-2"><?php echo $row_dates['date_time']?></p>
 								</div>
 								<span class="d-block">Assigned task: "<?php echo $row_reports['task'];?>" to employee: "<?php echo $user_assignee;?>", due on "<?php echo $row_reports['task_due'];?>"</span>

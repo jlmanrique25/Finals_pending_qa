@@ -1,12 +1,13 @@
 <head>
 	<title>Equipment Inventory</title>
-</head>
-<?php
+    <?php
 	session_start();
 	include 'header.php';
-?>
+    ?>
+</head>
+
 <div class="container-fluid py-4 overflow-hidden">
-	<table class="table rounded-3 shadow-lg table-hover mb-5">
+	<table id="equipment_table">
 	  <thead class="thead-dark">
 		<tr>
 		  <th scope="col">Equipment</th>
@@ -16,16 +17,54 @@
 		  <th scope="col">Date Installed</th>
 		  <th scope="col">Condition</th>
 		  <th scope="col">Operating</th>
+		  <th scope="col">Action</th>
 		</tr>
 	  </thead>
 	  <tbody>
 	  
 		<?php
 			include 'backend/get_equipment.p.php';
-		?>
+        ?>
 	  </tbody>
 	</table>
-	<?php
-		include 'backend/equipment_pagination.p.php';
-	?>
+	
 </div>
+
+<script src="tablefilter/tablefilter.js"></script>
+
+<script data-config>
+	var filtersConfig = {
+		base_path: 'tablefilter/',
+		responsive: true,
+		paging: {
+          results_per_page: ['Records: ', [10, 25, 50, 100]]
+        },
+		col_1: 'select',
+		col_2: 'select',
+		col_5: 'select',
+		col_6: 'select',
+		alternate_rows: true,
+		rows_counter: true,
+		sticky_headers: true,
+		btn_reset: true,
+		loader: true,
+		status_bar: true,
+		mark_active_columns: true,
+		highlight_keywords: true,
+
+		col_types: ['string',
+					'string',
+					'string',
+					'string',
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					'string',
+					'string'
+		],
+		watermark: ['(e.g. Generator Set I)', '(e.g. HVAC, Genset)', '', '404-A', '(e.g. >2022-01-01)', '', ''],
+		msg_filter: 'Filtering...',
+        extensions:[{ name: 'sort' }]
+	};
+
+	var tf = new TableFilter('equipment_table', filtersConfig);
+    tf.init();
+</script>

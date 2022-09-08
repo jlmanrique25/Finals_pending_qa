@@ -10,7 +10,7 @@
 	include 'backend/dbh.p.php';
 	include 'header.php';
 	
-	$sql_i = "SELECT * FROM `reports`,`equipment`,`users` WHERE reports.report_status = 'unresolved' AND reports.machine_id = equipment.equipment_id AND reports.assigned_user = users.users_id ORDER BY date_created DESC LIMIT ".$min.",10";
+	$sql_i = "SELECT * FROM `reports`,`equipment`,`users` WHERE reports.report_status = 'unresolved' AND reports.machine_id = equipment.equipment_id AND reports.assigned_user = users.users_id ORDER BY date_created DESC";
 	$stmt = mysqli_stmt_init($conn);
 	
 	if(!mysqli_stmt_prepare($stmt, $sql_i)){
@@ -21,7 +21,9 @@
 ?>
 
 <div class="container-fluid py-4 overflow-hidden">
-	<table class="table rounded-3 shadow-lg table-hover mb-5">
+	<i class="fa-solid fa-chevrons-left"></i><a class="btn btn-primary"  href="index.php?site=Dashboard&page=1"><< Back</a>
+	<br /><br />
+	<table id="u_tasks_table">
 		<thead class="thead-dark">
 				<tr>
 					<th scope="col">Tasks</th>
@@ -29,7 +31,7 @@
 					<th scope="col">Asset</th>
 					<th scope="col">Date Created</th>
 					<th scope="col">Date due</th>
-					<th scope="col">Assigned to</th>
+					<th scope="col">Assignee</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -58,60 +60,40 @@
 
 <?php
 
-	$sql = "SELECT count(*) as total FROM `reports`,`equipment`,`users` WHERE reports.report_status = 'unresolved' AND reports.machine_id = equipment.equipment_id AND reports.assigned_user = users.users_id ORDER BY date_created DESC ";
-	
-	
-	$stmt = mysqli_stmt_init($conn);
-	
-	if(!mysqli_stmt_prepare($stmt, $sql)){
-		echo 'error connecting to the database';
-	}else{
-		$result = mysqli_query($conn,$sql);
-		$row = mysqli_fetch_assoc($result);
-		
-		$pages = ceil($row['total']/10);?>
-		<nav aria-label="Page navigation example">
-				  <ul class="pagination justify-content-center">
-				  <li class="page-item"><a class="page-link" href="<?php
-					if(($_GET['page']-1) == 0){
-						echo '#';
-					}else{
-						$new_page = $_GET['page'] - 1;
-						echo 'u_tasks.php?site=Pending%20Tasks&page='.$new_page.'';
-					}
-				  ?>">Previous</a></li>
-		<?php
-		
-		for($i = 1; $i <= $pages; $i++){
-			?>
-			
-					
-					<li  <?php 
-						if(isset($_GET['page'])){
-							if($_GET['page'] == $i){
-							echo 'class="page-item active"';}
-						}else{
-							if( 1 == $i){
-							echo 'class="page-item active"';}
-						}
-					?>><a class="page-link" href="u_tasks.php?site=Pending%20Tasks&page=<?php echo $i;?>"><?php echo $i;
-					?></a></li>
-					
-			  
-			  <?php
-		}
-		?>
-			<li class="page-item"><a class="page-link" href="<?php
-					if(($_GET['page']+1) > $pages){
-						echo '#';
-					}else{
-						$new_page = $_GET['page'] + 1;
-						echo 'u_tasks.php?site=Pending%20Tasks&page='.$new_page.'';
-					}
-				  ?>">Next</a></li>
-				  </ul>
-			  </nav>
-		<?php
-		}
 	}
-?>
+        ?>
+<script src="tablefilter/tablefilter.js"></script>
+
+<script data-config>
+	var filtersConfig = {
+		base_path: 'tablefilter/',
+		responsive: true,
+		paging: {
+          results_per_page: ['Records: ', [10, 25, 50, 100]]
+        },
+		col_2: 'select',
+		col_5: 'select',
+		alternate_rows: true,
+		rows_counter: true,
+		sticky_headers: true,
+		btn_reset: true,
+		loader: true,
+		status_bar: true,
+		mark_active_columns: true,
+		highlight_keywords: true,
+		
+		col_types: ['string',
+					'string',
+					'string',
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					'string'],
+		watermark: ['(e.g. Not functioning)', '(e.g. Generator Set 1)', '', '(e.g. >2022-01-01)', '(e.g. >2022-01-01)'],
+		responsive: true,
+		msg_filter: 'Filtering...',
+        extensions:[{ name: 'sort' }]
+	};
+	
+	var tf = new TableFilter('u_tasks_table', filtersConfig);
+    tf.init();
+</script>

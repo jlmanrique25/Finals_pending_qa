@@ -14,6 +14,8 @@
 </head>
 
 	<div class="container-fluid py-4" id="main_content">
+		<i class="fa-solid fa-chevrons-left"></i><button class="btn btn-primary" type="button" onclick="history.back()"><< Back</button>
+	<br /><br />
         <div class="info"><?php
 				if(!isset($_GET['edit'])){
 					?>

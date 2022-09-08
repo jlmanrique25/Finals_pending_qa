@@ -49,7 +49,8 @@ if($_GET['site'] == "Create Status Report"){
 </head>
 
 <div class="container-fluid py-4" id="main_content">
-
+		<i class="fa-solid fa-chevrons-left"></i><a class="btn btn-primary" href="tasks.php?site=My%20Tasks&page=1"><< Back</a>
+		<br /><br />
 		<!-- assigned task info -->
 		<h2><?php echo $row_report['task']; ?> : equipment <?php echo $row_equipment['equipment_name']; ?></h2>
 		<hr class="rounded" />

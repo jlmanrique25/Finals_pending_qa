@@ -221,7 +221,7 @@
 							echo 'active';
 						}
 					}
-				?>" href="issues.php?site=Issues&page=1&time=year">This Year</a>
+                                                     ?>" href="issues.php?site=Issues&page=1&time=year">This Year</a>
 			</div>
 			</div>
 			
@@ -240,7 +240,8 @@
 		</div>
 	</div>
 	
-	<table class="table rounded-3 shadow-lg table-hover mb-5">
+	<!--<table class="table rounded-3 shadow-lg table-hover mb-5" id="issues_table"> -->
+	<table id="issues_table">
 	  <thead class="thead-dark">
 		<tr>
 		  <th scope="col">Issue</th>
@@ -248,31 +249,72 @@
 		  <th scope="col">Status</th>
 		  <th scope="col">Date Created</th>
 		  <th scope="col">Date Due</th>
-		  <th scope="col">Date Submitted</th>
-		  <th scope="col">Assigned to</th>
+		  <th scope="col">Date Resolved</th>
+		  <th scope="col">Assignee</th>
 		</tr>
 	  </thead>
 	  <tbody>
 	  
-	
+		<!---
+        			<?php
+                    include 'backend/dropdown_filter_status.p.php'; 
+                    ?>
 		<?php
-			include 'backend/dropdown_filter_status.p.php'; 
+        include 'backend/dropdown_filter_equip.p.php';
 		?>
-		<?php
-			include 'backend/dropdown_filter_equip.p.php';
-		?>
+			-->
+		
 	
 		<?php
 			include 'backend/search.php'; 
 		?>
 		<?php 
-			include 'backend/get_reports.p.php'
+			include 'backend/fetch_issues.p.php'
 		?>
 	  </tbody>
 	</table>
 	
 	<?php
 		include 'backend/table_pagination_reports.p.php';
-	?>
+    ?>
 	
 </div>
+
+<script src="tablefilter/tablefilter.js"></script>
+
+<script data-config>
+	var filtersConfig = {
+		base_path: 'tablefilter/',
+		responsive: true,
+		paging: {
+          results_per_page: ['Records: ', [10, 25, 50, 100]]
+        },
+		col_2: 'select',
+		col_6: 'select',
+		alternate_rows: true,
+		rows_counter: true,
+		sticky_headers: true,
+		btn_reset: true,
+		loader: true,
+		status_bar: true,
+		mark_active_columns: true,
+		highlight_keywords: true,
+
+		col_types: ['string',
+					'string',
+					'string',
+					'string',
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					'string',
+					'string'
+		],
+		watermark: ['(e.g. Not functioning)', '(e.g. Generator Set 1)', '', '(e.g. >2022-01-01)', '(e.g. >2022-01-01)', '(e.g. >2022-01-01)',],
+		msg_filter: 'Filtering...',
+        extensions:[{ name: 'sort' }]
+	};
+
+	var tf = new TableFilter('issues_table', filtersConfig);
+    tf.init();
+</script>
+
