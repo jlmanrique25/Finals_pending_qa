@@ -50,7 +50,7 @@
 						<hr class="rounded">
 								<label>Choose the type of Machine<text style="color:red;"> *</text></label>
 								<select class="form-control" name="typeOfMachine" id="typeOfMachine" required>
-									<option value="none">--</option>
+									<option value="">--</option>
 									<?php
 										include 'backend/get_asset.p.php';
 									?>

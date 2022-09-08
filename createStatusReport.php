@@ -49,7 +49,7 @@ if($_GET['site'] == "Create Status Report"){
 </head>
 
 <div class="container-fluid py-4" id="main_content">
-		<i class="fa-solid fa-chevrons-left"></i><a class="btn btn-primary" href="tasks.php?site=My%20Tasks&page=1"><< Back</a>
+		<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back">
 		<br /><br />
 		<!-- assigned task info -->
 		<h2><?php echo $row_report['task']; ?> : equipment <?php echo $row_equipment['equipment_name']; ?></h2>
@@ -66,83 +66,141 @@ if($_GET['site'] == "Create Status Report"){
 		<!-- form submission based on asset -->
 		<?php
 		if('HVAC' == $row_equipment['asset']) { ?>
-			<form action="viewStatusReportHVAC.php?r_id=<?php echo $row_report['report_id'];?>&e_id=<?php echo $row_report['machine_id'];?>&site=Report%20Submitted" method="post">
+			<form class="needs-validation" action="viewStatusReportHVAC.php?r_id=<?php echo $row_report['report_id'];?>&e_id=<?php echo $row_report['machine_id'];?>&site=Report%20Submitted" method="post" novalidate>
 				<div class="row mb-4">
 	              <div class="col-4">
-	                <label for="volt">Voltage</label>
-	                <input type="number" class="form-control w-100" name="volt" id="volt">
+	                <label for="volt">Voltage<text style="color:red;"> *</text></label>
+	                <input type="number" class="form-control w-100" name="volt" id="volt"required>
+	                	<div class="invalid-feedback">
+							Please fill in this field
+						</div>
 	              </div>
+
 				  <div class="col-4">
-	                <label for="pressure">Pressure</label>
-	                <input type="number" class="form-control w-100" name="pressure" id="pressure">
+	                <label for="pressure">Pressure<text style="color:red;"> *</text></label>
+	                <input type="number" class="form-control w-100" name="pressure" id="pressure" required>
+	                	<div class="invalid-feedback">
+							Please fill in this field
+						</div>
 	              </div>
+
 				  <div class="col-4">
-	                <label for="temp">Temperature</label>
-	                <input type="number" class="form-control w-100" name="temp" id="temp">
+	                <label for="temp">Temperature<text style="color:red;"> *</text></label>
+	                <input type="number" class="form-control w-100" name="temp" id="temp"required>
+	                	<div class="invalid-feedback">
+							Please fill in this field
+						</div>
 	              </div>
 	            </div> 
 		<?php }else { ?>
-			<form action="viewStatusReportGenSet.php?r_id=<?php echo $row_report['report_id'];?>&e_id=<?php echo $row_report['machine_id'];?>&site=Report%20Submitted" method="post">
+			<form class="needs-validation" action="viewStatusReportGenSet.php?r_id=<?php echo $row_report['report_id'];?>&e_id=<?php echo $row_report['machine_id'];?>&site=Report%20Submitted" method="post" novalidate>
 			<div class="row mb-4">
-				  <label for="Voltage">Voltage</label>
+				  <label for="Voltage">Voltage<text style="color:red;"> *</text></label>
 	              <div class="col-4">
 	                <input type="number" class="form-control w-100" name="v1" id="voltage_line_1" placeholder="Line 1" required>
+	                	<div class="invalid-feedback">
+							Please fill in this field
+						</div>
 	              </div>
+
 				  <div class="col-4">
-				  <input type="number" class="form-control w-100" name="v2" id="voltage_line_2" placeholder="Line 2">
+				  <input type="number" class="form-control w-100" name="v2" id="voltage_line_2" placeholder="Line 2" required>
+				  		<div class="invalid-feedback">
+							Please fill in this field
+						</div>
 	              </div>
+
 				  <div class="col-4">
-				  <input type="number" class="form-control w-100" name="v3" id="voltage_line_3" placeholder="Line 3">
+				  <input type="number" class="form-control w-100" name="v3" id="voltage_line_3" placeholder="Line 3" required>
+				  		<div class="invalid-feedback">
+							Please fill in this field
+						</div>
+	              </div>
+
+	            </div>
+				<br>
+				<div class="row mb-4">
+				  <label for="Current">Current<text style="color:red;"> *</text></label>
+	              <div class="col-4">
+	                <input type="number" class="form-control w-100" name="c1" id="current_line_1" placeholder="Line 1" required>
+	                	<div class="invalid-feedback">
+							Please fill in this field
+						</div>
+	              </div>
+
+				  <div class="col-4">
+				  <input type="number" class="form-control w-100" name="c2" id="current_line_2" placeholder="Line 2" required>
+				  	<div class="invalid-feedback">
+							Please fill in this field
+						</div>
+	              </div>
+
+				  <div class="col-4">
+				  <input type="number" class="form-control w-100" name="c3" id="current_line_3" placeholder="Line 3" required>
+				  		<div class="invalid-feedback">
+							Please fill in this field
+						</div>
 	              </div>
 	            </div>
 				<br>
 				<div class="row mb-4">
-				  <label for="Current">Current</label>
 	              <div class="col-4">
-	                <input type="number" class="form-control w-100" name="c1" id="current_line_1" placeholder="Line 1">
+				    <label for="frequency">Frequency<text style="color:red;"> *</text></label>
+	                <input type="number" class="form-control w-100" name="frequency" id="frequency" placeholder="hz" required>
+	                	<div class="invalid-feedback">
+							Please fill in this field
+						</div>
 	              </div>
+
 				  <div class="col-4">
-				  <input type="number" class="form-control w-100" name="c2" id="current_line_2" placeholder="Line 2">
+				    <label for="battery_voltage">Battery Voltage<text style="color:red;"> *</text></label>
+	                <input type="number" class="form-control w-100" name="battery_voltage" id="battery_voltage" placeholder="V" required>
+	                	<div class="invalid-feedback">
+							Please fill in this field
+						</div>
 	              </div>
+
 				  <div class="col-4">
-				  <input type="number" class="form-control w-100" name="c3" id="current_line_3" placeholder="Line 3">
+				  <label for="running_hours">Running Hours<text style="color:red;"> *</text></label>
+				  <input type="number" class="form-control w-100" name="running_hours" id="running_hours" placeholder="h" required>
+				  		<div class="invalid-feedback">
+							Please fill in this field
+						</div>
 	              </div>
-	            </div>
-				<br>
-				<div class="row mb-4">
-	              <div class="col-4">
-				    <label for="frequency">Frequency</label>
-	                <input type="number" class="form-control w-100" name="frequency" id="frequency" placeholder="hz">
-	              </div>
-				  <div class="col-4">
-				    <label for="battery_voltage">Battery Voltage</label>
-	                <input type="number" class="form-control w-100" name="battery_voltage" id="battery_voltage" placeholder="V">
-	              </div>
-				  <div class="col-4">
-				  <label for="running_hours">Running Hours</label>
-				  <input type="number" class="form-control w-100" name="running_hours" id="running_hours" placeholder="h">
-	              </div>
+
 	            </div>
 				<br>
 				<div class="row mb-4">
 	              <div class="col-6">
-				    <label for="oil_pressure">Oil Pressure</label>
-	                <input type="number" class="form-control w-100" name="oil_pressure" id="oil_pressure" placeholder="psi">
+				    <label for="oil_pressure">Oil Pressure<text style="color:red;"> *</text></label>
+	                <input type="number" class="form-control w-100" name="oil_pressure" id="oil_pressure" placeholder="psi"required>
+	                <div class="invalid-feedback">
+						Please fill in this field
+					</div>
 	              </div>
 				  <div class="col-6">
-				  <label for="oil_temperature">Oil Temperature</label>
-				  <input type="number" class="form-control w-100" name="oil_temperature" id="oil_temperature" placeholder="F">
+				  <label for="oil_temperature">Oil Temperature<text style="color:red;"> *</text></label>
+				  <input type="number" class="form-control w-100" name="oil_temperature" id="oil_temperature" placeholder="F" required>
+				  	<div class="invalid-feedback">
+						Please fill in this field
+					</div>
 	              </div>
 	            </div>
 				<br>
 				<div class="row mb-4">
 				  <div class="col-6">
-				    <label for="rotation">Frequency of Rotation</label>
-	                <input type="number" class="form-control w-100" name="rotation" id="rotation" placeholder="rpm">
+				    <label for="rotation">Frequency of Rotation<text style="color:red;"> *</text></label>
+	                <input type="number" class="form-control w-100" name="rotation" id="rotation" placeholder="rpm" required>
+	                <div class="invalid-feedback">
+						Please fill in this field
+					</div>
 	              </div>
 	              <div class="col-6">
-				    <label for="fuel_level">Fuel Level</label>
-	                <input type="number" class="form-control w-100" name="fuel_level" id="fuel_level" placeholder="L">
+				    <label for="fuel_level">Fuel Level<text style="color:red;"> *</text></label>
+	                <input type="number" class="form-control w-100" name="fuel_level" id="fuel_level" placeholder="L" required>
+	                <div class="invalid-feedback">
+						Please fill in this field
+					 </div>
 	              </div>
 	            </div>
 				<br>
@@ -165,15 +223,17 @@ if($_GET['site'] == "Create Status Report"){
 			<div class="form-group">
 				<input type="checkbox" id="for_repair" name="for_repair" value=1>
 				<label for="temp">Issue/For repair</label><br>
-				<textarea class="form-control" id="repair_remarks" name="repair_remarks" rows="3"></textarea>
+				<textarea class="form-control" id="repair_remarks" name="repair_remarks" rows="3" placeholder="Describe the issue here"></textarea>
 			</div>
             <div class="form-group">
               	<label for="comments">Other remarks</label>
-              	<textarea class="form-control" id="comments" name="other_remarks" rows="3"></textarea>
+              	<textarea class="form-control" id="comments" name="other_remarks" rows="3" placeholder="Add some additional information here"></textarea>
             </div>
 		
 		<button class="btn btn-primary mb-2" type="submit" name="submit">Submit</button>
+		<button type="reset" class="btn btn-danger mb-2" onclick="alert('Are you sure you want to reset?')">Reset</button>
 		</form>
+
 		
 	</div>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -189,6 +249,32 @@ if($_GET['site'] == "Create Status Report"){
 			}
 		}	
 	</script>
+
+	<!-- script for field validations -->
+	<script type="text/javascript">
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+		(function () {
+		  'use strict'
+
+		  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+		  var forms = document.querySelectorAll('.needs-validation')
+
+		  // Loop over them and prevent submission
+		  Array.prototype.slice.call(forms)
+		    .forEach(function (form) {
+		      form.addEventListener('submit', function (event) {
+		        if (!form.checkValidity()) {
+		          event.preventDefault()
+		          event.stopPropagation()
+		        }
+
+		        form.classList.add('was-validated')
+		      }, false)
+		    })
+		})()
+	</script>
+
+
 </div>
 
 <?php } ?>
