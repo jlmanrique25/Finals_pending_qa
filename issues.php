@@ -6,7 +6,11 @@
 	include 'header.php';
 ?>
 
-<div class="container-fluid py-4 overflow-hidden">
+	<div class="container py-4">
+    <!--
+	 
+ 
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col p-2">
@@ -23,7 +27,7 @@
 					}else if($_GET['floor'] == '1st floor'){
 						echo 'active';
 					}
-					?> href="issues.php?site=Issues&page=1&floor=1stfloor">1st Floor</a>
+                    ?> href="issues.php?site=Issues&page=1&floor=1stfloor">1st Floor</a>
 
 					<a  class="dropdown-item" 
 					<?php
@@ -32,7 +36,7 @@
 					}else if($_GET['floor'] == '2nd floor'){
 						echo 'active';
 					}
-					?> href="issues.php?site=Issues&page=1&floor=2ndfloor">2nd Floor</a>
+                    ?> href="issues.php?site=Issues&page=1&floor=2ndfloor">2nd Floor</a>
 
 					<a  class="dropdown-item" 
 					<?php
@@ -41,7 +45,7 @@
 					}else if($_GET['floor'] == '3rd floor'){
 						echo 'active';
 					}
-					?> href="issues.php?site=Issues&page=1&floor=3rdfloor">3rd Floor</a>
+                    ?> href="issues.php?site=Issues&page=1&floor=3rdfloor">3rd Floor</a>
 
 					<a  class="dropdown-item" 
 					<?php
@@ -50,7 +54,7 @@
 					}else if($_GET['floor'] == '4th floor'){
 						echo 'active';
 					}
-					?> href="issues.php?site=Issues&page=1&floor=4thfloor">4th Floor</a>
+                    ?> href="issues.php?site=Issues&page=1&floor=4thfloor">4th Floor</a>
 					
 					<a  class="dropdown-item" 
 					<?php
@@ -59,7 +63,7 @@
 					}else if($_GET['floor'] == '5th floor'){
 						echo 'active';
 					}
-					?> href="issues.php?site=Issues&page=1&floor=5thfloor">5th Floor</a>
+                    ?> href="issues.php?site=Issues&page=1&floor=5thfloor">5th Floor</a>
 					
 					<a  class="dropdown-item" 
 					<?php
@@ -68,7 +72,7 @@
 					}else if($_GET['floor'] == '6th floor'){
 						echo 'active';
 					}
-					?> href="issues.php?site=Issues&page=1&floor=6thfloor">6th Floor</a>
+                    ?> href="issues.php?site=Issues&page=1&floor=6thfloor">6th Floor</a>
 					
 					<a  class="dropdown-item" 
 					<?php
@@ -77,7 +81,7 @@
 					}else if($_GET['floor'] == '7th floor'){
 						echo 'active';
 					}
-					?> href="issues.php?site=Issues&page=1&floor=7thfloor">7th Floor</a>
+                    ?> href="issues.php?site=Issues&page=1&floor=7thfloor">7th Floor</a>
 					
 					<a  class="dropdown-item" 
 					<?php
@@ -86,7 +90,7 @@
 					}else if($_GET['floor'] == '8th floor'){
 						echo 'active';
 					}
-					?> href="issues.php?site=Issues&page=1&floor=8thfloor">8th Floor</a>
+                    ?> href="issues.php?site=Issues&page=1&floor=8thfloor">8th Floor</a>
 					
 					<a  class="dropdown-item" 
 					<?php
@@ -95,7 +99,7 @@
 					}else if($_GET['floor'] == '9th floor'){
 						echo 'active';
 					}
-					?> href="issues.php?site=Issues&page=1&floor=9thfloor">9th Floor</a>
+                    ?> href="issues.php?site=Issues&page=1&floor=9thfloor">9th Floor</a>
 					
 					<a  class="dropdown-item" 
 					<?php
@@ -104,7 +108,7 @@
 					}else if($_GET['floor'] == 'floor'){
 						echo 'active';
 					}
-					?> href="issues.php?site=Issues&page=1&floor=10th">10th Floor</a>
+                    ?> href="issues.php?site=Issues&page=1&floor=10th">10th Floor</a>
 					
 				  </div>
 				</div>
@@ -122,7 +126,7 @@
 					}else if($_GET['status'] == '1'){
 						echo 'active';
 					}
-				?> href="issues.php?site=Issues&page=1&status=1">Resolved</a>
+                    ?> href="issues.php?site=Issues&page=1&status=1">Resolved</a>
 					
 					<a class="dropdown-item" 
 					<?php
@@ -131,7 +135,7 @@
 					}else if($_GET['status'] == '0'){
 						echo 'active';
 					}
-				?> href="issues.php?site=Issues&page=1&status=0">Not Resolved</a>
+                    ?> href="issues.php?site=Issues&page=1&status=0">Not Resolved</a>
 
 				  </div>
 				</div>
@@ -149,7 +153,7 @@
 					}else if($_GET['machine'] == 'HVAC'){
 						echo 'active';
 					}
-				?> href="issues.php?site=Issues&page=1&equipment=HVAC">HVAC</a>
+                    ?> href="issues.php?site=Issues&page=1&equipment=HVAC">HVAC</a>
 					
 					<a class="dropdown-item" 
 					<?php
@@ -158,7 +162,7 @@
 					}else if($_GET['machine'] == 'Genset'){
 						echo 'active';
 					}
-				?> href="issues.php?site=Issues&page=1&equipment=Genset">Generator Set</a>
+                    ?> href="issues.php?site=Issues&page=1&equipment=Genset">Generator Set</a>
 
 				  </div>
 				</div>
@@ -168,21 +172,21 @@
 				<form action="backend/date.p.php?site=issue" method="post">
 					<label>Start date</label>
 					<input class="form-control mr-sm-2 w-100" type="date" placeholder="Search" aria-label="Search" name = 'start' value="<?php
-						if(isset($_GET['s'])){
-							$d = date('Y-m-d', strtotime($_GET['s']));
-							echo $d;
-						}
-					?>">
+                                                                                                                                         if(isset($_GET['s'])){
+                                                                                                                                             $d = date('Y-m-d', strtotime($_GET['s']));
+                                                                                                                                             echo $d;
+                                                                                                                                         }
+                                                                                                                                         ?>">
 
 			</div>
 			<div class="col p-2">
 					<label>End date</label>
 					<input class="form-control mr-sm-2 w-100" type="date" placeholder="Search" aria-label="Search" name = 'end' value ="<?php
-						if(isset($_GET['e'])){
-							$d = date('Y-m-d', strtotime($_GET['e']));
-							echo $d;
-						}
-					?>">
+                                                                                                                                        if(isset($_GET['e'])){
+                                                                                                                                            $d = date('Y-m-d', strtotime($_GET['e']));
+                                                                                                                                            echo $d;
+                                                                                                                                        }
+                                                                                                                                        ?>">
 			</div>
 			<div class="col p-2">
 
@@ -193,34 +197,34 @@
 				<div class="btn-group btn-group" role="group">
 			  <a type="button" class="btn btn-info 
 				<?php
-					if(!isset($_GET['time'])){
-						echo 'active';
-					}else if($_GET['time'] == 'day'){
-						echo 'active';
-					}
-				?>
+                if(!isset($_GET['time'])){
+                    echo 'active';
+                }else if($_GET['time'] == 'day'){
+                    echo 'active';
+                }
+                ?>
 			  " href="issues.php?site=Issues&page=1&time=day">Daily</a>
 			  <a type="button" class="btn btn-info <?php
-					if(isset($_GET['time'])){
-						if($_GET['time'] == 'week'){
-							echo 'active';
-						}
-					}
-				?>" href="issues.php?site=Issues&page=1&time=week">This Week</a>
+                                                   if(isset($_GET['time'])){
+                                                       if($_GET['time'] == 'week'){
+                                                           echo 'active';
+                                                       }
+                                                   }
+                                                   ?>" href="issues.php?site=Issues&page=1&time=week">This Week</a>
 			  <a type="button" class="btn btn-info <?php
-					if(isset($_GET['time'])){
-						if($_GET['time'] == 'month'){
-							echo 'active';
-						}
-					}
-				?>" href="issues.php?site=Issues&page=1&time=month">This Month</a>
+                                                   if(isset($_GET['time'])){
+                                                       if($_GET['time'] == 'month'){
+                                                           echo 'active';
+                                                       }
+                                                   }
+                                                   ?>" href="issues.php?site=Issues&page=1&time=month">This Month</a>
 				
 				<a type="button" class="btn btn-info <?php
-					if(isset($_GET['time'])){
-						if($_GET['time'] == 'year'){
-							echo 'active';
-						}
-					}
+                                                     if(isset($_GET['time'])){
+                                                         if($_GET['time'] == 'year'){
+                                                             echo 'active';
+                                                         }
+                                                     }
                                                      ?>" href="issues.php?site=Issues&page=1&time=year">This Year</a>
 			</div>
 			</div>
@@ -239,23 +243,24 @@
 			
 		</div>
 	</div>
-	
-	<!--<table class="table rounded-3 shadow-lg table-hover mb-5" id="issues_table"> -->
-	<table id="issues_table">
-	  <thead class="thead-dark">
-		<tr>
-		  <th scope="col">Issue</th>
-		  <th scope="col">Equipment</th>
-		  <th scope="col">Status</th>
-		  <th scope="col">Date Created</th>
-		  <th scope="col">Date Due</th>
-		  <th scope="col">Date Resolved</th>
-		  <th scope="col">Assignee</th>
-		</tr>
-	  </thead>
-	  <tbody>
-	  
-		<!---
+		
+		-->
+    <!--<table class="table rounded-3 shadow-lg table-hover mb-5" id="issues_table"> -->
+    <table id="issues_table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Issue</th>
+                <th scope="col">Equipment</th>
+                <th scope="col">Status</th>
+                <th scope="col">Date Created</th>
+                <th scope="col">Date Due</th>
+                <th scope="col">Date Resolved</th>
+                <th scope="col">Assignee</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <!---
         			<?php
                     include 'backend/dropdown_filter_status.p.php'; 
                     ?>
@@ -263,21 +268,17 @@
         include 'backend/dropdown_filter_equip.p.php';
 		?>
 			-->
-		
-	
-		<?php
-			include 'backend/search.php'; 
-		?>
-		<?php 
+
+
+            <?php
+			include 'backend/search.php';
+            ?>
+            <?php
 			include 'backend/fetch_issues.p.php'
-		?>
-	  </tbody>
-	</table>
-	
-	<?php
-		include 'backend/table_pagination_reports.p.php';
-    ?>
-	
+            ?>
+        </tbody>
+    </table>
+
 </div>
 
 <script src="tablefilter/tablefilter.js"></script>

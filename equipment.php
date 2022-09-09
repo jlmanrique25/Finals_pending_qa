@@ -6,28 +6,30 @@
     ?>
 </head>
 
-<div class="container-fluid py-4 overflow-hidden">
-	<table id="equipment_table">
-	  <thead class="thead-dark">
-		<tr>
-		  <th scope="col">Equipment</th>
-		  <th scope="col">Asset</th>
-		  <th scope="col">Floor</th>
-		  <th scope="col">Room Number</th>
-		  <th scope="col">Date Installed</th>
-		  <th scope="col">Condition</th>
-		  <th scope="col">Operating</th>
-		  <th scope="col">Action</th>
-		</tr>
-	  </thead>
-	  <tbody>
-	  
-		<?php
+<!--<div class="container-fluid py-4 overflow-hidden"> -->
+
+<div class="container py-4">
+    <table id="equipment_table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Equipment</th>
+                <th scope="col">Asset</th>
+                <th scope="col">Floor</th>
+                <th scope="col">Room Number</th>
+                <th scope="col">Date Installed</th>
+                <th scope="col">Condition</th>
+                <th scope="col">Operating</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <?php
 			include 'backend/get_equipment.p.php';
-        ?>
-	  </tbody>
-	</table>
-	
+            ?>
+        </tbody>
+    </table>
+
 </div>
 
 <script src="tablefilter/tablefilter.js"></script>

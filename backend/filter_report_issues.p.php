@@ -111,7 +111,7 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 							
 							******/	
 							
-							?>
+                        ?>
 							<head>
 								<style>
 									a, a:hover {
@@ -124,7 +124,7 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 
 									<div class="pb-3 mb-0 small lh-sm border-bottom w-100">
 									<div class="d-flex justify-content-between">
-									<strong class="text-gray-dark">Employee: <?php echo $row_users['username'];?></strong>
+									<strong class="text-gray-dark"><!--Employee: --><?php echo $row_users['username'];?></strong>
 									<p class="mb-2"><?php echo $row_reports['date_submitted']?></p>
 									</div>
 									<span class="d-block">Submitted report for task: "<?php echo $row_reports['task']?>" of machine: "<?php echo $row_reports['machine_id'],' this is the machine id';?>" at Room: "<?php echo 'this is the machine room supposedly';?>".</span>
@@ -137,7 +137,7 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 							FOR REPORTS REPORTED WITH FOR REPAIR/ISSUES AND HAS DATA ABNORMALITIES
 							
 							******/
-							?>
+                            ?>
 
 							<head>
 								<style>
@@ -152,7 +152,7 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 
 							  <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
 								<div class="d-flex justify-content-between">
-								  <strong class="text-gray-dark">Employee: <?php echo $row_users['username'];?></strong>
+								  <strong class="text-gray-dark"><!--Employee: --><?php echo $row_users['username'];?></strong>
 								  <p class="mb-2"><?php echo $row_reports['date_submitted']?></p>
 								</div>
 								<span class="d-block">Submitted report for task: "<?php echo $row_reports['task']?>" of machine: "Aircon" at Room: "602". Equipment for repair and detected abnormal data</span>
@@ -166,7 +166,7 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 							FOR REPORTS REPORTED WITH FOR REPAIR/ISSUES
 							
 							******/
-							?>
+                            ?>
 
 							<head>
 								<style>
@@ -180,7 +180,7 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 
 							  <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
 								<div class="d-flex justify-content-between">
-								  <strong class="text-gray-dark">Employee: <?php echo $row_users['username'];?></strong>
+								  <strong class="text-gray-dark"><!--Employee: --><?php echo $row_users['username'];?></strong>
 								  <p class="mb-2"><?php echo $row_reports['date_submitted']?></p>
 								</div>
 								<span class="d-block">Submitted report for task: "<?php echo $row_reports['task']?>" of machine: "Aircon" at Room: "602". Equipment for repair</span>
@@ -254,7 +254,7 @@ if (!mysqli_stmt_prepare($stmt, $sql_dates)){
 
 								  <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
 									<div class="d-flex justify-content-between">
-									  <strong class="text-gray-dark">BMO Head: Trisha Tolentino</strong>
+									  <strong class="text-gray-dark">Trisha Tolentino</strong>
 									  <p class="mb-2"><?php echo $row_dates['date_time']?></p>
 									</div>
 									<span class="d-block">Assigned issue: "<?php echo $row_issue['issue'];?>" to BMO admin: "<?php echo $row_user['username']?>", due on "<?php echo $row_issue['date_due'];?>"</span>

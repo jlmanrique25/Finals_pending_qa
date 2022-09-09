@@ -14,8 +14,8 @@
 	include 'header.php';
 ?>
 
-<div class="container-fluid py-4 overflow-hidden">
-	
+<!--<div class="container-fluid py-4 overflow-hidden"> -->
+	<div class="container py-4">
 	
 	<table  id="reports_table">
 	  <thead class="thead-dark">
