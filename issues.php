@@ -7,6 +7,7 @@
 ?>
 
 	<div class="container py-4">
+
     <!--
 	 
  
@@ -240,12 +241,18 @@
 			
 			
 			
-			
-		</div>
-	</div>
+        		</div>	
+		</div> -->
+	
 		
-		-->
+		
     <!--<table class="table rounded-3 shadow-lg table-hover mb-5" id="issues_table"> -->
+    <input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back" /><br /><br />
+    <h2>
+        This page consists of all the<text style="font-weight:bold;"> Issue reports </text>
+    </h2>
+    <i class="bi bi-info-circle-fill"></i>
+    <br />
     <table id="issues_table">
         <thead class="thead-dark">
             <tr>

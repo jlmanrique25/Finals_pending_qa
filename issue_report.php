@@ -30,7 +30,9 @@
 	</style>
 </head>
 <div class="container-fluid py-4" id="main_content">
-	<i class="fa-solid fa-chevrons-left"></i><button class="btn btn-primary" type="button" onclick="history.back()"><< Back</button>
+	<form class="needs-validation" novalidate>
+	<i class="fa-solid fa-chevrons-left">
+		<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back">
 	<br /><br />
 	<h2><?php echo $row['issue'], " : equipment ", $row['equipment_name'];?><h2>
 	<hr class="rounded">
@@ -143,7 +145,7 @@
 			</div>
 			<div class="col">
 				<label>Service report number</label>
-				<input type="text" class="form-control" name="receipt" placeholder="Service report number" readonly<?php 
+				<input type="text" class="form-control" name="receipt" placeholder="Service report number" required readonly><?php 
 				if($row['issue_status'] && !is_null($row['service_report_number'])){
 					echo 'readonly value ="'.$row['service_report_number'].'"';
 				}else if(!$row['issue_status'] && !is_null($row['service_report_number'])){
@@ -194,29 +196,34 @@
 			<?php
 		}
 	?>
-
 		<div class="row mb-4">
 			<div class="col">
-				<label>Recommendation</label>
-				<textarea  class="form-control" name="recommendation" placeholder="Recommendation" required <?php if($row['issue_status']){echo 'readonly';}
+				<label>Recommendation<text style="color:red;"> *</text></label>
+				<textarea  class="form-control" name="recommendation" placeholder="What are your recommendations?" required <?php if($row['issue_status']){echo 'readonly';}
 				?>><?php if($row['issue_status']){echo $row['recommendation'];}if(!$row['issue_status'] && !is_null($row['endorsed_by'])){echo $row['recommendation'];}?></textarea>
+				<div class="invalid-feedback">
+					Please fill in this field
+				</div>
 			</div>
 			
 		</div>
 		<div class="row mb-4">
 			<div class="col">
-				<label>Endorsed by</label>
-				<input type="text" class="form-control" name="endorser" required placeholder="Endorsed by" <?php 
+				<label>Endorsed by<text style="color:red;"> *</text></label>
+				<input type="text" class="form-control" name="endorser" required placeholder="Enter name of endorser" <?php 
 				if($row['issue_status'] && !is_null($row['endorsed_by'])){
 					echo 'readonly value ="'.$row['endorsed_by'].'"';
 				}else if(!$row['issue_status'] && !is_null($row['endorsed_by'])){
 					echo ' value ="'.$row['endorsed_by'].'"';
 				}
 				?>>
+				<div class="invalid-feedback">
+					Please fill in this field
+				</div>
 				
 			</div>
 			<div class="col">
-				<label>Date Endorsed for repair</label>
+				<label>Date Endorsed for repair<text style="color:red;"> *</text></label>
 				<input type="datetime-local" class="form-control" name="date_repair" required placeholder="Endorsed by" <?php 
 				$date_endorsed = date('Y-m-d\TH:i', strtotime($row['date_endorsed_for_repair']));
 				if($row['issue_status'] && !is_null($row['date_endorsed_for_repair'])){
@@ -227,12 +234,15 @@
 					echo 'readonly value="None"';
 				}
 				?>>
+				<div class="invalid-feedback">
+					Please fill in this field
+				</div>
 			</div>
 		</div>
 		<div class="row mb-4">
 			<div class="col">
-				<label>Contracted company</label>
-				<input type="text" class="form-control" name="contact_company" placeholder="Company name" 
+				<label>Contracted company<text style="color:red;"> *</text></label>
+				<input type="text" class="form-control" name="contact_company" placeholder="Enter the company name" required>
 				<?php 
 				if($row['issue_status'] && !is_null($row['contracted_company'])){
 					echo 'readonly value ="'.$row['contracted_company'].'"';
@@ -243,12 +253,15 @@
 				}else if(!$row['issue_status'] && is_null($row['contracted_company'])){
 					
 				}
-				?>>
+				?>
+				<div class="invalid-feedback">
+					Please fill in this field
+				</div>
 				
 			</div>
 			<div class="col">
-				<label>Company representative</label>
-				<input type="text" class="form-control" name="company" placeholder="Company name" <?php 
+				<label>Company representative<text style="color:red;"> *</text></label>
+				<input type="text" class="form-control" name="company" placeholder="Enter the representative's name" required<?php 
 				if($row['issue_status'] && !is_null($row['company_representative'])){
 					echo 'readonly value ="'.$row['company_representative'].'"';
 				}else if(!$row['issue_status'] && !is_null($row['company_representative'])){
@@ -259,12 +272,15 @@
 					
 				}
 				?>>
+				<div class="invalid-feedback">
+					Please fill in this field
+				 </div>
 			</div>
 		</div>
 		<div class="row mb-5">
 			<div class="col">
-				<label>Date reinstalled</label>
-				<input type="date" class="form-control" name="date_reinstalled" placeholder="Date reisntalled" <?php 
+				<label>Date reinstalled<text style="color:red;"> *</text></label>
+				<input type="date" class="form-control" name="date_reinstalled" placeholder="Date reisntalled" required <?php 
 				if($row['issue_status'] && !is_null($row['date_reinstalled'])){
 					echo 'readonly value ="'.date('Y-m-d', strtotime($row['date_reinstalled'])).'"';
 				}else if(!$row['issue_status'] && !is_null($row['date_reinstalled'])){
@@ -275,11 +291,14 @@
 					
 				}
 				?>>
+				<div class="invalid-feedback">
+					Please fill in this field
+				</div>
 				
 			</div>
 			<div class="col">
-				<label>Service report number</label>
-				<input type="text" class="form-control" name="receipt" placeholder="Service report number" <?php 
+				<label>Service report number<text style="color:red;"> *</text></label>
+				<input type="text" class="form-control" name="receipt" placeholder="E.g. CSR2019312" required<?php 
 				if($row['issue_status'] && !is_null($row['service_report_number'])){
 					echo 'readonly value ="'.$row['service_report_number'].'"';
 				}else if(!$row['issue_status'] && !is_null($row['service_report_number'])){
@@ -290,6 +309,9 @@
 					
 				}
 				?>>
+				<div class="invalid-feedback">
+					Please fill in this field
+				</div>
 			</div>
 		</div>
 		<h5>
@@ -306,6 +328,7 @@
 			?>
 			
 			<button class="btn btn-success mb-2 btn-lg" type="submit" name="submit"><i class="fas fa-clipboard-check"></i> Submit</button>
+			<button type="reset" class="btn btn-danger mb-2 btn-lg" onclick="alert('Are you sure you want to reset?')">Reset</button>
 			<?php
 		}
 		?>
@@ -327,5 +350,30 @@
 		}, 3000)
 	});
 </script>
+
+	<!-- script for field validations -->
+	<script type="text/javascript">
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+		(function () {
+		  'use strict'
+
+		  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+		  var forms = document.querySelectorAll('.needs-validation')
+
+		  // Loop over them and prevent submission
+		  Array.prototype.slice.call(forms)
+		    .forEach(function (form) {
+		      form.addEventListener('submit', function (event) {
+		        if (!form.checkValidity()) {
+		          event.preventDefault()
+		          event.stopPropagation()
+		        }
+
+		        form.classList.add('was-validated')
+		      }, false)
+		    })
+		})()
+	</script>
+
 
 	<?php } ?>

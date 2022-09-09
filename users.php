@@ -7,7 +7,10 @@
 	include 'header.php';
 ?>
 <div class= "container py-4 overflow-hidden">
-	<table class="table rounded-3 shadow table-hover mb-5">
+
+	<h2>List of <text style="font-weight:bold;">Users and their Roles</text> </h2> <br>
+
+	<table id="users_table">
 	  <thead class="thead-dark">
 		<tr>
 		  <th scope="col">Username</th>
@@ -20,12 +23,46 @@
 	  
 		<?php
 			include 'backend/get_users.p.php';
-		?>
+        ?>
 	  </tbody>
 	</table>
 	
-	<?php
-		include 'backend/user_pagination.p.php';
-	?>
 </div>
 
+<script src="tablefilter/tablefilter.js"></script>
+
+<script data-config>
+	var filtersConfig = {
+		base_path: 'tablefilter/',
+		responsive: true,
+		paging: {
+          results_per_page: ['Records: ', [10, 25, 50, 100]]
+        },
+		col_2: 'select',
+		alternate_rows: true,
+		rows_counter: true,
+		sticky_headers: true,
+		btn_reset: true,
+		loader: true,
+		status_bar: true,
+		mark_active_columns: true,
+		highlight_keywords: true,
+
+		col_types: ['string',
+					'string',
+					'string',
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					'string'
+		],
+		col_widths: [
+            '350px', '200px', '200px',
+            '200px', '200px'
+        ],
+		watermark: ['(e.g. Christian Paul Duria)', '(e.g. crduria@email.com)', '', ''],
+		msg_filter: 'Filtering...',
+        extensions:[{ name: 'sort' }]
+	};
+
+	var tf = new TableFilter('users_table', filtersConfig);
+    tf.init();
+</script>

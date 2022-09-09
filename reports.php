@@ -8,6 +8,12 @@
 	<title>Reports</title>
 	<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+	
+	<!-- Font awesome elements link -->
+	<link href="/elements/css/fontawesome.css" rel="stylesheet">
+	<link href="/elements/css/all.min.css" rel="stylesheet">
+	<link href="/elements/css/brands.css" rel="stylesheet">
+	<link href="/elements/css/solid.css" rel="stylesheet">
 </head>
 <?php
 	session_start();
@@ -16,7 +22,12 @@
 
 <!--<div class="container-fluid py-4 overflow-hidden"> -->
 	<div class="container py-4">
-	
+	<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back" /><br /><br />
+    <h2>
+        This page consists of all the<text style="font-weight:bold;"> Equipment reports</text>
+    </h2>
+    <i class="bi bi-info-circle-fill"></i>
+    <br />
 	<table  id="reports_table">
 	  <thead class="thead-dark">
 		<tr>

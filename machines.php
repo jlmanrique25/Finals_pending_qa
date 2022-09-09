@@ -25,6 +25,9 @@
 			$row_loc = mysqli_fetch_assoc($result_loc);
 			?>
 	<div class="container-fluid py-4 overflow-hidden">
+
+	<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back"> <br><br>
+
 		<header class="d-flex align-items-center pb-3  border-bottom border-dark">
 		<p class="d-flex align-items-center text-dark text-decoration-none  fw-b">
 		  <span class="fs-3 fw-bold"><?php echo $row_equipment['equipment_name']?></span>
@@ -90,7 +93,7 @@
 	<?php 
 		if(isset($_GET['t']) && $_GET['t'] == 'reports'){
 			?>
-			<table class="table rounded-3 shadow-lg table-hover mb-5">
+			<table id="tasks_table">
 			  <thead class="thead-dark">
 				<tr>
 				  <th scope="col">Task</th>
@@ -99,7 +102,7 @@
 				  <th scope="col">Date due</th>
 				  <th scope="col">Date submitted</th>
 				  <th scope="col">For repair/with issues</th>
-				  <th scope="col">Assigned to</th>
+				  <th scope="col">Assignee</th>
 				</tr>
 			  </thead>
 			  <tbody>
@@ -113,7 +116,7 @@
 				include 'backend/indiv_equip_pagination.p.php';
 		}else if(isset($_GET['t']) && $_GET['t'] == 'issues'){
 			?>
-			<table class="table rounded-3 shadow-lg table-hover mb-5">
+			<table id="issues_table">
 			  <thead class="thead-dark">
 				<tr>
 				  <th scope="col">Issue</th>
@@ -134,7 +137,88 @@
 			<?php
 				include 'backend/indiv_equip_pagination.p.php';
 		}
-	?>
+            ?>
 	
 
 </div>
+
+
+<script src="tablefilter/tablefilter.js"></script>
+
+<script data-config>
+	var filtersConfig = {
+		base_path: 'tablefilter/',
+		responsive: true,
+		paging: {
+          results_per_page: ['Records: ', [10, 25, 50, 100]]
+        },
+		col_1: 'select',
+		col_5: 'select',
+		col_6: 'select',
+		alternate_rows: true,
+		rows_counter: true,
+		sticky_headers: true,
+		btn_reset: true,
+		loader: true,
+		status_bar: true,
+		mark_active_columns: true,
+		highlight_keywords: true,
+
+		col_types: ['string',
+					'string',
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					'string',
+					'string',
+		],
+		col_widths: [
+            '350px', '200px', '200px',
+            '200px', '200px'
+        ],
+		watermark: ['(e.g. Fix filters)', '', '(e.g. >2022-01-01)', '(e.g. >2022-01-01)', '(e.g. >2022-01-01)', '', ''],
+		msg_filter: 'Filtering...',
+        extensions:[{ name: 'sort' }]
+	};
+
+	var tf = new TableFilter('tasks_table', filtersConfig);
+    tf.init();
+</script>
+
+<script data-config>
+	var filtersConfig = {
+		base_path: 'tablefilter/',
+		responsive: true,
+		paging: {
+          results_per_page: ['Records: ', [10, 25, 50, 100]]
+        },
+		col_1: 'select',
+		col_5: 'select',
+		alternate_rows: true,
+		rows_counter: true,
+		sticky_headers: true,
+		btn_reset: true,
+		loader: true,
+		status_bar: true,
+		mark_active_columns: true,
+		highlight_keywords: true,
+
+		col_types: ['string',
+					'string',
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					'string'
+		],
+		col_widths: [
+            '350px', '200px', '200px',
+            '200px', '200px', '200px'
+        ],
+		watermark: ['(e.g. Not functioning)', '', '(e.g. >2022-01-01)', '(e.g. >2022-01-01)', '(e.g. >2022-01-01)', ''],
+		msg_filter: 'Filtering...',
+        extensions:[{ name: 'sort' }]
+	};
+
+	var tf = new TableFilter('issues_table', filtersConfig);
+    tf.init();
+</script>

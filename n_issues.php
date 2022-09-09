@@ -10,7 +10,7 @@
 	include 'backend/dbh.p.php';
 	include 'header.php';
 	
-	$sql_i = "SELECT * FROM `issue` WHERE (day(date_created) = day(now()) AND month(date_created) = month(now()) AND YEAR(date_created) = YEAR(now())) OR assigned_to is null ORDER BY date_created DESC LIMIT ".$min.",10";
+	$sql_i = "SELECT * FROM `issue` WHERE assigned_to is null ORDER BY date_created DESC";
 	$stmt = mysqli_stmt_init($conn);
 	
 	if(!mysqli_stmt_prepare($stmt, $sql_i)){
@@ -21,9 +21,15 @@
 ?>
 
 <div class="container-fluid py-4 overflow-hidden">
-	<i class="fa-solid fa-chevrons-left"></i><a class="btn btn-primary"  href="index.php?site=Dashboard&page=1"><< Back</a>
-	<br /><br />
-	<table class="table rounded-3 shadow-lg table-hover mb-5">
+	<i class="fa-solid fa-chevrons-left"></i>
+
+	<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back"><br><br>
+
+	<h2>This page consists of <text style="font-weight:bold;">recently added Issue Reports</text> </h2> 
+
+	<br>
+
+	<table  id="n_issues_table">
 		<thead class="thead-dark">
 				<tr>
 					<th scope="col">Issue</th>
@@ -126,7 +132,12 @@
 					}else{
 						?>
 				<tr>
-					<td colspan="4" class="text-center"> There are no Tasks to be done.</td>
+					<td colspan="0" class="text-center"></td>
+					<td colspan="0" class="text-center"></td>
+					<td colspan="0" class="text-center"> There are no new issue reports.</td>
+					<td colspan="0" class="text-center"></td>
+					<td colspan="0" class="text-center"></td>
+					<td colspan="0" class="text-center"></td>
 				</tr>
 			<?php
 					}
@@ -139,61 +150,40 @@
 </div>
 
 <?php
-
-	$sql = "SELECT count(*) as total FROM `issue` WHERE day(date_created) = day(now()) OR assigned_to is null ORDER BY date_created DESC";
-	
-	
-	$stmt = mysqli_stmt_init($conn);
-	
-	if(!mysqli_stmt_prepare($stmt, $sql)){
-		echo 'error connecting to the database';
-	}else{
-		$result = mysqli_query($conn,$sql);
-		$row = mysqli_fetch_assoc($result);
-		
-		$pages = ceil($row['total']/10);?>
-		<nav aria-label="Page navigation example">
-				  <ul class="pagination justify-content-center">
-				  <li class="page-item"><a class="page-link" href="<?php
-					if(($_GET['page']-1) == 0){
-						echo '#';
-					}else{
-						$new_page = $_GET['page'] - 1;
-						echo 'n_issues.php?site=New%20Unassigned%20Issues&page='.$new_page.'';
-					}
-				  ?>">Previous</a></li>
-		<?php
-		
-		for($i = 1; $i <= $pages; $i++){
-			?>
-			
-					
-					<li  <?php 
-						if(isset($_GET['page'])){
-							if($_GET['page'] == $i){
-							echo 'class="page-item active"';}
-						}else{
-							if( 1 == $i){
-							echo 'class="page-item active"';}
-						}
-					?>><a class="page-link" href="n_issues.php?site=New%20Unassigned%20Issues&page=<?php echo $i;?>"><?php echo $i;
-					?></a></li>
-					
-			  
-			  <?php
-		}
-		?>
-			<li class="page-item"><a class="page-link" href="<?php
-					if(($_GET['page']+1) > $pages){
-						echo '#';
-					}else{
-						$new_page = $_GET['page'] + 1;
-						echo 'n_issues.php?site=New%20Unassigned%20Issues&page='.$new_page.'';
-					}
-				  ?>">Next</a></li>
-				  </ul>
-			  </nav>
-		<?php
-		}
 	}
-?>
+        ?>
+
+
+<script src="tablefilter/tablefilter.js"></script>
+
+<script data-config>
+	var filtersConfig = {
+		base_path: 'tablefilter/',
+		responsive: true,
+		paging: {
+          results_per_page: ['Records: ', [10, 25, 50, 100]]
+		},
+		col_2: 'select',
+		alternate_rows: true,
+		rows_counter: true,
+		btn_reset: true,
+		loader: true,
+		status_bar: true,
+		mark_active_columns: true,
+		highlight_keywords: true,
+
+		col_types: ['string',
+					'string',
+					'string',
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					'string',
+					'string'
+		],
+		watermark: ['(e.g. Not functioning)', '(e.g. Generator Set 1)', '', '(e.g. >2022-01-01)', '(e.g. >2022-01-01)', '(e.g. >2022-01-01)'],
+		msg_filter: 'Filtering...',
+        extensions:[{ name: 'sort' }]
+	};
+
+	var tf = new TableFilter('n_issues_table', filtersConfig);
+    tf.init();
+</script>

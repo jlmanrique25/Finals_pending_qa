@@ -8,7 +8,16 @@
 
 <!--<div class="container-fluid py-4 overflow-hidden"> -->
 
+
+
+
 <div class="container py-4">
+    <input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back" /><br /><br />
+    <h2>
+        This page consists of all the<text style="font-weight:bold;"> Equipment in APC</text>
+    </h2>
+    <i class="bi bi-info-circle-fill"></i>
+    <br />
     <table id="equipment_table">
         <thead class="thead-dark">
             <tr>

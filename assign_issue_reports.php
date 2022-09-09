@@ -50,8 +50,12 @@
 			<?php
 		}
 	?>
-	<div class= "container py-4 overflow-hidden">
-	<table class="table rounded-3 shadow table-hover mb-5">
+	<div class= "container py-4">
+
+	<h2>This page consists of <text style="font-weight:bold;">Unassigned Issue Reports</text> </h2> <br>
+
+	<!-- <table class="table rounded-3 shadow table-hover mb-5" id="issue_reports">-->
+	<table  id="issue_reports">
 	  <thead class="thead-dark">
 		<tr>
 		  <th scope="col">Issue</th>
@@ -65,12 +69,10 @@
 	  
 		<?php
 			include 'backend/assign_unassigned_issues.p.php';
-		?>
+        ?>
 	  </tbody>
 	</table>
-	<?php
-			include 'backend/unassigned_issues_pagination.p.php';
-		?>
+	
 </div>
 </div>
 <script type ="text/javascript">
@@ -81,4 +83,42 @@
 			alert.style.display = 'none';
 		}, 3000)
 	});
+</script>
+
+<script src="tablefilter/tablefilter.js"></script>
+
+<script data-config>
+	var filtersConfig = {
+		base_path: 'tablefilter/',
+		responsive: true,
+		paging: {
+          results_per_page: ['Records: ', [10, 25, 50, 100]]
+        },
+		col_2: 'select',
+		alternate_rows: true,
+		rows_counter: true,
+		sticky_headers: true,
+		btn_reset: true,
+		loader: true,
+		status_bar: true,
+		mark_active_columns: true,
+		highlight_keywords: true,
+
+		col_types: ['string',
+					'string',
+					'string',
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					'string'
+		],
+		col_widths: [
+            '350px', '200px', '200px',
+            '200px', '200px'
+        ],
+		watermark: ['(e.g. Not functioning)', '(e.g. Generator Set 1)', '', '(e.g. >2022-01-01)', '(e.g. >2022-01-01)', '(e.g. >2022-01-01)',],
+		msg_filter: 'Filtering...',
+        extensions:[{ name: 'sort' }]
+	};
+	/** var tf = new TableFilter(document.querySelector('.table'), tfConfig);*/
+	var tf = new TableFilter('issue_reports', filtersConfig);
+    tf.init();
 </script>

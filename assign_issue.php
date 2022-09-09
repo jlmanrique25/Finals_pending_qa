@@ -14,12 +14,12 @@
 </head>
 
 	<div class="container-fluid py-4" id="main_content">
-		<i class="fa-solid fa-chevrons-left"></i><button class="btn btn-primary" type="button" onclick="history.back()"><< Back</button>
+		<i class="fa-solid fa-chevrons-left"></i><input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back">
 	<br /><br />
         <div class="info"><?php
 				if(!isset($_GET['edit'])){
 					?>
-					<form action="backend/create_issue.p.php" method="post">
+					<form class="needs-validation" action="backend/create_issue.p.php" method="post" novalidate>
 						<?php
 						
 							if(isset($_GET['asset']) && isset($_GET['machine']) && isset($_GET['e_id']) && isset($_GET['room'])){
@@ -48,17 +48,20 @@
 								<div class="form-group">
 								<h2>Machine Details</h2>
 						<hr class="rounded">
-								<label>Type of Machine</label>
-								<select class="form-control" name="typeOfMachine" id="typeOfMachine">
-									<option value="none">--</option>
+								<label>Choose the type of Machine<text style="color:red;"> *</text></label>
+								<select class="form-control" name="typeOfMachine" id="typeOfMachine" required>
+									<option value="">--</option>
 									<?php
 										include 'backend/get_asset.p.php';
 									?>
 								</select>
+								<div class="invalid-feedback">
+									Please choose from the list
+								</div>
 								</div>
 
 								<div class="form-group">
-									<label for="formGroupExampleInput2">Machine</label>
+									<label id="label">Name of the Machine<text style="color:red;"> *</text></label>
 									<input type="text" class="form-control" id="machine" name="machine"placeholder="Select Machine" disabled>
 									<select class="form-control" name="airconForm" id="HVAC">
 									  <option value="">--</option>
@@ -82,12 +85,12 @@
 						<hr class="rounded">
 					
 						<div class="form-group">
-							<label>Issue</label>
-							<input type="text" class="form-control" name="issue" placeholder="What is the issue?" required>
+							<label>What is the issue?<text style="color:red;"> *</text></label>
+							<input type="text" class="form-control" name="issue" placeholder="E.g. Broken Capacitor" required>
 						</div>
 
 						<div class="form-group">
-							<label>Issue Description</label>
+							<label>Issue Description (optional)</label>
 							<textarea class="form-control" name="issue_desc" placeholder="Place remarks here"></textarea> 
 						</div>
 						
@@ -95,7 +98,7 @@
 							if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'Head'){
 								?>
 								<div class="form-group">
-									<label for="typeOfForm">Assign To</label>
+									<label for="typeOfForm">Assign it to<text style="color:red;"> *</text></label>
 									  <select class="form-control" name="assignedTo" required>
 										  <option value="">--</option>
 											<?php
@@ -104,8 +107,8 @@
 									  </select>
 								</div>
 								<div class="form-group">
-									<label for="formGroupExampleInput2">Due date & time</label>
-									<input type="datetime-local" class="form-control" name="dueDate" required>
+									<label for="formGroupExampleInput2">Due date of the Issue<text style="color:red;"> *</text></label>
+									<input type="date" class="form-control" name="dueDate" required>
 								</div> 
 								<?php
 							}
@@ -113,6 +116,7 @@
 						
 						
 						<button class="btn btn-primary mb-2" type="submit" name="submit">Submit</button>
+						<button type="reset" class="btn btn-danger mb-2" onclick="alert('Are you sure you want to reset?')">Reset</button>
 					</form>
 					
 					<?php
@@ -203,10 +207,10 @@
 				<?php 
     if(isset($_GET['status']) && $_GET['status'] == 'submitted')
     {
-    	?>
+                ?>
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <h4 class="alert-heading">Issue Submitted Succesfully</h4>
-				  <p>Wanna check out the issue? <a href="technician_reports.php?site=Issue%20Report&page=1">click here</a>.<br>
+				  <p>Wanna check out the issue? <a href="technician_reports.php?site=My%20Issues%20Reported&page=1">click here</a>.<br>
 				  The issue you have submitted is the following:<?php
 				  
 					$sql = 'SELECT * FROM issue, equipment, location WHERE issue_id = '.$_GET['id'].' and machine_id = equipment_id AND location.location_id = equipment.location_id';
@@ -232,22 +236,52 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
 	<script type="text/javascript">		
+	
 	$("#typeOfMachine").change(function() {
 			if ($(this).val() == "Genset") {
 				$('#machine').hide();
 				$('#Genset').show();
 				$('#HVAC').hide();
+				$('#label').show();
 			}else if ($(this).val() == "HVAC") {
 				$('#machine').hide();
 				$('#Genset').hide();
 				$('#HVAC').show();
+				$('#label').show();
 			}else {
-				$('#machine').show();
+				$('#machine').hide();
 				$('#Genset').hide();
 				$('#HVAC').hide();
+				$('#label').hide();
 			}
 		});
 		$("#typeOfMachine").trigger("change");
 	</script>
+
+	<script type="text/javascript">
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+		(function () {
+		  'use strict'
+
+		  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+		  var forms = document.querySelectorAll('.needs-validation')
+
+		  // Loop over them and prevent submission
+		  Array.prototype.slice.call(forms)
+		    .forEach(function (form) {
+		      form.addEventListener('submit', function (event) {
+		        if (!form.checkValidity()) {
+		          event.preventDefault()
+		          event.stopPropagation()
+		        }
+
+		        form.classList.add('was-validated')
+		      }, false)
+		    })
+		})()
+	</script>
+
+
 	</div> 

@@ -10,6 +10,7 @@
 		}
 	</style>
 	<title>Assign new task</title>
+
 </head>
 <?php 
     if(isset($_GET['status']) && $_GET['status'] == 'submitted')
@@ -24,6 +25,8 @@
 ?>
 	<div class="container-fluid py-4" id="main_content">
         <div class="info">
+        	<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back">
+        	<br><br>
 					<form class="needs-validation" action="backend/create_task.p.php" method="post" novalidate>
 						<?php
 						
@@ -54,7 +57,7 @@
 								<div class="form-group">
 								<h2>Machine Details</h2>
 								<hr class="rounded">
-								<label>Choose the type of Machine</label>
+								<label>Choose the type of Machine</label><text style="color:red;"> *</text>
 								<select class="form-control" name="typeOfMachine" id="typeOfMachine" required>
 									<option value="">--</option>
 									<?php
@@ -67,11 +70,8 @@
 								</div>
 
 								<div class="form-group">
-									<label for="formGroupExampleInput2">Name of the Machine</label>
-									<input type="text" class="form-control" id="machine" name="machine"placeholder="Select Machine" disabled required>
-									<div class="invalid-feedback">
-										Please fill in this field
-									</div>
+									<label id="label">Name of the Machine<text style="color:red;"> *</text></label>
+									<input type="text" class="form-control" id="machine" name="machine"placeholder="Select Machine" disabled>
 									<select class="form-control" name="airconForm" id="HVAC">
 									  <option value="">--</option>
 										<?php
@@ -89,10 +89,10 @@
 							}
 						?>
 						<br>
-						<h2>Task Details</h2>
+						<h2>Task Details </h2>
 						<hr class="rounded">
 						<div class="form-group">
-							<label for="formGroupExampleInput2">What is the task?</label>
+							<label for="formGroupExampleInput2">What is the task? <text style="color:red;"> *</text></label>
 							<input type="text" class="form-control" name="task" placeholder="E.g. Check capacitor" required>
 							<div class="invalid-feedback">
 								Please fill in this field
@@ -103,7 +103,7 @@
 							<input type="text" class="form-control" name="taskDesc" placeholder="Describe what the task is all about">
 						</div>
 						<div class="form-group">
-							<label for="typeOfForm">Assign the task to</label>
+							<label for="typeOfForm">Assign the task to <text style="color:red;"> *</text></label>
 							<?php
 								if(isset($_GET['u_id']) && isset($_GET['username'])){
 									?>
@@ -127,7 +127,7 @@
 							?>
 						</div>
 						<div class="form-group">
-							<label for="formGroupExampleInput2">Due date</label>
+							<label for="formGroupExampleInput2">Due date <text style="color:red;"> *</text></label>
 							<input type="date" class="form-control" name="dueDate" required>
 							<div class="invalid-feedback">
 								Please fill in this field
@@ -151,14 +151,17 @@
 				$('#machine').hide();
 				$('#Genset').show();
 				$('#HVAC').hide();
+				$('#label').show();
 			}else if ($(this).val() == "HVAC") {
 				$('#machine').hide();
 				$('#Genset').hide();
 				$('#HVAC').show();
+				$('#label').show();
 			}else {
-				$('#machine').show();
+				$('#machine').hide();
 				$('#Genset').hide();
 				$('#HVAC').hide();
+				$('#label').hide();
 			}
 		});
 		$("#typeOfMachine").trigger("change");
@@ -187,4 +190,12 @@
 		    })
 		})()
 	</script>
+
+	<!-- script for alerting unsaved changes when clicking back button -->
+	<!-- <script type="text/javascript">
+		window.onbeforeunload = function() {
+		  return "Data will be lost if you leave the page, are you sure?";
+		};
+	</script> -->
+	
 	</div> 

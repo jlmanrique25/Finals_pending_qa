@@ -40,7 +40,7 @@
 						</button>
 					  </div>
 					  <div class="modal-body">
-						<form action="backend/assign_new_issue.p.php?id=<?php echo $row_issue['issue_id'];?>" method="POST">
+						<form action="backend/assign_new_issue_issue_page.p.php?id=<?php echo $row_issue['issue_id'];?>" method="POST">
 							<div class="form-group">
 								<input type="text" class="form-control" name="i_id" value = "<?php echo $row_issue['issue_id'];?>" hidden>
 							</div> 
@@ -56,7 +56,7 @@
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput2">Due date & time</label>
-								<input type="datetime-local" class="form-control" name="dueDate" required>
+								<input type="datetime" class="form-control" name="dueDate" required>
 							</div> 
 							
 							
@@ -95,7 +95,11 @@
 			
 		}else{
 			echo '<tr>
-					<td colspan="7" class="text-center"> There are no issue reports</td>
+					<td  class="text-center"></td>
+					<td  class="text-center"></td>
+					<td  class="text-center"> There are no issue reports</td>
+					<td  class="text-center"></td>
+					<td  class="text-center"></td>
 				</tr>';
 		}
 		
