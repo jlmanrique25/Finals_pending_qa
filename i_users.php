@@ -83,7 +83,7 @@
 						echo '#';
 					}else{
 						$new_page = $_GET['page'] - 1;
-						echo 'i_users.php?site=Free%20Employees&page='.$new_page.'';
+						echo 'i_users.php?site=Available%20Staff&page=1'.$new_page.'';
 					}
 				  ?>">Previous</a></li>
 		<?php
