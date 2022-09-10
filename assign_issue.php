@@ -14,7 +14,7 @@
 </head>
 
 	<div class="container-fluid py-4" id="main_content">
-		<i class="fa-solid fa-chevrons-left"></i><input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back">
+		<i class="fa-solid fa-chevrons-left"></i><input type="button" class="btn btn-secondary" onClick="document.location.href='/Finals_pending/technician_reports.php?site=My%20Issues%20Reported&page=1'" value="<< Back">
 	<br /><br />
         <div class="info"><?php
 				if(!isset($_GET['edit'])){

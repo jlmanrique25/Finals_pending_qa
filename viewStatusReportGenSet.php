@@ -72,11 +72,15 @@ if($_GET['site'] == "Report Submitted"){
 			border: none;
 			color: #000;
 		}
+		
+		#main_content {
+			padding: 7%;
+		}
 	</style>
 	<title>View Status Report</title>
 </head>
 
-<div class="container-fluid py-4">
+<div class="container-fluid py-4" id="main_content">
 	<i class="fa-solid fa-chevrons-left"></i><input type="button" class="btn btn-secondary" onClick="document.location.href='/Finals_pending/technician_reports.php?site=My%20Reports&page=1'" value="<< Back">
 	<br /><br />
 		<!-- assigned task info -->
