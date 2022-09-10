@@ -49,7 +49,7 @@
 			</div>
 			<div class="row">
 				<div class="col text-light p-2">
-					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="i_users.php?site=Free%20Employees&page=1" role="button"
+					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="i_users.php?site=Available%20Staff&page=1" role="button"
 					style="margin-bottom:4px;white-space: normal;">
 						<p class="display-3  font-weight-bold"><?php
 							include 'backend/idle_users.p.php';

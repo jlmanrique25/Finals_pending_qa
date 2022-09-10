@@ -22,10 +22,10 @@
 <div class="container py-4 overflow-hidden">
 	<i class="icon-backward"></i><input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back"><br /><br />
 
-	<h2>List of <text style="font-weight:bold;">Employees without Assigned Tasks</text> </h2> 
+	<h2><text style="font-weight:bold;">Available Staff</text> </h2> 
 
 	<br>
-
+	
 	<table class="table rounded-3 shadow-lg table-hover mb-5">
 		<thead class="thead-dark">
 				<tr>
@@ -61,6 +61,7 @@
 			</tbody>
 	</table>
 
+
 <?php
 
 	$sql = "SELECT count(users_id) as total FROM `users` WHERE users.users_id NOT IN (SELECT assigned_user FROM `reports`) AND role != 'head'AND role != 'admin'";
@@ -82,7 +83,7 @@
 						echo '#';
 					}else{
 						$new_page = $_GET['page'] - 1;
-						echo 'i_users.php?site=Free%20Employees&page='.$new_page.'';
+						echo 'i_users.php?site=Available%20Staff&page=1'.$new_page.'';
 					}
 				  ?>">Previous</a></li>
 		<?php
@@ -116,12 +117,50 @@
 				  ?>">Next</a></li>
 				  </ul>
 			  </nav>
+	</div>
 		<?php
 		}
 	}
 ?>
-</div>
 
+
+<script src="tablefilter/tablefilter.js"></script>
+
+<script data-config>
+	var filtersConfig = {
+		base_path: 'tablefilter/',
+		responsive: true,
+		paging: {
+          results_per_page: ['Records: ', [10, 25, 50, 100]]
+        },
+		col_2: 'select',
+		col_5: 'select',
+		alternate_rows: true,
+		rows_counter: true,
+		sticky_headers: true,
+		btn_reset: true,
+		loader: true,
+		status_bar: true,
+		mark_active_columns: true,
+		highlight_keywords: true,
+
+		col_types: ['string',
+					'string',
+					'string',
+					,
+		watermark: ['(e.g. Username)', '(e.g. Email)', '', '(e.g. Action)'],
+		responsive: true,
+		msg_filter: 'Filtering...',
+        extensions:[{ name: 'sort' }]
+
+        
+  		
+			
+	};
+	
+	var tf = new TableFilter('i_users_table', filtersConfig);
+    tf.init();
+</script>
 <!-- <div class="col-md-12 text-center">
 	<a href="dashboard.php" class="btn btn-info" role="button">Back to Dashboard</a>
 </div> -->

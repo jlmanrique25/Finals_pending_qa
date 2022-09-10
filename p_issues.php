@@ -23,7 +23,7 @@
 	<i class="fa-solid fa-chevrons-left"></i><input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back">
 	<br /><br />
 
-	<h2>This page consists of <text style="font-weight:bold;">Unresolved Issue Reports</text> </h2> 
+	<h2><text style="font-weight:bold;">Unresolved Issue Reports</text> </h2> 
 
 	<br>
 
@@ -94,7 +94,7 @@
 		status_bar: true,
 		mark_active_columns: true,
 		highlight_keywords: true,
-		
+
 		col_types: ['string',
 					'string',
 					'string',
@@ -105,6 +105,10 @@
 		responsive: true,
 		msg_filter: 'Filtering...',
         extensions:[{ name: 'sort' }]
+
+        
+  		
+			
 	};
 	
 	var tf = new TableFilter('p_issues_table', filtersConfig);
