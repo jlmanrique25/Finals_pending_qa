@@ -91,14 +91,6 @@
 			}
 		}
 	?>
-		
-		  <a class="btn btn-warning dropdown-toggle btn-lg m-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			Reports
-		  </a>
-		  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			<a class="dropdown-item" href="machines.php?page=1&site=Equipment%20Information&e_id=<?php echo $_GET['e_id']?>&t=reports">Task Reports</a>
-			<a class="dropdown-item" href="machines.php?page=1&site=Equipment%20Information&e_id=<?php echo $_GET['e_id']?>&t=issues">Issue reports</a>
-		  </div>
 	<?php 
 		if(isset($_GET['t']) && $_GET['t'] == 'reports'){
 			?>
@@ -123,7 +115,8 @@
 			</table>
 			<?php
 				include 'backend/indiv_equip_pagination.p.php';
-		}else if(isset($_GET['t']) && $_GET['t'] == 'issues'){
+		}
+		if(isset($_GET['t']) && $_GET['t'] == 'issues'){
 			?>
 			<table id="issues_table">
 			  <thead class="thead-dark">
