@@ -1,6 +1,7 @@
 <head>
 	<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
-<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+	<title>Equipment Report</title>
 </head>
 <?php
 	session_start();
@@ -26,11 +27,14 @@
 			?>
 	<div class="container-fluid py-4 overflow-hidden">
 
-	<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back"> <br><br>
-
 		<header class="d-flex align-items-center pb-3  border-bottom border-dark">
 		<p class="d-flex align-items-center text-dark text-decoration-none  fw-b">
 		  <span class="fs-3 fw-bold"><?php echo $row_equipment['equipment_name']?></span>
+		  <span style="float: right;"> 
+		  	<a onclick="window.print()" type="button" class="btn btn-success btn-lg m-2" id="printButton">
+		  		Print Report
+		  	</a>
+		  </span>
 		</p>
 		</header>
 		<div class="container col-xxl-8 px-4 py-5">
@@ -74,14 +78,6 @@
 		}
 	?>
 		
-		<a href="assign_new_task.php?site=Assign%20new%20task&asset=<?php echo $row_equipment['asset'];?>&machine=<?php echo $row_equipment['equipment_name']?>&e_id=<?php echo $row_equipment['equipment_id'];?>&room=<?php echo $row_loc['room_number'];?>" type="button" class="btn btn-primary btn-lg">
-			Assign task for this equipment
-		</a>
-		
-		<a href="assign_issue.php?site=Report%20Issue&asset=<?php echo $row_equipment['asset'];?>&machine=<?php echo $row_equipment['equipment_name']?>&e_id=<?php echo $row_equipment['equipment_id'];?>&room=<?php echo $row_loc['room_number'];?>" type="button" class="btn btn-danger btn-lg m-2">
-			Report an issue of this equipment
-		</a>
-		
 		  <a class="btn btn-warning dropdown-toggle btn-lg m-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			Reports
 		  </a>
@@ -89,9 +85,6 @@
 			<a class="dropdown-item" href="machines.php?page=1&site=Equipment%20Information&e_id=<?php echo $_GET['e_id']?>&t=reports">Task Reports</a>
 			<a class="dropdown-item" href="machines.php?page=1&site=Equipment%20Information&e_id=<?php echo $_GET['e_id']?>&t=issues">Issue reports</a>
 		  </div>
-		  <a onclick="window.print()" type="button" class="btn btn-success btn-lg m-2">
-		  		Print Report
-		  </a>
 	<?php 
 		if(isset($_GET['t']) && $_GET['t'] == 'reports'){
 			?>
