@@ -117,4 +117,5 @@ $for_repair = $row_hvac['for_repair'];
     	<strong>Yes!</strong> Report submitted succesfully 
     	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
+	<?php include 'backend/equipment_monitoring_hvac.p.php'; ?>
 </div>
