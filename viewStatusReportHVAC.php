@@ -66,7 +66,7 @@ $for_repair = $row_hvac['for_repair'];
 </head>
 
 <div class="container-fluid py-4" id="main_content">
-		<i class="fa-solid fa-chevrons-left"><input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back">
+		<i class="fa-solid fa-chevrons-left"><input type="button" class="btn btn-secondary" onClick="document.location.href='/Finals_pending/technician_reports.php?site=My%20Reports&page=1'" value="<< Back">
 	<br /><br />
 		<!-- assigned task info -->
 		<h2><?php echo $row_report['task']; ?> : equipment <?php echo $row_equipment['equipment_name']; ?></h2>
