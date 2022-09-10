@@ -1,12 +1,26 @@
+<html lang="en">
 <head>
-	<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
-	<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
 	<title>Equipment Report</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
+	<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href="style.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{your path to tablefilter}/style/tablefilter.css" />
 </head>
 <?php
 	session_start();
-	include 'header.php';
-	
+	include 'backend/dbh.p.php';
+
 	$sql_equipment = "SELECT * FROM `equipment` WHERE equipment_id = ".$_GET['e_id']."";
 	$stmt = mysqli_stmt_init($conn);
 	
@@ -25,16 +39,16 @@
 			$result_loc = mysqli_query($conn, $sql_location);
 			$row_loc = mysqli_fetch_assoc($result_loc);
 			?>
+
+<body style="background-color: rgba(0, 0, 0, .1);">	
 	<div class="container-fluid py-4 overflow-hidden">
 
 		<header class="d-flex align-items-center pb-3  border-bottom border-dark">
 		<p class="d-flex align-items-center text-dark text-decoration-none  fw-b">
 		  <span class="fs-3 fw-bold"><?php echo $row_equipment['equipment_name']?></span>
-		  <span style="float: right;"> 
 		  	<a onclick="window.print()" type="button" class="btn btn-success btn-lg m-2" id="printButton">
 		  		Print Report
 		  	</a>
-		  </span>
 		</p>
 		</header>
 		<div class="container col-xxl-8 px-4 py-5">
@@ -136,7 +150,7 @@
 	
 
 </div>
-
+	</body>
 
 <script src="tablefilter/tablefilter.js"></script>
 

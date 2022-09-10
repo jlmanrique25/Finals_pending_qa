@@ -89,8 +89,11 @@
 			<a class="dropdown-item" href="machines.php?page=1&site=Equipment%20Information&e_id=<?php echo $_GET['e_id']?>&t=reports">Task Reports</a>
 			<a class="dropdown-item" href="machines.php?page=1&site=Equipment%20Information&e_id=<?php echo $_GET['e_id']?>&t=issues">Issue reports</a>
 		  </div>
-		  <a onclick="window.print()" type="button" class="btn btn-success btn-lg m-2">
+		  <!-- <a onclick="window.print()" type="button" class="btn btn-success btn-lg m-2">
 		  		Print Report
+		  </a> -->
+		  <a href="machine_report.php?e_id=<?php echo $_GET['e_id']?>"type="button" class="btn btn-success btn-lg m-2" target="_blank">
+		  		Generate Report
 		  </a>
 	<?php 
 		if(isset($_GET['t']) && $_GET['t'] == 'reports'){
