@@ -38,7 +38,7 @@ if(!mysqli_stmt_prepare($stmt, $sql_location)){
 }
 
 //getting the readings of specific record
-$sql_readings = "SELECT * FROM `equipment_readings_genset` WHERE date_created = '".$row_report['date_submitted']."'";
+$sql_readings = "SELECT * FROM `equipment_readings_genset` WHERE report_id = '".$row_report['report_id']."'";
 	
 if(!mysqli_stmt_prepare($stmt, $sql_readings)){
 	echo 'error connecting to database equipment_readings_genset';
