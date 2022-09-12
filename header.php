@@ -38,13 +38,34 @@
 				else{
 					echo 'Dashboard';
 				}
-			?></a>
+            ?></a>
           </li>
         </ul>
+
+
+		<ul class="navbar-nav text-center flex-row" >
+			<li class="nav-item mr-3 d-none d-lg-block">
+				<a class="nav-link" href="assign_new_task.php?site=Assign%20new%20task">New Task Report <i class="fa fa-tasks" aria-hidden="true"></i></a>
+			</li>
+			<li class="nav-item mr-3 d-none d-lg-block">
+				<a class="nav-link" href="assign_issue.php?site=Create%20Issue%20Report">New Issue Report <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>
+			</li>
+			<li class="nav-item  d-none d-lg-block">
+				<a class="nav-link" href="add_new_equipment.php?site=Add%20New%20Equipment">Add New Equipment <i class="fa fa-plus" aria-hidden="true"></i></a>
+			</li>
+		</ul>
+		
+
 	  </div>
 	  	
 	</nav>
-  
+
+	<!-- SIDEBAR THAT SHOWS IF USER IS ON COMPUTER-->
+	
+	
+
+	<!-- SIDEBAR THAT SHOWS IF USER IS ON MOBILE-->
+	<div class=" d-lg-none">
 	<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="background-color: FFE162;">
 	  <div class="offcanvas-header">
 		<div class="offcanvas-title" id="offcanvasExampleLabel">
@@ -246,6 +267,7 @@
 		</ul>
 		</div>
 	  </div>
+	</div>
 	</div>
 	
 	

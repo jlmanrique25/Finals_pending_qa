@@ -67,4 +67,10 @@
         /* override to position sticky headers underneath page header element */
         top: 51px !important;
     }
+
+	.wrapper {
+		display: flex;
+		width: 100%;
+		align-items: stretch;
+	}
 </style>
