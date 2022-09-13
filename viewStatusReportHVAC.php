@@ -117,5 +117,32 @@ $for_repair = $row_hvac['for_repair'];
     	<strong>Yes!</strong> Report submitted succesfully 
     	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
-	<?php include 'backend/equipment_monitoring_hvac.p.php'; ?>
+	<?php 
+	
+		include 'backend/equipment_monitoring_hvac.p.php';
+		//getting admin users
+		$sql_users = "SELECT `email` FROM `users` WHERE `role` = 'Admin' or `role` = 'Head' ";
+		$stmt = mysqli_stmt_init($conn);
+
+		if(!mysqli_stmt_prepare($stmt, $sql_users)){
+    		echo 'error connecting to the database users';
+		}else{
+    		$result = mysqli_query($conn, $sql_users);
+    		$row = mysqli_fetch_assoc($result);
+		}
+
+    		//email report content
+    		$equip_name = $row_equipment['equipment_name'];
+    		$user_name = $row_user['username'];
+
+    		// dynamic email content
+		    $mailSubject = "Issue: Abnormal Reading";
+    		$mailBody = "<b>Abnormal Reading:</b> Temperature in Equipment ".$equip_name."<br>Readings report submitted by ".$user_name;
+
+
+		    while($row = mysqli_fetch_assoc($result)){
+	        	$mailTo = $row['email'];
+        		mail($mailTo, $mailSubject, $mailBody, 'From: keomspending2022@gmail.com')
+			}
+		?>
 </div>

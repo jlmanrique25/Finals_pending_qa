@@ -36,28 +36,6 @@ if(!mysqli_stmt_prepare($stmt, $sql_user)){
 	$row_user = mysqli_fetch_assoc($result_user);
 }
 
-// fixed email configurations
-
-$mail = new PHPMailer\PHPMailer\PHPMailer();
-
-$mail->isSMTP();
-
-$mail->Host = "mail.smtp2go.com";
-
-$mail->SMTPAuth = true;
-
-$mail->Username = "KEOMS";
-$mail->Password = "keoms";
-
-$mail->SMTPSecure = "tls";
-
-$mail->Port="2525";
-
-$mail->From ="keomspending2022@gmail.com";
-
-$mail->FromName ="KEOMS";
-
-$mail->isHTML(true);
 
 //getting admin users
 $sql_users = "SELECT `email` FROM `users` WHERE `role` = 'Admin' or `role` = 'Head' ";
@@ -67,6 +45,7 @@ if(!mysqli_stmt_prepare($stmt, $sql_users)){
     echo 'error connecting to the database users';
 }else{
     $result = mysqli_query($conn, $sql_users);
+    $row = mysqli_fetch_assoc($result);
 }
 
 if( isset($_POST['submit'])){
@@ -77,23 +56,15 @@ if( isset($_POST['submit'])){
 
     // dynamic email content
 
-    $mail->Subject = "Issue: Abnormal Reading";
+    $mailSubject = "Issue: Abnormal Reading";
+    $mailBody = "<b>Abnormal Reading:</b> Temperature in Equipment ".$equip_name."<br>Readings report submitted by ".$user_name;
 
-    $body = "<b>Abnormal Reading:</b> Temperature in Equipment ".$equip_name."<br>Readings report submitted by ".$user_name;
 
-    $mail->Body = $body;
-    $mail->AltBody = "Abnormal Reading Detected";
-?>
-
-<?php
     while($row = mysqli_fetch_assoc($result)){
 
         $mailTo = $row['email'];
-    
-        $mail->addAddress($mailTo, "KEOMS Admins"); 
-        if(!$mail->send()){
-        echo "Mailer Error :". $mail->ErrorInfo;
-        }
+
+        mail($mailTo, $mailSubject, $mailBody, 'From: keomspending2022@gmail.com')
     }
 }
 ?>
