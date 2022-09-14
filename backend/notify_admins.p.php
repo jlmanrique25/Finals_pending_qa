@@ -45,10 +45,7 @@ if(!mysqli_stmt_prepare($stmt, $sql_users)){
     echo 'error connecting to the database users';
 }else{
     $result = mysqli_query($conn, $sql_users);
-    $row = mysqli_fetch_assoc($result);
 }
-
-if( isset($_POST['submit'])){
 
     //email report content
     $equip_name = $row_equipment['equipment_name'];
@@ -64,7 +61,6 @@ if( isset($_POST['submit'])){
 
         $mailTo = $row['email'];
 
-        mail($mailTo, $mailSubject, $mailBody, 'From: keomspending2022@gmail.com')
+        //mail($mailTo, $mailSubject, $mailBody, 'From: keomspending2022@gmail.com')
     }
-}
 ?>
