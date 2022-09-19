@@ -7,7 +7,7 @@
 		$min = 0;
 	}
 	
-	$sql_issue = "SELECT issue.issue_id, issue.issue, issue.machine_id, equipment.equipment_id, equipment.equipment_name, location.location_id,equipment.asset, equipment.location_id, location.floor, location.room_number, issue.date_created FROM `issue`, `location`, `equipment` WHERE issue.assigned_to IS NULL AND issue.machine_id = equipment.equipment_id AND equipment.location_id = location.location_id ORDER BY issue.date_created DESC";
+	$sql_issue = "SELECT * FROM `issue`, `location`, `equipment` WHERE issue.assigned_to IS NULL AND issue.machine_id = equipment.equipment_id AND equipment.location_id = location.location_id ORDER BY issue.date_created DESC";
 	
 	$stmt = mysqli_stmt_init($conn);
 	
@@ -40,7 +40,22 @@
 						</button>
 					  </div>
 					  <div class="modal-body">
-						<form action="backend/assign_new_issue_issue_page.p.php?id=<?php echo $row_issue['issue_id'];?>" method="POST">
+
+						  <div class="form-group">
+							  <h5>Description</h5>
+												<?php 		
+								echo $row_issue['issue description']. '<br/><br/><h5>Location</h5>'.$row_issue['floor'].' room '.$row_issue['room_number'].''; 
+
+								$sql_u = "SELECT username FROM `users` WHERE users_id = ".$row_issue['submitted_by']."";
+								$results_u = mysqli_query($conn, $sql_u);
+								$row_u = mysqli_fetch_array($results_u);
+
+								echo '<br/><br/><h5>Submitted by: </h5> '.$row_u['username'].'';
+								?>
+
+							  
+							</div> 
+						<form action="backend/assign_issue_issue_page.p.php?id=<?php echo $row_issue['issue_id'];?>" method="POST">
 							<div class="form-group">
 								<input type="text" class="form-control" name="i_id" value = "<?php echo $row_issue['issue_id'];?>" hidden>
 							</div> 
@@ -56,7 +71,7 @@
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput2">Due date & time</label>
-								<input type="datetime" class="form-control" name="dueDate" required>
+								<input type="date" class="form-control" name="dueDate" required>
 							</div> 
 							
 							

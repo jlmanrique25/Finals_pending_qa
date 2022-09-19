@@ -28,7 +28,7 @@
 			}else{
 				$result = mysqli_query($conn,$sql_issues);
 
-				header('Location:..assign_issue_reports.php?site=Unassigned%20Reports&update=success&u_id='.$u_id.'&$d='.$d_date.'&i='.$i_id.'');
+				header('Location:../assign_issue_reports.php?site=Unassigned%20Reports&update=success&u_id='.$u_id.'&$d='.$d_date.'&i='.$i_id.'');
 				exit();
 			}
 		}

@@ -20,14 +20,14 @@
 	
 ?>
 
-<div class="container-fluid py-4 overflow-hidden">
+<div class="container py-4 overflow-hidden">
 	<i class="fa-solid fa-chevrons-left"></i><input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back">
 	<br /><br />
 
-	<h2> <text style="font-weight:bold;">Overdue Unfinished Tasks</text> </h2> 
+	<h2> <text style="font-weight:bold;">Overdue Tasks</text> </h2> 
 
 	<br>
-
+	<div class="container py-4">
 	<table id="o_tasks_table">
 		<thead class="thead-dark">
 				<tr>
@@ -60,7 +60,7 @@
 				?>
 			</tbody>
 	</table>
-	
+	</div>
 </div>
 
 <?php

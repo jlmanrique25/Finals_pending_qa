@@ -118,7 +118,7 @@
 			  </tbody>
 			</table>
 			<?php
-				include 'backend/indiv_equip_pagination.p.php';
+				//include 'backend/indiv_equip_pagination.p.php';
 		}else if(isset($_GET['t']) && $_GET['t'] == 'issues'){
 			?>
 			<table id="issues_table">
@@ -140,7 +140,7 @@
 			  </tbody>
 			</table>
 			<?php
-				include 'backend/indiv_equip_pagination.p.php';
+				//include 'backend/indiv_equip_pagination.p.php';
 		}
             ?>
 	

@@ -30,7 +30,7 @@
 	</style>
 </head>
 <div class="container-fluid py-4" id="main_content">
-	<form class="needs-validation" novalidate>
+
 	<i class="fa-solid fa-chevrons-left">
 		<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back">
 	<br /><br />
@@ -99,28 +99,34 @@
 			<div class="col">
 				<label>Contracted company</label>
 				<input type="text" class="form-control" name="contact_company" placeholder="Company name" readonly 
+					 
 				<?php 
 				if($row['issue_status'] && !is_null($row['contracted_company'])){
-					echo 'readonly value ="'.$row['contracted_company'].'"';
+					?> 
+					   readonly value =<?php echo $row['contracted_company'];?>;
+					
+					<?php
 				}else if(!$row['issue_status'] && !is_null($row['contracted_company'])){
 					echo ' value="'.$row['contracted_company'].'"';
 				}else if($row['issue_status'] && is_null($row['contracted_company'])){
-					echo 'readonly value="None"';
+					echo ' readonly value="None"';
 				}else if(!$row['issue_status'] && is_null($row['contracted_company'])){
 					
 				}
-				?>>
+				?>   
+					   >
+			
 				
 			</div>
 			<div class="col">
 				<label>Company representative</label>
-				<input type="text" class="form-control" name="company" placeholder="Company name" readonly <?php 
+				<input type="text" class="form-control" name="company" placeholder="Company name"  <?php 
 				if($row['issue_status'] && !is_null($row['company_representative'])){
-					echo 'readonly value ="'.$row['company_representative'].'"';
+					echo ' readonly value ="'.$row['company_representative'].'"';
 				}else if(!$row['issue_status'] && !is_null($row['company_representative'])){
 					echo ' value="'.$row['company_representative'].'"';
 				}else if($row['issue_status'] && is_null($row['company_representative'])){
-					echo 'readonly value="None"';
+					echo ' readonly value="None"';
 				}else if(!$row['issue_status'] && is_null($row['company_representative'])){
 					
 				}
@@ -132,26 +138,27 @@
 				<label>Date reinstalled</label>
 				<input type="date" class="form-control" name="date_reinstalled" placeholder="Date reisntalled" readonly <?php 
 				if($row['issue_status'] && !is_null($row['date_reinstalled'])){
-					echo 'readonly value ="'.date('Y-m-d', strtotime($row['date_reinstalled'])).'"';
+					echo ' readonly value ="'.date('Y-m-d', strtotime($row['date_reinstalled'])).'"';
 				}else if(!$row['issue_status'] && !is_null($row['date_reinstalled'])){
 					echo ' value="'.date('Y-m-d', strtotime($row['date_reinstalled'])).'"';
 				}else if($row['issue_status'] && is_null($row['date_reinstalled'])){
-					echo 'readonly value="None"';
+					echo ' readonly value="None"';
 				}else if(!$row['issue_status'] && is_null($row['date_reinstalled'])){
 					
 				}
-				?>>
+				?>
+					   >
 				
 			</div>
 			<div class="col">
 				<label>Service report number</label>
-				<input type="text" class="form-control" name="receipt" placeholder="Service report number" required readonly><?php 
+				<input type="text" class="form-control" name="receipt" placeholder="Service report number" readonly <?php 
 				if($row['issue_status'] && !is_null($row['service_report_number'])){
-					echo 'readonly value ="'.$row['service_report_number'].'"';
+					echo ' readonly value ="'.$row['service_report_number'].'"';
 				}else if(!$row['issue_status'] && !is_null($row['service_report_number'])){
 					echo ' value="'.$row['service_report_number'].'"';
 				}else if($row['issue_status'] && is_null($row['service_report_number'])){
-					echo 'readonly value="None"';
+					echo ' readonly value="None"';
 				}else if(!$row['issue_status'] && is_null($row['service_report_number'])){
 					
 				}
@@ -168,7 +175,7 @@
 	}else if($_SESSION['userId'] == $row['assigned_to']){
 	?>
 	
-	<form method="post" <?php
+	<form method="post" class="needs-validation" novalidate <?php
 		if($row['issue_status']){
 			?>
 			action="backend/redo_issue.p.php?id=<?php echo $row['issue_id']?>">
@@ -185,7 +192,7 @@
 			  <h4 class="alert-heading">Re-opened Issue!</h4>
 			  <p>You have Re-opened issue: <strong><?php echo $row['issue'];?></strong> to work on updates.</p>
 			  <hr>
-			  <p class="mb-0">Made a mistake? <a href="backend/undo_issue_submit.p.php?i=<?php echo $_GET['i_id'];?>" class="alert-link">UNDO</a>.</p>
+			  <p class="mb-0">Made a mistake? <a href="backend/undo_issue_submit.p.php?i=<?php echo $_GET['i_id'];?>&site=Issue%20Report" class="alert-link">UNDO</a>.</p>
 			</div>
 			<?php
 		}else if(isset($_GET['update'])&& $_GET['update'] == "undo"){
@@ -227,11 +234,11 @@
 				<input type="datetime-local" class="form-control" name="date_repair" required placeholder="Endorsed by" <?php 
 				$date_endorsed = date('Y-m-d\TH:i', strtotime($row['date_endorsed_for_repair']));
 				if($row['issue_status'] && !is_null($row['date_endorsed_for_repair'])){
-					echo 'readonly value ="'.$date_endorsed.'"';
+					echo ' readonly value ="'.$date_endorsed.'"';
 				}else if(!$row['issue_status'] && !is_null($row['date_endorsed_for_repair'])){
-					echo 'value ="'.$date_endorsed.'"';
+					echo ' value ="'.$date_endorsed.'"';
 				}else if($row['issue_status'] && is_null($row['contracted_company'])){
-					echo 'readonly value="None"';
+					echo ' readonly value="None"';
 				}
 				?>>
 				<div class="invalid-feedback">
@@ -242,18 +249,18 @@
 		<div class="row mb-4">
 			<div class="col">
 				<label>Contracted company<text style="color:red;"> *</text></label>
-				<input type="text" class="form-control" name="contact_company" placeholder="Enter the company name" required>
+				<input type="text" class="form-control" name="contact_company" placeholder="Enter the company name" required
 				<?php 
 				if($row['issue_status'] && !is_null($row['contracted_company'])){
-					echo 'readonly value ="'.$row['contracted_company'].'"';
+					echo ' readonly value ="'.$row['contracted_company'].'"';
 				}else if(!$row['issue_status'] && !is_null($row['contracted_company'])){
 					echo ' value="'.$row['contracted_company'].'"';
 				}else if($row['issue_status'] && is_null($row['contracted_company'])){
-					echo 'readonly value="None"';
+					echo ' readonly value="None"';
 				}else if(!$row['issue_status'] && is_null($row['contracted_company'])){
 					
 				}
-				?>
+				?>>
 				<div class="invalid-feedback">
 					Please fill in this field
 				</div>
@@ -261,13 +268,13 @@
 			</div>
 			<div class="col">
 				<label>Company representative<text style="color:red;"> *</text></label>
-				<input type="text" class="form-control" name="company" placeholder="Enter the representative's name" required<?php 
+				<input type="text" class="form-control" name="company" placeholder="Enter the representative's name" required <?php 
 				if($row['issue_status'] && !is_null($row['company_representative'])){
-					echo 'readonly value ="'.$row['company_representative'].'"';
+					echo ' readonly value ="'.$row['company_representative'].'"';
 				}else if(!$row['issue_status'] && !is_null($row['company_representative'])){
 					echo ' value="'.$row['company_representative'].'"';
 				}else if($row['issue_status'] && is_null($row['company_representative'])){
-					echo 'readonly value="None"';
+					echo ' readonly value="None"';
 				}else if(!$row['issue_status'] && is_null($row['company_representative'])){
 					
 				}
@@ -282,15 +289,16 @@
 				<label>Date reinstalled<text style="color:red;"> *</text></label>
 				<input type="date" class="form-control" name="date_reinstalled" placeholder="Date reisntalled" required <?php 
 				if($row['issue_status'] && !is_null($row['date_reinstalled'])){
-					echo 'readonly value ="'.date('Y-m-d', strtotime($row['date_reinstalled'])).'"';
+					echo ' readonly value ="'.date('Y-m-d', strtotime($row['date_reinstalled'])).'"';
 				}else if(!$row['issue_status'] && !is_null($row['date_reinstalled'])){
 					echo ' value="'.date('Y-m-d', strtotime($row['date_reinstalled'])).'"';
 				}else if($row['issue_status'] && is_null($row['date_reinstalled'])){
-					echo 'readonly value="None"';
+					echo ' readonly value="None"';
 				}else if(!$row['issue_status'] && is_null($row['date_reinstalled'])){
 					
 				}
 				?>>
+				<?php echo $row['date_reinstalled'];?>
 				<div class="invalid-feedback">
 					Please fill in this field
 				</div>
@@ -298,13 +306,13 @@
 			</div>
 			<div class="col">
 				<label>Service report number<text style="color:red;"> *</text></label>
-				<input type="text" class="form-control" name="receipt" placeholder="E.g. CSR2019312" required<?php 
+				<input type="text" class="form-control" name="receipt" placeholder="E.g. CSR2019312" required <?php 
 				if($row['issue_status'] && !is_null($row['service_report_number'])){
-					echo 'readonly value ="'.$row['service_report_number'].'"';
+					echo ' readonly value ="'.$row['service_report_number'].'"';
 				}else if(!$row['issue_status'] && !is_null($row['service_report_number'])){
 					echo ' value="'.$row['service_report_number'].'"';
 				}else if($row['issue_status'] && is_null($row['service_report_number'])){
-					echo 'readonly value="None"';
+					echo ' readonly value="None"';
 				}else if(!$row['issue_status'] && is_null($row['service_report_number'])){
 					
 				}

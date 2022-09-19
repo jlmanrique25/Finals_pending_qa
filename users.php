@@ -54,10 +54,7 @@
 					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
 					'string'
 		],
-		col_widths: [
-            '350px', '200px', '200px',
-            '200px', '200px'
-        ],
+		
 		watermark: ['(e.g. Christian Paul Duria)', '(e.g. crduria@email.com)', '', ''],
 		msg_filter: 'Filtering...',
         extensions:[{ name: 'sort' }]

@@ -23,6 +23,7 @@
 	<link rel="stylesheet" type="text/css" href="{your path to tablefilter}/style/tablefilter.css" />
 </head>
 <body style="background-color: rgba(0, 0, 0, .1);">	
+
 	<nav class="navbar navbar-dark" style="background-color: rgba(34, 18, 119, 1);">
 	  <div class="container-fluid">
 		<a class="navbar-toggler" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style="margin-right: 16px;">
@@ -32,12 +33,12 @@
           <li class="nav-item">
             <a class="navbar-brand text-capitalize" aria-current="page" href="#">
 			<?php 
-				if(isset($_GET['site'])){
-					echo $_GET['site'];
-					}
-				else{
-					echo 'Dashboard';
-				}
+        if(isset($_GET['site'])){
+            echo $_GET['site'];
+        }
+        else{
+            echo 'Dashboard';
+        }
             ?></a>
           </li>
         </ul>
@@ -61,11 +62,79 @@
 	</nav>
 
 	<!-- SIDEBAR THAT SHOWS IF USER IS ON COMPUTER-->
+	<!--
+	 <div class="wrapper">
+	<div class="d-none d-lg-block">
+	<nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Bootstrap Sidebar</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>Dummy Heading</p>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Home 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                </li>
+                <li>
+                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                </li>
+            </ul>
+        </nav>
+		</div>
+ 
+		-->
 	
+	<!-- END OF SIDEBAR IF USER IS ON COMPUTER -->
+	
+		
+			
+		
 	
 
-	<!-- SIDEBAR THAT SHOWS IF USER IS ON MOBILE-->
-	<div class=" d-lg-none">
+	<!-- SIDEBAR THAT SHOWS IF USER IS ON MOBILE
+		<div class="d-lg-none">
+		-->
+	
 	<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="background-color: FFE162;">
 	  <div class="offcanvas-header">
 		<div class="offcanvas-title" id="offcanvasExampleLabel">
@@ -269,6 +338,8 @@
 	  </div>
 	</div>
 	</div>
+
+	<!-- END OF DESIGN OF THE HEADER AND SIDEBAR -->
 	
 	
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

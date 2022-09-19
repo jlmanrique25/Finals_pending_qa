@@ -11,7 +11,7 @@
 </head>
 <div class="container-fluid py-4 overflow-hidden">
 
-	<h2>This page consists of <text style="font-weight:bold;">Unresolved Issue Reports</text> </h2> <br>
+	<h2>This page consists of <text style="font-weight:bold; text-transform: capitalize;"><?php echo $_GET['site'];?></text> </h2> <br>
 
 	<?php
 		if(isset($_GET['submition']) && $_GET['submition'] == "success"){
@@ -42,51 +42,86 @@
 	
 		  
 		  <?php
-				if($_SESSION['role'] == "Admin" || $_SESSION['role'] == "Head"){
-					?>
+				if($_SESSION['role'] == "Admin"){
+          ?>
 					<a class="btn btn-warning dropdown-toggle btn-lg m-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Select type of issue reports
+					Select type of reports <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
 				  </a>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="tasks.php?site=Unresolved%20Issues&page=1&i_status=0">Unresolved issues</a>
-						<a class="dropdown-item" href="tasks.php?site=Resolved%20Issues&page=1&i_status=1">Finished issue reports</a>
+						<a class="dropdown-item" href="tasks.php?site=task%20reports&page=1&i_status=0">Task Reports</a>
+						<a class="dropdown-item" href="tasks.php?site=issue%20reports&page=1&i_status=1">Issue Reports</a>
 					  </div>
 					<?php
 				}
 			?>
 		  
-	<table class="table rounded-3 shadow-lg table-hover mb-5">
+	<table  id="tasks_table">
 		<thead class="thead-dark">
 			<tr>
 			<?php
-				if($_SESSION['role'] == "Admin" || $_SESSION['role'] == "Head"){
+				if($_SESSION['role'] == "Head"){
 					?>
 						<th scope="col">Issues</th>
+						<th scope="col">Equipment</th>
+						<th scope="col">Floor</th>
+						<th scope="col">Room</th>
+						<th scope="col">Date Created</th>
+						<th scope="col">Due Date</th>
+						<th scope="col">Date Submitted</th>
+						<th scope="col">Status</th>
 					<?php
-				}else{
+				}
+				else if($_SESSION['role'] == "Admin"){
+                    if($_GET['site'] == 'task reports'){
+                        ?>
+						
+						<th scope="col">Tasks</th>
+						<th scope="col">Equipment</th>
+						<th scope="col">Floor</th>
+						<th scope="col">Room</th>
+						<th scope="col">Date Created</th>
+						<th scope="col">Due Date</th>
+						<th scope="col">Date Submitted</th>
+						<th scope="col">Status</th>
+					
+						<?php
+                    }else{
+                    ?>
+						<th scope="col">Issues</th>
+						<th scope="col">Equipment</th>
+						<th scope="col">Floor</th>
+						<th scope="col">Room</th>
+						<th scope="col">Date Created</th>
+						<th scope="col">Due Date</th>
+						<th scope="col">Date Submitted</th>
+						<th scope="col">Status</th>
+					<?php
+                    }
+					
+                }
+				
+				else{
 					?>
 						<th scope="col">Tasks</th>
+						<th scope="col">Equipment</th>
+						<th scope="col">Floor</th>
+						<th scope="col">Room</th>
+						<th scope="col">Date Created</th>
+						<th scope="col">Due Date</th>
+						<th scope="col">Date Submitted</th>
+						<th scope="col">Status</th>
 					<?php
 				}
 			?>
-			<th scope="col">Equipment</th>
-			<th scope="col">Floor</th>
-			<th scope="col">Room</th>
-			<th scope="col">Date Created</th>
-			<th scope="col">Due Date</th>
-			<th scope="col">Date Submitted</th>
-			<th scope="col">Status</th>
+			
 			</tr>
 		</thead>
 		<tbody>
 			<?php
 				include 'backend/get_tasks_issues.p.php';
-			?>
+            ?>
 		</tbody>
 	</table>
-	<?php
-		include 'backend/tasks_issues_pagination.p.php';
-	?>
 </div>
 </div>
 <script type ="text/javascript">
@@ -97,4 +132,47 @@
 			alert.style.display = 'none';
 		}, 3000)
 	});
+</script>
+
+<script src="tablefilter/tablefilter.js"></script>
+
+<script data-config>
+	var filtersConfig = {
+		base_path: 'tablefilter/',
+		responsive: true,
+		paging: {
+          results_per_page: ['Records: ', [10, 25, 50, 100]]
+        },
+		col_2: 'select',
+		col_7: 'select',
+		alternate_rows: true,
+		rows_counter: true,
+		sticky_headers: true,
+		btn_reset: true,
+		loader: true,
+		status_bar: true,
+		mark_active_columns: true,
+		highlight_keywords: true,
+
+		col_types: ['string',
+					'string',
+					'string',
+					'string',
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
+					'string'
+		],
+		watermark: ['(e.g. Not functioning)', '(e.g. Generator Set 1)', '', '404-A', '(e.g. >2022-01-01)','(e.g. >2022-01-01)', '(e.g. >2022-01-01)', ''],
+		msg_filter: 'Filtering...',
+		extensions: [{ name: 'sort' }],
+
+		on_filters_loaded: function(tf){
+            tf.setFilterValue(7, 'Unresolved');
+            tf.filter();
+        }
+	};
+
+	var tf = new TableFilter('tasks_table', filtersConfig);
+    tf.init();
 </script>

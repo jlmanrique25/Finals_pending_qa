@@ -1,3 +1,5 @@
+
+
 <head>
 	<title>Past Reports</title>
 
@@ -7,6 +9,8 @@
 		session_start();
 	}
 	include 'header.php';
+
+
 ?>
 <div class="container-fluid py-4 overflow-hidden">
 <!--
