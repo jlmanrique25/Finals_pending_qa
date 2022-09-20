@@ -60,6 +60,22 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
 					  }?>
 
 		   <td> <?php echo $row['username'];?></td>
+		   <td> 
+         <a role="button" href="viewPendingTasks.php?r=<?php echo $row['report_id'];?>&e=<?php echo $row['machine_id'];?>&site=Pending%20Task" class="btn btn-primary">
+             <i class="fa fa-eye" aria-hidden="true"></i>
+           
+         </a>
+         <a role="button" href="view_report.php?site=Edit%20Report&id=<?php echo $row['report_id'];?>" class="btn btn-success">
+             <i class="fas fa-edit"></i>
+         </a>
+			   <!--
+         		  <a role="button" href="#" class="btn btn-danger">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+         </a>	
+	  
+				-->
+         
+		   </td>
 	   </tr>
 	   
 	   <?php
@@ -69,7 +85,7 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
    {
        ?>
 		<tr>
-			<td colspan="7" class="text-center">
+			<td  class="text-center">
 				There are no reports
 			</td>
 		</tr>

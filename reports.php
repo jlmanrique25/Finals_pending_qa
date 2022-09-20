@@ -40,6 +40,7 @@
 		  <th scope="col">Date Submitted</th>
 		  <th scope="col">For Repair</th>
 		  <th scope="col">Assignee</th>
+		  <th scope="col">Action</th>
 		</tr>
 	  </thead>
 	  <tbody>

@@ -43,6 +43,9 @@
           </li>
         </ul>
 
+		  <?php
+        if($_SESSION['role'] == "Head" || $_SESSION['role'] == "Admin"){
+          ?>
 
 		<ul class="navbar-nav text-center flex-row" >
 			<li class="nav-item mr-3 d-none d-lg-block">
@@ -55,6 +58,10 @@
 				<a class="nav-link" href="add_new_equipment.php?site=Add%20New%20Equipment">Add New Equipment <i class="fa fa-plus" aria-hidden="true"></i></a>
 			</li>
 		</ul>
+		
+		<?php
+        }
+			 ?>
 		
 
 	  </div>
