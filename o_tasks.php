@@ -44,14 +44,26 @@
 					if($results->num_rows > 0){
 						while($row = mysqli_fetch_array($results)){
 							?>
-								<tr role="button" data-href="machines.php?page=1&site=Equipment%20Information&e_id=<?php echo $row['equipment_id']?>&t=issues">
-									<td><?php echo $row['task'];?></td>
-									<td><?php echo $row['equipment_name'];?></td>
-									<td><?php echo $row['asset'];?></td>
-									<td><?php echo $row['date_created'];?></td>
-									<td><?php echo $row['task_due'];?></td>
-									<td><?php echo $row['username'];?></td>
-								</tr>
+                <tr role="button" data-href="viewPendingTasks.php?r=<?php echo  $row['report_id'];?>&e=10&site=Pending%20Task">
+                    <td>
+                        <?php echo $row['task'];?>
+                    </td>
+                    <td>
+                        <?php echo $row['equipment_name'];?>
+                    </td>
+                    <td>
+                        <?php echo $row['asset'];?>
+                    </td>
+                    <td>
+                        <?php echo $row['date_created'];?>
+                    </td>
+                    <td>
+                        <?php echo $row['task_due'];?>
+                    </td>
+                    <td>
+                        <?php echo $row['username'];?>
+                    </td>
+                </tr>
 							<?php
 						}
 					}else{

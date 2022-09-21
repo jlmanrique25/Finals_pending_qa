@@ -56,9 +56,18 @@
             }
         }else{
             echo '<tr>
-					<td colspan="7" class="text-center">
+
+					<td class="text-center">
+
+					</td>
+					<td class="text-center">
 					There are no available employees
 					</td>
+					<td class="text-center">
+
+					</td>
+
+
 				</tr>';
         }
                 ?>
@@ -97,9 +106,18 @@
             }
         }else{
             echo '<tr>
-					<td colspan="7" class="text-center">
+					
+					<td class="text-center">
+					
+					</td>
+					<td class="text-center">
 					There are no available employees
 					</td>
+					<td class="text-center">
+					
+					</td>
+					
+					
 				</tr>';
         }
                 ?>
