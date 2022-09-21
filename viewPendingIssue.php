@@ -33,7 +33,7 @@
 <div class="container-fluid py-4" id="main_content">
 <input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back">
 <br><br>
-	<h2><?php echo $row['issue'], " : equipment ", $row['equipment_name'];?><h2>
+	<h2><?php echo $row['issue'], " : equipment ", $row['equipment_name'];?></h2>
 	<hr class="rounded">
 	<h5>Date issue created: <?php echo $row['date_created']?></h5>
 	<?php 
@@ -329,4 +329,149 @@
 	});
 </script>
 
-	<?php } ?>
+	<?php 
+    
+    }
+	else if($_GET['site'] == "Issue Report") 
+    {
+        
+		?>
+		<div class="container-fluid py-4" id="main_content">
+
+		<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back">
+		<br><br>
+			<h2><?php echo $row['issue'], " : equipment ", $row['equipment_name'];?></h2>
+			<hr class="rounded">
+			<h5>Date issue created: <?php echo $row['date_created']?></h5>
+			<?php 
+			if(!is_null($row['description'])){
+				echo '<h5>',$row['description'],'</h5>';
+			}
+			?>
+			<h5 class="mb-5">Assigned to: <?php echo $row['username'];?></h5>
+			<div class="form-group">
+
+				<form method="post" <?php
+		if($row['issue_status']){
+			?>
+			action="backend/redo_issue.p.php?id=<?php echo $row['issue_id']?>">
+			<?php
+		}else{
+			?>
+			action="backend/finish_issue.p.php?id=<?php echo $row['issue_id']?>">
+			<?php
+		}
+		?>
+
+		<div class="row mb-4">
+			<div class="col">
+				<label>Recommendation</label>
+				<textarea  class="form-control" name="recommendation" placeholder="Recommendation" required readonly <?php if($row['issue_status']){echo 'readonly';}
+				?>><?php if($row['issue_status']){echo $row['recommendation'];}if(!$row['issue_status'] && !is_null($row['endorsed_by'])){echo $row['recommendation'];}?></textarea>
+			</div>
+			
+		</div>
+		<div class="row mb-4">
+			<div class="col">
+				<label>Endorsed by</label>
+				<input type="text" class="form-control" name="endorser" required placeholder="Endorsed by" readonly <?php 
+				if($row['issue_status'] && !is_null($row['endorsed_by'])){
+					echo 'readonly value ="'.$row['endorsed_by'].'"';
+				}else if(!$row['issue_status'] && !is_null($row['endorsed_by'])){
+					echo ' value ="'.$row['endorsed_by'].'"';
+				}
+				?>>
+				
+			</div>
+			<div class="col">
+				<label>Date Endorsed for repair</label>
+				<input type="datetime-local" class="form-control" name="date_repair" required placeholder="Endorsed by"readonly <?php 
+				$date_endorsed = date('Y-m-d\TH:i', strtotime($row['date_endorsed_for_repair']));
+				if($row['issue_status'] && !is_null($row['date_endorsed_for_repair'])){
+					echo 'readonly value ="'.$date_endorsed.'"';
+				}else if(!$row['issue_status'] && !is_null($row['date_endorsed_for_repair'])){
+					echo 'value ="'.$date_endorsed.'"';
+				}else if($row['issue_status'] && is_null($row['contracted_company'])){
+					echo 'readonly value="None"';
+				}
+				?>>
+			</div>
+		</div>
+		<div class="row mb-4">
+			<div class="col">
+				<label>Contracted company</label>
+				<input type="text" class="form-control" name="contact_company" placeholder="Company name" readonly 
+				<?php 
+				if($row['issue_status'] && !is_null($row['contracted_company'])){
+					echo 'readonly value ="'.$row['contracted_company'].'"';
+				}else if(!$row['issue_status'] && !is_null($row['contracted_company'])){
+					echo ' value="'.$row['contracted_company'].'"';
+				}else if($row['issue_status'] && is_null($row['contracted_company'])){
+					echo 'readonly value="None"';
+				}else if(!$row['issue_status'] && is_null($row['contracted_company'])){
+					
+				}
+				?>>
+				
+			</div>
+			<div class="col">
+				<label>Company representative</label>
+				<input type="text" class="form-control" name="company" placeholder="Company name" readonly <?php 
+				if($row['issue_status'] && !is_null($row['company_representative'])){
+					echo 'readonly value ="'.$row['company_representative'].'"';
+				}else if(!$row['issue_status'] && !is_null($row['company_representative'])){
+					echo ' value="'.$row['company_representative'].'"';
+				}else if($row['issue_status'] && is_null($row['company_representative'])){
+					echo 'readonly value="None"';
+				}else if(!$row['issue_status'] && is_null($row['company_representative'])){
+					
+				}
+				?>>
+			</div>
+		</div>
+		<div class="row mb-5">
+			<div class="col">
+				<label>Date reinstalled</label>
+				<input type="date" class="form-control" name="date_reinstalled" placeholder="Date reisntalled" readonly <?php 
+				if($row['issue_status'] && !is_null($row['date_reinstalled'])){
+					echo 'readonly value ="'.date('Y-m-d', strtotime($row['date_reinstalled'])).'"';
+				}else if(!$row['issue_status'] && !is_null($row['date_reinstalled'])){
+					echo ' value="'.date('Y-m-d', strtotime($row['date_reinstalled'])).'"';
+				}else if($row['issue_status'] && is_null($row['date_reinstalled'])){
+					echo 'readonly value="None"';
+				}else if(!$row['issue_status'] && is_null($row['date_reinstalled'])){
+					
+				}
+				?>>
+				
+			</div>
+			<div class="col">
+				<label>Service report number</label>
+				<input type="text" class="form-control" name="receipt" placeholder="Service report number" readonly <?php 
+				if($row['issue_status'] && !is_null($row['service_report_number'])){
+					echo 'readonly value ="'.$row['service_report_number'].'"';
+				}else if(!$row['issue_status'] && !is_null($row['service_report_number'])){
+					echo ' value="'.$row['service_report_number'].'"';
+				}else if($row['issue_status'] && is_null($row['service_report_number'])){
+					echo 'readonly value="None"';
+				}else if(!$row['issue_status'] && is_null($row['service_report_number'])){
+					
+				}
+				?>>
+			</div>
+		</div>
+		<h5>
+
+		
+		
+		
+		</form>
+			</div>
+		</div>
+		
+		<?php
+    }
+		
+		
+		?>
+

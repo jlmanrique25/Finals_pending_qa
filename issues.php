@@ -263,6 +263,7 @@
                 <th scope="col">Date Due</th>
                 <th scope="col">Date Resolved</th>
                 <th scope="col">Assignee</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -277,9 +278,7 @@
 			-->
 
 
-            <?php
-			include 'backend/search.php';
-            ?>
+            
             <?php
 			include 'backend/fetch_issues.p.php'
             ?>

@@ -1,41 +1,35 @@
 <?php
-
 session_start();
 include 'header.php';
-include 'backend/view_report.p.php';
+include 'backend/view_issue.p.php';
+
+$sql_m = "SELECT equipment_id, equipment_name, asset FROM equipment WHERE equipment_id = ".$row_i['machine_id']."";
+$result_m = mysqli_query($conn, $sql_m);
+$row_m = mysqli_fetch_assoc($result_m);
+
+
+$sql_u = "SELECT users_id, username FROM users WHERE users_id = ".$row_i['assigned_to']."";
+$result_u = mysqli_query($conn, $sql_u);
+$row_u = mysqli_fetch_assoc($result_u);
 
 ?>
-<!--
-	FOR THE MAIN CONTENT OF THE WEBSITE
--->
-
 
 <div class="container-fluid py-4" id="main_content">
-	<div class="info">
-		<a type="button" class="btn btn-secondary" href='/Finals_pending/reports.php?site=Reports&page=1&time=day'> <i class='fa fa-arrow-left' aria-hidden='true'></i> Back</a>
-        	<br><br>
+<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back">
+<br><br>
+	<h1>Editing issue report</h1>
+	<h2><?php echo $row_i['issue'], " : equipment ", $row_m['equipment_name'];?></h2>
+	<hr class="rounded">
+	<h5>Date issue created: <?php echo $row_i['date_created']?></h5>
+	<h5 class="mb-5">Assigned to: <?php echo $row_u['username'];?></h5>
 
-		<form class="needs-validation" action="backend/update_issue.p.php?id=<?php echo $_GET['id'];?>" method="post" novalidate>
-			<h1>Editing task: <b><?php echo  $row_r['task'];?></b></h1>
-			<br />
-			<?php
-
-				$sql_m = "SELECT equipment_id, equipment_name, asset FROM equipment WHERE equipment_id = ".$row_r['machine_id']."";
-				$result_m = mysqli_query($conn, $sql_m);
-				$row_m = mysqli_fetch_assoc($result_m);
-
-
-				$sql_u = "SELECT users_id, username FROM users WHERE users_id = ".$row_r['assigned_user']."";
-				$result_u = mysqli_query($conn, $sql_u);
-				$row_u = mysqli_fetch_assoc($result_u);
-
-				
-			?>
-			<div class="form-group">
+	<div class="form-group">
+	<form method="post" action="backend/update_issue.p.php?id=<?php echo $_GET['id'];?>">
+		<div class="form-group">
 				<h2>Machine Details</h2>
 				<hr class="rounded">
 				<label>Choose the type of Machine</label><text style="color:red;"> *</text>
-				<select class="form-control" name="typeOfMachine" id="typeOfMachine" required <?php if ($row_r['report_status'] == "done"){
+				<select class="form-control" name="typeOfMachine" id="typeOfMachine" required <?php if ($row_i['issue_status'] == 1){
                                                                                                         echo 'disabled';
                                                                                                     }?>>
 					<option value="<?php echo $row_m['asset']?>" selected><?php echo $row_m['asset']?></option>
@@ -51,7 +45,7 @@ include 'backend/view_report.p.php';
 			<div class="form-group">
 				<label id="label">Name of the Machine<text style="color:red;"> *</text></label>
 				<input type="text" class="form-control" id="machine" name="machine"placeholder="Select Machine" disabled>
-				<select class="form-control" name="airconForm" id="HVAC" <?php if ($row_r['report_status'] == "done"){
+				<select class="form-control" name="airconForm" id="HVAC" <?php if ($row_i['issue_status'] == 1){
                                                                                                         echo 'disabled';
                                                                                                     }?>>
 					<option value="<?php echo $row_m['equipment_id']?>" selected><?php echo $row_m['equipment_name']?></option>
@@ -59,7 +53,7 @@ include 'backend/view_report.p.php';
                     include 'backend/get_hvac.p.php';
                     ?>
 				</select>
-				<select class="form-control" name="gensetForm" id="Genset" <?php if ($row_r['report_status'] == "done"){
+				<select class="form-control" name="gensetForm" id="Genset" <?php if ($row_i['issue_status'] == 1){
                                                                                                         echo 'disabled';
                                                                                                     }?>>
 					<option value="<?php echo $row_m['equipment_id']?>" selected><?php echo $row_m['equipment_name']?></option>
@@ -77,8 +71,8 @@ include 'backend/view_report.p.php';
 			<hr class="rounded">
 			<div class="form-group">
 				<label for="formGroupExampleInput2">What is the task? <text style="color:red;"> *</text></label>
-				<input type="text" class="form-control" name="task" placeholder="E.g. Check capacitor"  value="<?php echo $row_r['task'];?>" required 
-				<?php if ($row_r['report_status'] == "done"){
+				<input type="text" class="form-control" name="task" placeholder="E.g. Check capacitor"  value="<?php echo $row_i['issue'];?>" required 
+				<?php if ($row_i['issue_status'] == 1){
                                                                                                         echo 'disabled';
                                                                                                     }?>>
 				<div class="invalid-feedback">
@@ -87,7 +81,7 @@ include 'backend/view_report.p.php';
 			</div>
 			<div class="form-group">
 				<label for="formGroupExampleInput2">Task Description (optional)</label>
-				<input type="text" class="form-control" name="taskDesc" placeholder="Describe what the task is all about" value="<?php echo $row_r['task_desc'];?>" <?php if ($row_r['report_status'] == "done"){
+				<input type="text" class="form-control" name="taskDesc" placeholder="Describe what the task is all about" value="<?php echo $row_i['description'];?>" <?php if ($row_i['issue_status'] == 1){
                                                                                                         echo 'disabled';
                                                                                                     }?>>
 			</div>
@@ -96,7 +90,7 @@ include 'backend/view_report.p.php';
 					<?php
 					
 					?>
-					<select class="form-control" name="assignedTo" required <?php if ($row_r['report_status'] == "done"){
+					<select class="form-control" name="assignedTo" required <?php if ($row_i['issue_status'] == 1){
                                                                                                         echo 'disabled';
                                                                                                     }?>>
 						<option value="<?php echo $row_u['users_id'];?>" selected><?php echo $row_u['username'];?></option>
@@ -113,7 +107,7 @@ include 'backend/view_report.p.php';
 			</div>
 			<div class="form-group">
 				<label for="formGroupExampleInput2">Due date <text style="color:red;"> *</text></label>
-				<input type="datetime-local" class="form-control" name="dueDate" value="<?php echo $row_r['task_due'];?>" required <?php if ($row_r['report_status'] == "done"){
+				<input type="date" class="form-control" name="dueDate" value="<?php echo $row_i['date_due'];?>" required <?php if ($row_i['issue_status'] == 1){
                                                                                                         echo 'disabled';
                                                                                                     }?>>
 				<div class="invalid-feedback">
@@ -121,21 +115,17 @@ include 'backend/view_report.p.php';
 					</div>
 			</div> 
 			<?php 
-			if ($row_r['report_status'] != "done")
+			if ($row_i['issue_status'] != 1)
             {
-				echo '<button class="btn btn-primary mb-2" type="submit" name="submit" onclick="alert("Are you sure you want to edit the task?")">
+				echo '<button class="btn btn-primary mb-2" type="submit" name="submit" onclick="alert("Are you sure you want to update the issue?")">
 				Update
 			</button>';
 			}?>
 			
 			
 		</form>
-	</div>
 </div>
-
-
-
-
+</div>
 
 <!--
 	SCRIPT FOR THE DROPDOWN

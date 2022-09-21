@@ -64,6 +64,15 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
     <td>
         <?php echo $row['username'];?>
     </td>
+    <td>
+        <a role="button" href="viewPendingIssue.php?site=Issue%20Report&i_id=<?php echo $row['issue_id'];?>" class="btn btn-primary">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+
+        </a>
+        <a role="button" href="view_issue.php?site=Edit%20Report&id=<?php echo $row['issue_id'];?>" class="btn btn-success">
+            <i class="fas fa-edit"></i>
+        </a>
+    </td>
     <?php
 					}
     ?>
