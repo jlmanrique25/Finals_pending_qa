@@ -8,7 +8,7 @@
 ?>
 <div class= "container py-4 overflow-hidden">
 
-	<h2>List of <text style="font-weight:bold;">Users and their Roles</text> </h2> <br>
+	<h2><text style="font-weight:bold;">Users and Roles</text> </h2> <br>
 
 	<table id="users_table">
 	  <thead class="thead-dark">
