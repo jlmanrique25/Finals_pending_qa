@@ -50,7 +50,7 @@
 			<?php
 		}
 	?>
-	<div class= "container py-4">
+	<div class= "container py-4 ">
 
 	<h2>This page consists of <text style="font-weight:bold;">Unassigned Issue Reports</text> </h2> <br>
 

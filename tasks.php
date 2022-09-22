@@ -10,119 +10,127 @@
 
 </head>
 <div class="container-fluid py-4 overflow-hidden">
+    <div class="container py-4 ">
+        <h2>
+            This page consists of <text style="font-weight:bold; text-transform: capitalize;">
+                <?php echo $_GET['site'];?>
+            </text>
+        </h2><br />
 
-	<h2>This page consists of <text style="font-weight:bold; text-transform: capitalize;"><?php echo $_GET['site'];?></text> </h2> <br>
-
-	<?php
+        <?php
 		if(isset($_GET['submition']) && $_GET['submition'] == "success"){
 			include 'backend/dbh.p.php';
-			
+
 			$sql_update = "SELECT * FROM `issue`, `users` WHERE issue_id = ".$_GET['i']."";
 			$stmt = mysqli_stmt_init($conn);
-			
+
 			$result_update = mysqli_query($conn, $sql_update);
 			$row_update = mysqli_fetch_assoc($result_update)
-			?>
-			<div class="alert alert-success update_alert" role="alert" id="update_alert">
-			  <h4 class="alert-heading">Issue done!</h4>
-			  <p>Finished issue: <strong><?php echo $row_update['issue'];?></strong> today!</p>
-			  <hr>
-			</div>
-			<?php
+        ?>
+        <div class="alert alert-success update_alert" role="alert" id="update_alert">
+            <h4 class="alert-heading">Issue done!</h4>
+            <p>
+                Finished issue: <strong>
+                    <?php echo $row_update['issue'];?>
+                </strong> today!
+            </p>
+            <hr />
+        </div>
+        <?php
 		}else if(isset($_GET['update'])&& $_GET['update'] == "undo"){
-			?>
-				<div class="alert alert-warning" role="alert" id="update_alert">
-				  Assigned user removed.
-				</div>
-			<?php
+        ?>
+        <div class="alert alert-warning" role="alert" id="update_alert">
+            Assigned user removed.
+        </div>
+        <?php
 		}
-	?>
+        ?>
 
-	<a href="assign_issue.php?site=Report%20Equipment%20Issue" type="button" class="btn btn-danger btn-lg my-2">Report an equipment issue</a>
-	
-		  
-		  <?php
+        <a href="assign_issue.php?site=Report%20Equipment%20Issue" type="button" class="btn btn-danger btn-lg my-2">Report an equipment issue</a>
+
+
+        <?php
 				if($_SESSION['role'] == "Admin"){
-          ?>
-					<a class="btn btn-warning dropdown-toggle btn-lg m-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Select type of reports <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-				  </a>
-						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="tasks.php?site=task%20reports&page=1&i_status=0">Task Reports</a>
-						<a class="dropdown-item" href="tasks.php?site=issue%20reports&page=1&i_status=1">Issue Reports</a>
-					  </div>
-					<?php
+        ?>
+        <a class="btn btn-warning dropdown-toggle btn-lg m-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select type of reports <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="tasks.php?site=task%20reports&page=1&i_status=0">Task Reports</a>
+            <a class="dropdown-item" href="tasks.php?site=issue%20reports&page=1&i_status=1">Issue Reports</a>
+        </div>
+        <?php
 				}
-			?>
-		  
-	<table  id="tasks_table">
-		<thead class="thead-dark">
-			<tr>
-			<?php
+        ?>
+
+        <table id="tasks_table">
+            <thead class="thead-dark">
+                <tr>
+                    <?php
 				if($_SESSION['role'] == "Head"){
-					?>
-						<th scope="col">Issues</th>
-						<th scope="col">Equipment</th>
-						<th scope="col">Floor</th>
-						<th scope="col">Room</th>
-						<th scope="col">Date Created</th>
-						<th scope="col">Due Date</th>
-						<th scope="col">Date Submitted</th>
-						<th scope="col">Status</th>
-					<?php
+                    ?>
+                    <th scope="col">Issues</th>
+                    <th scope="col">Equipment</th>
+                    <th scope="col">Floor</th>
+                    <th scope="col">Room</th>
+                    <th scope="col">Date Created</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Date Submitted</th>
+                    <th scope="col">Status</th>
+                    <?php
 				}
 				else if($_SESSION['role'] == "Admin"){
                     if($_GET['site'] == 'task reports'){
-                        ?>
-						
-						<th scope="col">Tasks</th>
-						<th scope="col">Equipment</th>
-						<th scope="col">Floor</th>
-						<th scope="col">Room</th>
-						<th scope="col">Date Created</th>
-						<th scope="col">Due Date</th>
-						<th scope="col">Date Submitted</th>
-						<th scope="col">Status</th>
-					
-						<?php
+                    ?>
+
+                    <th scope="col">Tasks</th>
+                    <th scope="col">Equipment</th>
+                    <th scope="col">Floor</th>
+                    <th scope="col">Room</th>
+                    <th scope="col">Date Created</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Date Submitted</th>
+                    <th scope="col">Status</th>
+
+                    <?php
                     }else{
                     ?>
-						<th scope="col">Issues</th>
-						<th scope="col">Equipment</th>
-						<th scope="col">Floor</th>
-						<th scope="col">Room</th>
-						<th scope="col">Date Created</th>
-						<th scope="col">Due Date</th>
-						<th scope="col">Date Submitted</th>
-						<th scope="col">Status</th>
-					<?php
+                    <th scope="col">Issues</th>
+                    <th scope="col">Equipment</th>
+                    <th scope="col">Floor</th>
+                    <th scope="col">Room</th>
+                    <th scope="col">Date Created</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Date Submitted</th>
+                    <th scope="col">Status</th>
+                    <?php
                     }
-					
+
                 }
-				
+
 				else{
-					?>
-						<th scope="col">Tasks</th>
-						<th scope="col">Equipment</th>
-						<th scope="col">Floor</th>
-						<th scope="col">Room</th>
-						<th scope="col">Date Created</th>
-						<th scope="col">Due Date</th>
-						<th scope="col">Date Submitted</th>
-						<th scope="col">Status</th>
-					<?php
+                    ?>
+                    <th scope="col">Tasks</th>
+                    <th scope="col">Equipment</th>
+                    <th scope="col">Floor</th>
+                    <th scope="col">Room</th>
+                    <th scope="col">Date Created</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Date Submitted</th>
+                    <th scope="col">Status</th>
+                    <?php
 				}
-			?>
-			
-			</tr>
-		</thead>
-		<tbody>
-			<?php
+                    ?>
+
+                </tr>
+            </thead>
+            <tbody>
+                <?php
 				include 'backend/get_tasks_issues.p.php';
-            ?>
-		</tbody>
-	</table>
-</div>
+                ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 <script type ="text/javascript">
 	$(document).ready(function(){

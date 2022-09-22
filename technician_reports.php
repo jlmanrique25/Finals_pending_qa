@@ -33,6 +33,7 @@
 	<?php
 	if($_GET['site'] == "My Reports"){
     ?>
+	<div class= "container py-4 ">
 		<a href="assign_issue.php?site=Report%20Equipment%20Issue" type="button" class="btn btn-danger btn-lg my-2">Report an equipment issue</a>
     <table  id="reports_table">
         <thead >
@@ -53,12 +54,11 @@
             ?>
         </tbody>
     </table>
-		<?php
-			//include 'backend/reports_issues_pagination.p.php';
-		?>
+		</div>
 		<?php
 	}else if($_GET['site'] == "My Issues Reported"){
-		?>
+        ?>
+	<div class= "container py-4 ">
 		<a href="assign_issue.php?site=Report%20Equipment%20Issue" type="button" class="btn btn-danger btn-lg my-2">Report an equipment issue</a>
 		<table id="issues_table">
 			<thead class="thead-dark">
@@ -78,9 +78,7 @@
 				?>
 			</tbody>
 		</table>
-		<?php
-			//include 'backend/reports_issues_pagination.p.php';
-		?>
+		</div>
 		<?php
 	}
         ?>
