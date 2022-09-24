@@ -234,13 +234,13 @@
 					include 'backend/count_task_assigned_admin.p.php';
 					
 				?></span></a></li>
-				<li><a href="assign_new_task.php?site=Assign%20new%20task" class="link-dark rounded">Assign New Task</a></li>
+				<li><a href="assign_new_task.php?site=Assign%20new%20task" class="link-dark rounded d-lg-none">Assign New Task</a></li>
 				<?php if($_SESSION['role'] == "Head"){?>
 				<li><a href="assign_issue_reports.php?site=Unassigned%20Reports&page=1" class="link-dark rounded">Assign Issue Report</a></li>
 				<?php	}
-				?>
-				<li><a href="add_new_equipment.php?site=Add%20New%20Equipment" class="link-dark rounded">Add New Equipment</a></li>
-				<li><a href="assign_issue.php?site=Create%20Issue%20Report" class="link-dark rounded">Create Issue Report</a></li>
+                ?>
+				<li><a href="add_new_equipment.php?site=Add%20New%20Equipment" class="link-dark rounded d-lg-none">Add New Equipment</a></li>
+				<li><a href="assign_issue.php?site=Create%20Issue%20Report" class="link-dark rounded d-lg-none">Create Issue Report</a></li>
 				<?php if($_SESSION['role'] == "Head"){?>
 				<li><a href="users.php?site=Users&page=1" class="link-dark rounded">Manage Users</a></li>
 				<?php	}
