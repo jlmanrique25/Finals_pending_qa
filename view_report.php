@@ -15,7 +15,7 @@ include 'backend/view_report.p.php';
 		<a type="button" class="btn btn-secondary" href='/Finals_pending/reports.php?site=Reports&page=1&time=day'> <i class='fa fa-arrow-left' aria-hidden='true'></i> Back</a>
         	<br><br>
 
-		<form class="needs-validation" action="backend/update_issue.p.php?id=<?php echo $_GET['id'];?>" method="post" novalidate>
+		<form class="needs-validation" action="backend/update_task.p.php?id=<?php echo $_GET['id'];?>" method="post" novalidate>
 			<h1>Editing task: <b><?php echo  $row_r['task'];?></b></h1>
 			<br />
 			<?php
