@@ -12,7 +12,7 @@
 <div class="container-fluid py-4 overflow-hidden">
     <div class="container py-4 ">
         <h2>
-            This page consists of <text style="font-weight:bold; text-transform: capitalize;">
+             <text style="font-weight:bold; text-transform: capitalize;">
                 <?php echo $_GET['site'];?>
             </text>
         </h2><br />
