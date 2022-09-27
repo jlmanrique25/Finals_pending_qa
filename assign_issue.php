@@ -18,7 +18,7 @@
         if($_SESSION['role'] == 'Head' || $_SESSION['role'] == 'Admin')
         {
         ?>
-			  <i class="fa-solid fa-chevrons-left"></i><input type="button" class="btn btn-secondary" onClick="document.location.href='/Finals_pending/tasks.php?site=Unresolved%20Issues&page=1&i_status=0'" value="<< Back">
+			  <i class="fa-solid fa-chevrons-left"></i><input type="button" class="btn btn-secondary" onClick="history.back()" value="<< Back">
 			  <?php  
         }
 		else

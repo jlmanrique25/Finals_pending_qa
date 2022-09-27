@@ -23,7 +23,7 @@
 ?>
 	<div class="container-fluid py-4" id="main_content">
 
-	<input type="button" class="btn btn-secondary" onclick="document.location.href='/Finals_pending/equipment.php?site=Equipment&page=1'" value="<< Back"><br><br>
+	<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back"><br><br>
 
         <div class="info">
 					<form class="needs-validation" action="backend/get_new_equipment.p.php" method="post" novalidate>

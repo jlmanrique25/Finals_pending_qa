@@ -25,7 +25,7 @@
 ?>
 	<div class="container-fluid py-4" id="main_content">
         <div class="info">
-        	<input type="button" class="btn btn-secondary" onclick="document.location.href='/Finals_pending/reports.php?site=Reports&page=1&time=day'" value="<< Back">
+        	<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back">
         	<br><br>
 					<form class="needs-validation" action="backend/create_task.p.php" method="post" novalidate>
 						<?php
