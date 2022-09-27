@@ -52,7 +52,7 @@
 	?>
 	<div class= "container py-4 ">
 
-	<h2>This page consists of <text style="font-weight:bold;">Unassigned Issue Reports</text> </h2> <br>
+	<h2> <text style="font-weight:bold;">Unassigned Issue Reports</text> </h2> <br>
 
 	<!-- <table class="table rounded-3 shadow table-hover mb-5" id="issue_reports">-->
 	<table  id="issue_reports">
