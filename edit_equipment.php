@@ -4,7 +4,7 @@
 			padding: 7%;
 		}
 	</style>
-	<title>Add New Equipment</title>
+	<title>Edit Equipment Information</title>
 </head>
 
 <?php
@@ -25,7 +25,7 @@ include 'backend/edit_equipment.p.php';
 
         <div class="info">
 					<form class="needs-validation" action="backend/update_equipment.p.php?id=<?php echo $_GET['id'];?>" method="post" novalidate>
-						<h2>Equipment Details</h2>
+						<h2>Equipment Details for</h2>
 						<hr class="rounded">
 
 						<?php
@@ -40,13 +40,11 @@ include 'backend/edit_equipment.p.php';
 							<div class="row">
 								<div class="col">
 									<label>Enter Equipment Name<text style="color:red;"> *</text></label>
-									<input type="text" class="form-control" name="equipment_name" placeholder="E.g. Generator Set I"  value="<?php echo $row_m['equipment_name'];?>" <?php if ($row_m['operating'] == 1){echo 'disabled';}?> required>
+									<input type="text" class="form-control" name="equipment_name" placeholder="E.g. Generator Set I"  value="<?php echo $row_m['equipment_name'];?>" disabled>
 								</div>
 								<div class="col">
 									<label>Choose Asset<text style="color:red;"> *</text></label>
-									<select class="form-control" name="asset" required <?php if ($row_m['operating'] == 1){
-                                                                                                        echo 'disabled';
-                                                                                                    }?>>
+									<select class="form-control" name="asset" disabled>
 										<option value="<?php echo $row_m['asset'];?>"><?php echo $row_m['asset']?></option>
 															<?php
                     include 'backend/get_asset.p.php';

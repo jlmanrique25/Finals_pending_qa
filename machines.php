@@ -31,7 +31,7 @@
 		<header class="d-flex align-items-center pb-3  border-bottom border-dark">
 		<p class="d-flex align-items-center text-dark text-decoration-none  fw-b">
 		  <span class="fs-3 fw-bold"><?php echo $row_equipment['equipment_name']?></span>
-		  <a href="edit_equipment.php?page=1&site=Equipment Information&e_id=<?php echo $_GET['e_id'];?>&t=reports" class="btn btn-info">Edit equipment</a><br><br>
+		  <br><br><a href="edit_equipment.php?page=1&site=Equipment Information&e_id=<?php echo $_GET['e_id'];?>&t=reports" class="btn btn-info">Edit equipment</a><br><br>
 		</p>
 		</header>
 		<div class="container col-xxl-8 px-4 py-5">

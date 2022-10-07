@@ -32,7 +32,7 @@
         {
 
 
-            $sql = 'SELECT equipment_id, equipment_name, asset, brand, machine_description, model_no, serial_no, date_of_purchase, location_id, operating FROM `equipment` WHERE equipment_id = '.$_GET['e_id'].'';
+            $sql = 'SELECT equipment_id, equipment_name, asset, brand, machine_description, model_no, serial_no, date_of_purchase, location_id FROM `equipment` WHERE equipment_id = '.$_GET['e_id'].'';
             $stmt = mysqli_stmt_init($conn);
 
 
