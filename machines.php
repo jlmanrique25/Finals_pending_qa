@@ -31,6 +31,7 @@
 		<header class="d-flex align-items-center pb-3  border-bottom border-dark">
 		<p class="d-flex align-items-center text-dark text-decoration-none  fw-b">
 		  <span class="fs-3 fw-bold"><?php echo $row_equipment['equipment_name']?></span>
+		  <a href="edit_equipment.php?page=1&site=Equipment Information&e_id=<?php echo $_GET['e_id'];?>&t=reports" class="btn btn-info">Edit equipment</a><br><br>
 		</p>
 		</header>
 		<div class="container col-xxl-8 px-4 py-5">
@@ -227,3 +228,7 @@
 	var tf = new TableFilter('issues_table', filtersConfig);
     tf.init();
 </script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
