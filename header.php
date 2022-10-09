@@ -18,9 +18,8 @@
 	<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
 	<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link href="style.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{your path to tablefilter}/style/tablefilter.css" />
+	<link rel="stylesheet" type="text/css" href="tablefilter/style/tablefilter.css" />
 </head>
 <body style="background-color: rgba(0, 0, 0, .1);">	
 
@@ -46,15 +45,18 @@
 		  <?php
         if($_SESSION['role'] == "Head" || $_SESSION['role'] == "Admin"){
           ?>
-		<nav id="navbar-example2" class="navbar navbar-dark flex-row" style="background-color: rgba(34, 18, 119, 1);">
+		  <div class="d-none d-sm-block">
+
+		  
+		<nav id="navbar-example2" class="navbar navbar-dark flex-row .d-none .d-md-block .d-lg-none" style="background-color: rgba(34, 18, 119, 1);">
 		  <ul class="nav nav-pills">
 		  	 <li class="nav-item dropdown">
-		      <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user" aria-hidden="true"></i><span class="badge badge-pill badge-danger"><?php 
+		      <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#" id="dropdownMenuLinkuser" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user" aria-hidden="true"></i><span class="badge badge-pill badge-danger"><?php 
 					
 					include 'backend/count_task_assigned_admin.p.php';
 					
-				?></span></a>
-		      <div class="dropdown-menu">
+                                                                                                                                                                                                                                         ?></span></a>
+		      <div class="dropdown-menu" aria-labelledby="dropdownMenuLinkuser">
 		        <a href="tasks.php?site=Unresolved%20Issues&page=1" class="dropdown-item">My Tasks <span class="badge badge-danger"><?php 
 					
 					include 'backend/count_task_assigned_admin.p.php';
@@ -67,11 +69,12 @@
 				<?php if($_SESSION['role'] == "Head"){?>
 				<a href="users.php?site=Users&page=1" class="dropdown-item">Manage Users</a>
 				<?php	}
-				?>
+                ?>
 		        <div role="separator" class="dropdown-divider"></div>
 		        <a class="dropdown-item" href="backend/logout.p.php">Sign out</a>
 		      </div>
 		    </li>
+			  
 		    <li class="nav-item">
 		      <a class="navbar-brand" href="assign_new_task.php?site=Assign%20new%20task" title="New Task Report"><i class="fa fa-tasks" aria-hidden="true"></i></a>
 		    </li>
@@ -83,6 +86,7 @@
 		    </li>
 		  </ul>
 		</nav>
+			  </div>
 		
 		<?php
         }
@@ -182,7 +186,7 @@
 		<ul class="list-unstyled ps-0">
 		<?php
 			if($_SESSION['role'] == "Admin" || $_SESSION['role'] == "Head"){
-		?>
+        ?>
 		
 		
 		  <li class="mb-1">
@@ -247,18 +251,18 @@
 			</div>
 			-->
 		  </li>
-		  
-		  <!-- <li class="mb-1">
+		  <div class="d-sm-none">
+			  <li class="mb-1">
 			<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
 			  Management
 			</button>
 			<div class="collapse" id="orders-collapse">
 			  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 				<li><a href="tasks.php?site=Unresolved%20Issues&page=1" class="link-dark rounded">Tasks <span class="badge badge-danger"><?php 
-					
-					include 'backend/count_task_assigned_admin.p.php';
-					
-				?></span></a></li>
+                
+                include 'backend/count_task_assigned_admin.p.php';
+                
+                                                                                                                                         ?></span></a></li>
 				<li><a href="assign_new_task.php?site=Assign%20new%20task" class="link-dark rounded d-lg-none">Assign New Task</a></li>
 				<?php if($_SESSION['role'] == "Head"){?>
 				<li><a href="assign_issue_reports.php?site=Unassigned%20Reports&page=1" class="link-dark rounded">Assign Issue Report</a></li>
@@ -269,10 +273,12 @@
 				<?php if($_SESSION['role'] == "Head"){?>
 				<li><a href="users.php?site=Users&page=1" class="link-dark rounded">Manage Users</a></li>
 				<?php	}
-				?>
+                ?>
 			  </ul>
 			</div>
-		  </li> -->
+		  </li> 
+		  </div>
+		   
 		  
 		  
 			<!--<ul class="nav nav-pills flex-column mb-auto">
@@ -388,6 +394,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 	
+
 	<script type="text/javascript">
 	
 		$('#myModal').on('shown.bs.modal', function () {

@@ -8,6 +8,8 @@ include 'header.php';
 $sql_report = "SELECT * FROM `reports` WHERE report_id = ".$_GET['task']."";
 $stmt = mysqli_stmt_init($conn);
 
+
+
 if(!mysqli_stmt_prepare($stmt, $sql_report)){
 	echo 'error connecting to the database report';
 }else{
@@ -65,12 +67,74 @@ if($_GET['site'] == "Create Status Report"){
 		
 		<!-- form submission based on asset -->
 		<?php
-		if('HVAC' == $row_equipment['asset']) { ?>
-			<form class="needs-validation" action="viewStatusReportHVAC.php?r_id=<?php echo $row_report['report_id'];?>&e_id=<?php echo $row_report['machine_id'];?>&site=Report%20Submitted" method="post" novalidate>
+		if('HVAC' == $row_equipment['asset']) { 
+			
+			
+			/**
+             * 
+             * IF FORM IS ALREADY COMPLETED VIEW
+             * 
+             * **/
+			if($row_report['report_status'] != 'unresolved')
+            {
+
+				$sql_readings = "SELECT * FROM `equipment_readings_aircon` WHERE report_id = '".$row_report['report_id']."'";
+				
+                
+                if(!mysqli_stmt_prepare($stmt, $sql_readings)){
+                    echo 'error connecting to database equipment_readings_aircon';
+                }else{	
+                    $result_read = mysqli_query($conn, $sql_readings);
+                    $row_equipment = mysqli_fetch_assoc($result_read);
+                }
+
+
+                ?>
+				<form class="needs-validation"  method="post" novalidate>
 				<div class="row mb-4">
 	              <div class="col-4">
 	                <label for="volt">Voltage<text style="color:red;"> *</text></label>
-	                <input type="number" class="form-control w-100" name="volt" id="volt"required>
+	                <input type="text" class="form-control w-100" name="volt" id="volt" value="<?php echo $row_equipment['volt']; ?> V" disabled>
+	                	<div class="invalid-feedback">
+							Please fill in this field
+						</div>
+	              </div>
+
+				  <div class="col-4">
+	                <label for="pressure">Pressure<text style="color:red;"> *</text></label>
+	                <input type="text" class="form-control w-100" name="pressure" id="pressure" value="<?php echo $row_equipment['pressure'] ?> psi" disabled>
+	                	<div class="invalid-feedback">
+							Please fill in this field
+						</div>
+	              </div>
+
+				  <div class="col-4">
+	                <label for="temp">Temperature<text style="color:red;"> *</text></label>
+	                <input type="text" class="form-control w-100" name="temp" id="temp" value="<?php echo $row_equipment['temp'] ?> F" disabled>
+	                	<div class="invalid-feedback">
+							Please fill in this field
+						</div>
+	              </div>
+	            </div> 
+				<?php
+            }
+
+			
+			/*
+             * 
+             * IF FORM IS NOT YET COMPLETED VIEW
+             * 
+             * **/
+			else
+            {
+               
+				?>
+
+				<form class="needs-validation" action="backend/submit_report_HVAC.p.php?r_id=<?php echo $row_report['report_id'];?>&e_id=<?php echo $row_report['machine_id'];?>" method="post" novalidate>
+				<div class="row mb-4">
+	              <div class="col-4">
+	                <label for="volt">Voltage<text style="color:red;"> *</text></label>
+	                <input type="number" class="form-control w-100" name="volt" id="volt" required>
 	                	<div class="invalid-feedback">
 							Please fill in this field
 						</div>
@@ -92,6 +156,12 @@ if($_GET['site'] == "Create Status Report"){
 						</div>
 	              </div>
 	            </div> 
+				
+				<?php
+            }
+
+			?>
+			
 		<?php }else { ?>
 			<form class="needs-validation" action="viewStatusReportGenSet.php?r_id=<?php echo $row_report['report_id'];?>&e_id=<?php echo $row_report['machine_id'];?>&site=Report%20Submitted" method="post" novalidate>
 			<div class="row mb-4">
@@ -221,17 +291,66 @@ if($_GET['site'] == "Create Status Report"){
 		
 		<!-- additional report remarks -->
 			<div class="form-group">
-				<input type="checkbox" id="for_repair" name="for_repair" value=1>
+				<input type="checkbox" id="for_repair" name="for_repair" value="1" 
+				<?php
+					if($row_report['report_status'] != 'unresolved')
+                    {
+                        if($row_equipment['for_repair']){
+                            echo 'checked ';
+                        }
+						echo 'disabled';
+                    }
+                ?>
+					   >
+
 				<label for="temp">Issue/For repair</label><br>
-				<textarea class="form-control" id="repair_remarks" name="repair_remarks" rows="3" placeholder="Describe the issue here"></textarea>
+				<textarea class="form-control" id="repair_remarks" name="repair_remarks" rows="3" placeholder="Describe the issue here"
+				
+				<?php
+					if($row_report['report_status'] != 'unresolved')
+					{
+						echo 'disabled';
+					}
+                ?>
+					  
+						  ><?php
+				if($row_report['report_status'] != 'unresolved')
+					{
+						if($row_equipment['for_repair']){
+							echo $row_equipment['repair_remarks'];
+						}
+						
+				}?></textarea>
 			</div>
             <div class="form-group">
               	<label for="comments">Other remarks</label>
-              	<textarea class="form-control" id="comments" name="other_remarks" rows="3" placeholder="Add some additional information here"></textarea>
+              	<textarea class="form-control" id="comments" name="other_remarks" rows="3" placeholder="Add some additional information here"
+						  
+				<?php
+					if($row_report['report_status'] != 'unresolved')
+					{
+						echo 'disabled';
+					}
+                ?>><?php
+    if($row_report['report_status'] != 'unresolved')
+    {
+        
+            echo $row_equipment['other_remarks'];
+        
+        
+    }?></textarea>
             </div>
 		
-		<button class="btn btn-primary mb-2" type="submit" name="submit">Submit</button>
-		<button type="reset" class="btn btn-danger mb-2" onclick="alert('Are you sure you want to reset?')">Reset</button>
+		<?php
+			if($row_report['report_status'] == 'unresolved')
+			{
+			?>
+			<button class="btn btn-primary mb-2" type="submit" name="submit">Submit</button>
+			<button type="reset" class="btn btn-danger mb-2" onclick="alert('Are you sure you want to reset?')">Reset</button>
+				<?php
+			}
+        ?>
+		
 		</form>
 
 		

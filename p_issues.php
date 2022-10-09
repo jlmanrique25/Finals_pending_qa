@@ -84,8 +84,6 @@
 		paging: {
           results_per_page: ['Records: ', [10, 25, 50, 100]]
         },
-		col_2: 'select',
-		col_5: 'select',
 		alternate_rows: true,
 		rows_counter: true,
 		sticky_headers: true,
@@ -103,6 +101,14 @@
 					'string'],
 		watermark: ['(e.g. Not functioning)', '(e.g. Generator Set 1)', '', '(e.g. >2022-01-01)', '(e.g. >2022-01-01)'],
 		responsive: true,
+    		auto_filter: {
+            delay: 1000 //milliseconds
+		},
+		single_filter: true,
+    		auto_filter: {
+            delay: 1000 //milliseconds
+		},
+		single_filter: true,
 		msg_filter: 'Filtering...',
         extensions:[{ name: 'sort' }]
 

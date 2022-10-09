@@ -57,6 +57,8 @@ if(isset($_POST['submit']))
 		exit();
 	}else{
 		$result = mysqli_query($conn,$sql);
+        header('Location:../createStatusReport.php?task='.$r_id.'&e='.$e_id.'&site=Create%20Status%20Report');
+		exit();
     }
 }
 ?>

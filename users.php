@@ -57,6 +57,10 @@
 		
 		watermark: ['(e.g. Christian Paul Duria)', '(e.g. crduria@email.com)', '', ''],
 		msg_filter: 'Filtering...',
+    		auto_filter: {
+            delay: 1000 //milliseconds
+		},
+		single_filter: true,
         extensions:[{ name: 'sort' }]
 	};
 

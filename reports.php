@@ -4,6 +4,10 @@
 			display: flex;
 			align-items: baseline;
 		}
+		/*.TF caption {
+		  caption-side: top;
+		  padding: 0;
+		}*/
 	</style>
 	<title>Reports</title>
 	<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
@@ -28,8 +32,8 @@
     </h2>
     <i class="bi bi-info-circle-fill"></i>
     <br />
-	<table  id="reports_table">
-	  <thead class="thead-dark">
+	<table  id="reports_table" >
+	  <thead >
 		<tr>
 		  <th scope="col">Task</th>
 		  <th scope="col">Equipment</th>
@@ -60,7 +64,7 @@
 
 		<?php 
 			//include 'backend/dropdown_filters.p.php'
-		?>
+        ?>
 
 	  </tbody>
 	</table>
@@ -73,22 +77,6 @@
 	var filtersConfig = {
 		base_path: 'tablefilter/',
 		responsive: true,
-		paging: {
-          results_per_page: ['Records: ', [10, 25, 50, 100]]
-        },
-		col_2: 'select',
-		col_4: 'select',
-		col_7: 'select',
-		col_8: 'select',
-		alternate_rows: true,
-		rows_counter: true,
-		sticky_headers: true,
-		btn_reset: true,
-		loader: true,
-		status_bar: true,
-		mark_active_columns: true,
-		highlight_keywords: true,
-
 		col_types: ['string',
 					'string',
 					'string',
@@ -99,9 +87,26 @@
 					'string',
 					'string'
 		],
+		paging: {
+          results_per_page: ['Records: ', [10, 25, 50, 100]]
+		},
+		
+		alternate_rows: true,
+		rows_counter: true,
+		btn_reset: true,
+		loader: true,
+		status_bar: true,
+		mark_active_columns: true,
+		highlight_keywords: true,
+
 		watermark: ['(e.g. Not functioning)', '(e.g. Generator Set 1)', '', '404-A', '','(e.g. >2022-01-01)', '(e.g. >2022-01-01)', '',''],
 		msg_filter: 'Filtering...',
-        extensions:[{ name: 'sort' }]
+		extensions: [{ name: 'sort' }],
+		auto_filter: {
+            delay: 1000 //milliseconds
+        },
+		single_filter: true
+		
 	};
 
 	var tf = new TableFilter('reports_table', filtersConfig);

@@ -7,6 +7,11 @@
         -moz-user-select: none;
         user-select: none;
       }
+.TF caption {
+	caption-side: top;
+	padding: 0;
+}
+
 	
 	#three-bars{
 			font-size: 1vw;
@@ -59,15 +64,10 @@
 		  border-radius: 0;
 		}
 		.dropdown-toggle { outline: 0; }
-		z
-		
-	/** END OF DESIGN OF HEADER AND SIDEBAR **/
-
-
-
-	/** DESIGN FOR THE HEADER OF THE WEBSITE IF VIEWED IN THE COMPUTER **/
-
-	/*.wrapper {
+z
+/** END OF DESIGN OF HEADER AND SIDEBAR **/
+/** DESIGN FOR THE HEADER OF THE WEBSITE IF VIEWED IN THE COMPUTER **/
+/*.wrapper {
 		display: flex;
 		width: 100%;
 	}
@@ -132,7 +132,6 @@
 	right: 20px;
 	transform: translateY(-50%);
 	}*/
-
 /*ul ul a {
 	font-size: 0.9em !important;
 	padding-left: 30px !important;
@@ -151,7 +150,6 @@ ul.CTAs {
 		margin-bottom: 5px;
 	}
 */
-
 /*a.download {
 	background: #fff;
 	color: #7386D5;
@@ -184,16 +182,8 @@ a.article:hover {
 		border-bottom: 1px dashed #ddd;
 		margin: 40px 0;
 	}*/
-
-	/** END OF DESIGN OF HEADER**/
+/** END OF DESIGN OF HEADER**/
 	
-	
-
-	 .TF.sticky th {
-        /* override to position sticky headers underneath page header element */
-        top: 51px !important;
-    }
-
 	.wrapper {
 		display: flex;
 		width: 100%;

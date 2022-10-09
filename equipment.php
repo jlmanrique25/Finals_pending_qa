@@ -50,10 +50,7 @@
 		paging: {
           results_per_page: ['Records: ', [10, 25, 50, 100]]
         },
-		col_1: 'select',
-		col_2: 'select',
-		col_5: 'select',
-		col_6: 'select',
+        single_filter: true,
 		alternate_rows: true,
 		rows_counter: true,
 		sticky_headers: true,
@@ -73,6 +70,9 @@
 		],
 		watermark: ['(e.g. Generator Set I)', '(e.g. HVAC, Genset)', '', '404-A', '(e.g. >2022-01-01)', '', ''],
 		msg_filter: 'Filtering...',
+    		auto_filter: {
+            delay: 1000 //milliseconds
+        },
         extensions:[{ name: 'sort' }]
 	};
 

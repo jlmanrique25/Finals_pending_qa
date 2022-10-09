@@ -17,10 +17,10 @@
 	$stmt = mysqli_stmt_init($conn);
 
 	if(!mysqli_stmt_prepare($stmt, $sql_monitor)){
-	echo 'error connecting to the database equipment monitoring';
+		echo 'error connecting to the database equipment monitoring';
 	}else{
-	$result_monitor = mysqli_query($conn, $sql_monitor);
-	$row_monitor = mysqli_fetch_assoc($result_monitor);
+		$result_monitor = mysqli_query($conn, $sql_monitor);
+		$row_monitor = mysqli_fetch_assoc($result_monitor);
 	}
 
 	//determine abnormal readings

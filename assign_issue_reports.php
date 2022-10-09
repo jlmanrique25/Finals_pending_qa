@@ -116,6 +116,10 @@
         ],
 		watermark: ['(e.g. Not functioning)', '(e.g. Generator Set 1)', '', '(e.g. >2022-01-01)', '(e.g. >2022-01-01)', '(e.g. >2022-01-01)',],
 		msg_filter: 'Filtering...',
+		auto_filter: {
+            delay: 1000 //milliseconds
+		},
+		single_filter: true,
         extensions:[{ name: 'sort' }]
 	};
 	/** var tf = new TableFilter(document.querySelector('.table'), tfConfig);*/

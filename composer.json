@@ -1,5 +1,6 @@
 {
     "require": {
-        "yidas/pagination": "^1.0"
+        "yidas/pagination": "^1.0",
+        "guzzlehttp/guzzle": "^7.5"
     }
 }
