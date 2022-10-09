@@ -71,7 +71,7 @@ if(isset($_POST['submit']))
         mysqli_stmt_execute($stmt);
 
         //email properties
-        $e_subject = "ANOMALY DETECTED OF REPORT";
+        $e_subject = "ANOMALY DETECTED OF REPORT: ".$row_report["task"]."";
         $e_body = '<h3>WARNING ABNORMAL READING OF EQUIPMENT</h3>Abnormal reading of temperature on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br><h3>User report</h3>'.$repair_remarks.'';
 
         //insert guzzler mailer
@@ -155,7 +155,7 @@ if(isset($_POST['submit']))
         mysqli_stmt_execute($stmt);
 
         //email properties
-        $e_subject = "ANOMALY DETECTED OF REPORT";
+        $e_subject = "ANOMALY DETECTED OF REPORT: ".$row_report["task"]."";
         $e_body = '<h3>WARNING ABNORMAL READING OF EQUIPMENT</h3>Abnormal reading of temperature on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'';
 
         //insert guzzler mailer
