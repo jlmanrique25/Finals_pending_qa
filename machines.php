@@ -1,7 +1,4 @@
-<head>
-    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
-    <script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
-</head>
+
 <?php
 	session_start();
 	include 'header.php';
@@ -24,6 +21,7 @@
 			$result_loc = mysqli_query($conn, $sql_location);
 			$row_loc = mysqli_fetch_assoc($result_loc);
 			?>
+
 	<div class="container-fluid py-4 overflow-hidden">
 
 	<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back"> <br><br>
@@ -233,3 +231,5 @@
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>

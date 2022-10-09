@@ -162,8 +162,113 @@ if($_GET['site'] == "Create Status Report"){
 
 			?>
 			
-		<?php }else { ?>
-			<form class="needs-validation" action="viewStatusReportGenSet.php?r_id=<?php echo $row_report['report_id'];?>&e_id=<?php echo $row_report['machine_id'];?>&site=Report%20Submitted" method="post" novalidate>
+		<?php }else { 
+
+			//IF REPORT IS FOR VIEWING ONLY
+			if($row_report['report_status'] != 'unresolved')
+            {
+				//getting the readings of specific record
+				$sql_readings = "SELECT * FROM `equipment_readings_genset` WHERE report_id = '".$row_report['report_id']."'";
+	
+				if(!mysqli_stmt_prepare($stmt, $sql_readings)){
+					echo 'error connecting to database equipment_readings_genset';
+				}else{	
+					$result_genset = mysqli_query($conn, $sql_readings);
+					$row_equipment = mysqli_fetch_assoc($result_genset);
+				}
+                ?>
+				
+				<div class="row mb-4">
+				  <label for="Voltage">Voltage</label>
+	              <div class="col-4">
+	                <input type="number" class="form-control w-100" name="v1" id="voltage_line_1" placeholder="Line 1: <?php echo $row_equipment['voltage_line_1'] ?> V" disabled>
+	              </div>
+				  <div class="col-4">
+				  <input type="number" class="form-control w-100" name="v2" id="voltage_line_2" placeholder="Line 2: <?php echo $row_equipment['voltage_line_2'] ?> V" disabled>
+	              </div>
+				  <div class="col-4">
+				  <input type="number" class="form-control w-100" name="v3" id="voltage_line_3" placeholder="Line 3: <?php echo $row_equipment['voltage_line_3'] ?> V" disabled>
+	              </div>
+	            </div>
+				<br>
+				<div class="row mb-4">
+				  <label for="Current">Current</label>
+	              <div class="col-4">
+	                <input type="number" class="form-control w-100" name="c1" id="current_line_1" placeholder="Line 1: <?php echo $row_equipment['current_line_1'] ?> A" disabled>
+	              </div>
+				  <div class="col-4">
+				  <input type="number" class="form-control w-100" name="c2" id="current_line_2" placeholder="Line 2: <?php echo $row_equipment['current_line_2'] ?> A" disabled>
+	              </div>
+				  <div class="col-4">
+				  <input type="number" class="form-control w-100" name="c3" id="current_line_3" placeholder="Line 3: <?php echo $row_equipment['current_line_3'] ?> A" disabled>
+	              </div>
+	            </div>
+				<br>
+				<div class="row mb-4">
+	              <div class="col-4">
+				    <label for="frequency">Frequency</label>
+	                <input type="number" class="form-control w-100" name="frequency" id="frequency" placeholder="<?php echo $row_equipment['frequency'] ?> hz" disabled>
+	              </div>
+				  <div class="col-4">
+				    <label for="battery_voltage">Battery Voltage</label>
+	                <input type="number" class="form-control w-100" name="battery_voltage" id="battery_voltage" placeholder="<?php echo $row_equipment['battery_voltage'] ?> V" disabled>
+	              </div>
+				  <div class="col-4">
+				  <label for="running_hours">Running Hours</label>
+				  <input type="number" class="form-control w-100" name="running_hours" id="running_hours" placeholder=" <?php echo $row_equipment['running_hours'] ?> h" disabled>
+	              </div>
+	            </div>
+				<br>
+				<div class="row mb-4">
+	              <div class="col-6">
+				    <label for="oil_pressure">Oil Pressure</label>
+	                <input type="number" class="form-control w-100" name="oil_pressure" id="oil_pressure" placeholder="<?php echo $row_equipment['oil_pressure'] ?> psi" disabled>
+	              </div>
+				  <div class="col-6">
+				  <label for="oil_temperature">Oil Temperature</label>
+				  <input type="number" class="form-control w-100" name="oil_temperature" id="oil_temperature" placeholder="<?php echo $row_equipment['oil_temperature'] ?> F" disabled>
+	              </div>
+	            </div>
+				<br>
+				<div class="row mb-4">
+				  <div class="col-6">
+				    <label for="rotation">Frequency of Rotation</label>
+	                <input type="number" class="form-control w-100" name="rotation" id="rotation" placeholder="<?php echo $row_equipment['rotation'] ?> rpm" disabled>
+	              </div>
+	              <div class="col-6">
+				    <label for="fuel_level">Fuel Level</label>
+	                <input type="number" class="form-control w-100" name="fuel_level" id="fuel_level" placeholder="<?php echo $row_equipment['fuel_level'] ?> L" disabled>
+	              </div>
+	            </div>
+				<br>
+				<div class="row mb-4">
+					<div class="col-12">
+				  	<input type="checkbox" name="abnormal_sound" id="abnormal_sound"
+					<?php if ($row_equipment['abnormal_sound'] == 1) { ?>
+        			checked
+    				<?php }?> disabled/>
+					<label>Any abnormal sounds?</label>
+					</div>
+				</div>
+				<div class="row mb-4">
+					<div class="col-12">
+				  	<input type="checkbox" name="gas_leak" id="gas_leak"
+					<?php if ($row_equipment['gas_leak'] == 1) { ?>
+        			checked
+    				<?php }?> disabled/>
+					<label>Gas leak?</label>
+					</div>
+				</div>
+				<br>
+
+				<?php
+            }
+
+			//IF REPORT IS NOT YET ACCOMPLISHED
+			else
+            {
+                ?>
+				<form class="needs-validation" action="backend/submit_report_Genset.p.php?r_id=<?php echo $row_report['report_id'];?>&e_id=<?php echo $row_report['machine_id'];?>&site=Report%20Submitted" method="post" novalidate>
 			<div class="row mb-4">
 				  <label for="Voltage">Voltage<text style="color:red;"> *</text></label>
 	              <div class="col-4">
@@ -286,6 +391,12 @@ if($_GET['site'] == "Create Status Report"){
 					<label>Gas leak?</label>
 					</div>
 				</div>
+
+				<?php
+            }
+			
+			?>
+			
 		<?php } ?>
 		<br>
 		
