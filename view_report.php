@@ -113,7 +113,7 @@ include 'backend/view_report.p.php';
 			</div>
 			<div class="form-group">
 				<label for="formGroupExampleInput2">Due date <text style="color:red;"> *</text></label>
-				<input type="datetime-local" class="form-control" name="dueDate" value="<?php echo $row_r['task_due'];?>" required <?php if ($row_r['report_status'] == "done"){
+				<input type="date" class="form-control" min="<?php echo date('Y-m-d')?>" name="dueDate" value="<?php echo $row_r['task_due'];?>" required <?php if ($row_r['report_status'] == "done"){
                                                                                                         echo 'disabled';
                                                                                                     }?>>
 				<div class="invalid-feedback">

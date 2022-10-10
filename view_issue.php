@@ -107,7 +107,7 @@ $row_u = mysqli_fetch_assoc($result_u);
 			</div>
 			<div class="form-group">
 				<label for="formGroupExampleInput2">Due date <text style="color:red;"> *</text></label>
-				<input type="date" class="form-control" name="dueDate" value="<?php echo $row_i['date_due'];?>" required <?php if ($row_i['issue_status'] == 1){
+				<input type="date" class="form-control" name="dueDate" min="<?php echo date('Y-m-d')?>" value="<?php echo $row_i['date_due'];?>" required <?php if ($row_i['issue_status'] == 1){
                                                                                                         echo 'disabled';
                                                                                                     }?>>
 				<div class="invalid-feedback">

@@ -31,6 +31,7 @@
 		
 	<br /><br />
         <div class="info"><?php
+				//if user wants to create a new issue
 				if(!isset($_GET['edit'])){
 					?>
 					<form class="needs-validation" action="backend/create_issue.p.php" method="post" novalidate>
@@ -117,12 +118,12 @@
 										  <option value="">--</option>
 											<?php
 											include 'backend/get_admin.p.php';
-											?>
+                                            ?>
 									  </select>
 								</div>
 								<div class="form-group">
 									<label for="formGroupExampleInput2">Due date of the Issue<text style="color:red;"> *</text></label>
-									<input type="date" class="form-control" name="dueDate" required>
+									<input type="date" class="form-control" min="<?php echo date('Y-m-d')?>" name="dueDate" required>
 								</div> 
 								<?php
 							}
@@ -139,7 +140,9 @@
 		?>
 					
 					<?php
-				}else if($_GET['edit'] = 'true' && isset($_GET['id'])){
+				}
+				//editing the task values
+				else if($_GET['edit'] = 'true' && isset($_GET['id'])){
 					$sql = "select * from `issue`, equipment, `location`  where issue_id = ".$_GET['id']." AND equipment.equipment_id = issue.machine_id AND equipment.location_id = location.location_id";
 					$stmt = mysqli_stmt_init($conn);
 					
@@ -220,7 +223,7 @@
 								</div>
 								<div class="form-group">
 									<label for="formGroupExampleInput2">Due date & time <text style="color:red;"> *</label>
-									<input type="date" class="form-control" name="dueDate" required>
+									<input type="date" class="form-control"  name="dueDate" required>
 								</div> 
 								
 								<?php
@@ -241,6 +244,7 @@
 
 
 				<?php 
+	//once user has submitted the issue
     if(isset($_GET['status']) && $_GET['status'] == 'submitted')
     {
                 ?>
@@ -266,6 +270,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
     <?php
+
+	//once user has undoed the submission of the issue
 	} else if(isset($_GET['status']) && $_GET['status'] == 'undo'){
     ?>
             <div class="alert alert-warning alert-dismissible fade show" role="alert">

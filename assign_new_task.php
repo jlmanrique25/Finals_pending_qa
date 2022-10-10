@@ -124,11 +124,11 @@
 							 </div>
 							<?php
 								}
-							?>
+                            ?>
 						</div>
 						<div class="form-group">
 							<label for="formGroupExampleInput2">Due date <text style="color:red;"> *</text></label>
-							<input type="date" class="form-control" name="dueDate" required>
+							<input type="date" class="form-control" min="<?php echo date('Y-m-d')?>" name="dueDate" required>
 							<div class="invalid-feedback">
 								Please fill in this field
 							 </div>
