@@ -53,7 +53,7 @@
 		<nav id="navbar-example2" class="navbar navbar-dark flex-row .d-none .d-md-block .d-lg-none" style="background-color: rgba(34, 18, 119, 1);">
 		  <ul class="nav nav-pills">
 		  	 <li class="nav-item dropdown">
-		      <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#" id="dropdownMenuLinkuser" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user" aria-hidden="true"></i><span class="badge badge-pill badge-danger"><?php 
+		      <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#" id="dropdownMenuLinkuser" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['username'];?><i class="fas fa-user" aria-hidden="true"></i><span class="badge badge-pill badge-danger"><?php 
 					
 					include 'backend/count_task_assigned_admin.p.php';
 					

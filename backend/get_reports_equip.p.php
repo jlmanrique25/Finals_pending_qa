@@ -34,7 +34,7 @@
 			if(isset($_GET['t']) && $_GET['t'] == 'reports'){
 				while($row = mysqli_fetch_array($result)){
 				?>
-				<tr role="button" data-href="index.php?page=1&site=Dashboard">
+				<tr role="button" data-href="#">
 					<td><?php echo $row['task'];?></td>
 					<td><?php echo $row['report_status'];?></td>
 					<td><?php echo $row['date_created'];?></td>
@@ -65,7 +65,7 @@
 			}else if(isset($_GET['t']) && $_GET['t'] == 'issues'){
 				while($row = mysqli_fetch_array($result)){
 				?>
-				<tr role="button" data-href="index.php?page=1&site=Dashboard">
+				<tr role="button" data-href="#">
 					<td><?php echo $row['issue'];?></td>
 					<td><?php if($row['issue_status'] == 0){
 						echo 'Not resolved';
