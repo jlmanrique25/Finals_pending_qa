@@ -46,6 +46,7 @@
 
 		  <?php
         if($_SESSION['role'] == "Head" || $_SESSION['role'] == "Admin"){
+         
           ?>
 		  <div class="d-none d-sm-block">
 

@@ -40,7 +40,7 @@
 		  <th scope="col">Floor</th>
 		  <th scope="col">Room Number</i></th>
 		  <th scope="col">Report Status</th>
-		 <th scope="col">Date Created</th>
+		  <th scope="col">Date Created</th>
 		  <th scope="col">Date Submitted</th>
 		  <th scope="col">For Repair</th>
 		  <th scope="col">Assignee</th>
