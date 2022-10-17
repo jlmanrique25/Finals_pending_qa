@@ -24,8 +24,8 @@ include 'backend/edit_equipment.p.php';
 	<input type="button" class="btn btn-secondary" onclick="document.location.href='/Finals_pending/equipment.php?site=Equipment&page=1'" value="<< Back"><br><br>
 
         <div class="info">
-					<form class="needs-validation" action="backend/update_equipment.p.php?id=<?php echo $_GET['id'];?>" method="post" novalidate>
-						<h2>Equipment Details for</h2>
+					<form class="needs-validation" action="backend/update_equipment.p.php?id=<?php echo $_GET['e_id'];?>" method="post" novalidate>
+						<h2>Equipment Details</h2>
 						<hr class="rounded">
 
 						<?php
