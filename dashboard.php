@@ -18,7 +18,7 @@
 						<p class="display-3  font-weight-bold"><?php include 'backend/count_new_issues.p.php';?></p>
 						<div class=" text-left">
 							<h4 class="mb-0 text-uppercase">new issues</h6>
-							<p class="mb-0 text-light">The total number of new unresolved or unassigned issues of the day</p>
+							<p class="mb-0 text-light">The total number of unassigned issues</p>
 						</div>
 						
 					</a>
@@ -40,7 +40,7 @@
 						<p class="display-3  font-weight-bold"><?php include 'backend/count_overdue_issues.p.php';?></p>
 						<div class=" text-left">
 							<h4 class="mb-0 text-uppercase">overdue issues</h6>
-							<p class="mb-0 text-light">The total number of overdue unresolved issues</p>
+							<p class="mb-0 text-light">The total number of overdue issues</p>
 						</div>
 						
 					</a>
@@ -81,7 +81,7 @@
 						</p>
 						<div class=" text-left">
 							<h4 class="mb-0 text-uppercase">Overdue tasks</h6>
-							<p class="mb-0 text-light">Total number of overdue unresolved tasks</p>
+							<p class="mb-0 text-light">Total number of overdue tasks</p>
 						</div>
 					</a>
 				</div>

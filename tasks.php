@@ -79,7 +79,8 @@
                     <th scope="col">Status</th>
                     <?php
 				}
-				else if($_SESSION['role'] == "Admin"){
+				else if($_SESSION['role'] == "Admin")
+                {
                     if($_GET['site'] == 'task reports'){
                     ?>
 

@@ -10,6 +10,6 @@
 		include 'header.php';
 		include 'dashboard.php';
 	}else if($_SESSION['role'] == "Technician"){
-		include 'tasks.php';
+		include 'tech_tasks_table.php';
 	}
 ?>
