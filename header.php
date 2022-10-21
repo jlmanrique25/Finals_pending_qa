@@ -121,20 +121,18 @@
 		  	 	<a class="navbar-brand" style="color: white;"><?php echo $_SESSION['username'];?></a>
 		      <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#" id="dropdownMenuLinkuser" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user" aria-hidden="true"></i><span class="badge badge-pill badge-danger"><?php 
 					
-					include 'backend/count_task_assigned_admin.p.php';
+					include 'backend/count_task_assigned_technician.p.php';
 					
                                                                                                                                                                                                                                          ?></span></a>
 		      <div class="dropdown-menu" aria-labelledby="dropdownMenuLinkuser">
 		        <a href="<?php 
-					if($_SESSION['role'] == 'Head'){
-                        echo 'head_tasks_table.php?site=Unresolved%20Issues&page=1';
-                    }else{
-                        echo 'admin_issues_table.php?site=Unresolved%20Issues&table=unresolved';
+					if($_SESSION['role'] == 'Technician'){
+                        echo 'index.php?role=Technician&site=Tasks&page=1';
                     }
 				   ?>
 				   " class="dropdown-item">My Tasks <span class="badge badge-danger"><?php 
 					
-					include 'backend/count_task_assigned_admin.p.php';
+					include 'backend/count_task_assigned_technician.p.php';
 					
 				?></span></a>
 				<?php if($_SESSION['role'] == "Head"){?>
