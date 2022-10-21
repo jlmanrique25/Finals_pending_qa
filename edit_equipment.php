@@ -135,6 +135,19 @@ include 'backend/edit_equipment.p.php';
 								    </div>
 								</div>
 								</div>
+								<br>
+								<div class="row">
+								<div class="col">
+									<label>Is the equipment currently operating? <text style="color:red;"> *</text></label>
+									<select class="form-control" name="operating" required value=">
+										<option value="<?php echo $row_l['room_classification'];?>">value="<?php echo $row_l['room_classification'];?>"</option>
+										<option value="1">Yes, it is currently operating</option>
+										<option value="0">No, it is not operating</option>
+									</select>
+									<div class="invalid-feedback">
+								      Please choose from the list
+								    </div>
+								</div>
 							</div><br>
 						</div>
 
