@@ -20,7 +20,7 @@
 				  <span aria-hidden="true">&times;</span>
 				</button>
 			  </div>
-			<div class="modal-body" id="change_user">
+			<div class="modal-body" id="archive_equipment">
 				Are you sure you want to archive equipment <strong><?php echo $row['equipment_name'];?> ?</strong> 	
 			</div>
 			<div class="modal-footer">

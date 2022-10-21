@@ -53,8 +53,10 @@
 		  
 		<nav id="navbar-example2" class="navbar navbar-dark flex-row .d-none .d-md-block .d-lg-none" style="background-color: rgba(34, 18, 119, 1);">
 		  <ul class="nav nav-pills">
+		  	<li class="nav-item"></li>
 		  	 <li class="nav-item dropdown">
-		      <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#" id="dropdownMenuLinkuser" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['username'];?><i class="fas fa-user" aria-hidden="true"></i><span class="badge badge-pill badge-danger"><?php 
+		  	 	<a class="navbar-brand" style="color: white;"><?php echo $_SESSION['username'];?></a>
+		      <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#" id="dropdownMenuLinkuser" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user" aria-hidden="true"></i><span class="badge badge-pill badge-danger"><?php 
 					
 					include 'backend/count_task_assigned_admin.p.php';
 					
@@ -84,21 +86,77 @@
 		        <a class="dropdown-item" href="backend/logout.p.php">Sign out</a>
 		      </div>
 		    </li>
-			  
-		    <li class="nav-item">
-		      <a class="navbar-brand" href="assign_new_task.php?site=Assign%20new%20task" title="New Task Report"><i class="fa fa-tasks" aria-hidden="true"></i></a>
-		    </li>
-		    <li class="nav-item">
-		      <a class="navbar-brand" href="assign_issue.php?site=Create%20Issue%20Report" title="New Issue Report"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>
-		    </li>
-		    <li class="nav-item">
-		      <a class="navbar-brand" href="add_new_equipment.php?site=Add%20New%20Equipment" title="Add New Equipment"><i class="fa fa-plus" aria-hidden="true"></i></a>
+		  </ul>
+
+		<ul class="nav nav-pills text-center flex-row" >
+			<li class="nav-item mr-3 d-none d-lg-block">
+				<a class="navbar-brand" href="assign_new_task.php?site=Assign%20new%20task" title="New Task Report"><i class="fa fa-tasks" aria-hidden="true"></i></a>
+			</li>
+			<li class="nav-item mr-3 d-none d-lg-block">
+				<a class="navbar-brand" href="assign_issue.php?site=Create%20Issue%20Report" title="New Issue Report"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>
+			</li>
+			<li class="nav-item  d-none d-lg-block">
+				<a class="navbar-brand" href="add_new_equipment.php?site=Add%20New%20Equipment"><i class="fa fa-plus" aria-hidden="true" title="Add New Equipment"></i></a>
+			</li>
+		</ul>
+		</nav>
+			  </div>
+		
+		<?php
+        }
+			 ?>
+
+		<?php
+        if($_SESSION['role'] == "Technician"){
+         
+          ?>
+
+		  <div class="d-none d-sm-block">
+
+		  
+		<nav id="navbar-example2" class="navbar navbar-dark flex-row .d-none .d-md-block .d-lg-none" style="background-color: rgba(34, 18, 119, 1);">
+		  <ul class="nav nav-pills">
+		  	<li class="nav-item"></li>
+		  	 <li class="nav-item dropdown">
+		  	 	<a class="navbar-brand" style="color: white;"><?php echo $_SESSION['username'];?></a>
+		      <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#" id="dropdownMenuLinkuser" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user" aria-hidden="true"></i><span class="badge badge-pill badge-danger"><?php 
+					
+					include 'backend/count_task_assigned_admin.p.php';
+					
+                                                                                                                                                                                                                                         ?></span></a>
+		      <div class="dropdown-menu" aria-labelledby="dropdownMenuLinkuser">
+		        <a href="<?php 
+					if($_SESSION['role'] == 'Head'){
+                        echo 'head_tasks_table.php?site=Unresolved%20Issues&page=1';
+                    }else{
+                        echo 'admin_issues_table.php?site=Unresolved%20Issues&table=unresolved';
+                    }
+				   ?>
+				   " class="dropdown-item">My Tasks <span class="badge badge-danger"><?php 
+					
+					include 'backend/count_task_assigned_admin.p.php';
+					
+				?></span></a>
+				<?php if($_SESSION['role'] == "Head"){?>
+				<a href="assign_issue_reports.php?site=Unassigned%20Reports&page=1" class="dropdown-item">Assign Issue Report</a>
+				<?php	}
+                ?>
+				<?php if($_SESSION['role'] == "Head"){?>
+				<a href="users.php?site=Users&page=1" class="dropdown-item">Manage Users</a>
+				<?php	}
+                ?>
+		        <div role="separator" class="dropdown-divider"></div>
+		        <a class="dropdown-item" href="backend/logout.p.php">Sign out</a>
+		      </div>
 		    </li>
 		  </ul>
 		</nav>
 			  </div>
 		
-		<?php
+
+
+
+        <?php
         }
 			 ?>
 		

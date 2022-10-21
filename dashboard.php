@@ -13,8 +13,8 @@
 		  ?></h4>
 			<div class="row mb-2">
 				<div class="col text-light p-2">
-					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="n_issues.php?site=New%20Issues&page=1" role="button"
-					style="margin-bottom:4px;white-space: normal;">
+					<a class="container btn btn-warning rounded-3 d-flex gap-3 p-4" href="n_issues.php?site=New%20Issues&page=1" role="button"
+					style="margin-bottom:4px;white-space: normal; color: white;">
 						<p class="display-3  font-weight-bold"><?php include 'backend/count_new_issues.p.php';?></p>
 						<div class=" text-left">
 							<h4 class="mb-0 text-uppercase">new issues</h6>
@@ -24,8 +24,8 @@
 					</a>
 				</div>
 				<div class="col text-light p-2">
-					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="p_issues.php?site=Pending%20Issues&page=1" role="button"
-					style="margin-bottom:4px;white-space: normal;">
+					<a class="container btn btn-warning rounded-3 d-flex gap-3 p-4" href="p_issues.php?site=Pending%20Issues&page=1" role="button"
+					style="margin-bottom:4px;white-space: normal; background-color: #fd7e14; color: white;">
 						<p class="display-3  font-weight-bold"><?php include 'backend/count_issues.p.php';?></p>
 						<div class=" text-left">
 							<h4 class="mb-0 text-uppercase">pending issues</h6>
@@ -35,7 +35,7 @@
 					</a>
 				</div>
 				<div class="col text-light p-2">
-					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="o_issues.php?site=Overdue%20Issues&page=1" role="button"
+					<a class="container btn btn-danger rounded-3 d-flex gap-3 p-4" href="o_issues.php?site=Overdue%20Issues&page=1" role="button"
 					style="margin-bottom:4px;white-space: normal;">
 						<p class="display-3  font-weight-bold"><?php include 'backend/count_overdue_issues.p.php';?></p>
 						<div class=" text-left">
@@ -49,7 +49,7 @@
 			</div>
 			<div class="row">
 				<div class="col text-light p-2">
-					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="i_users.php?site=Available%20Staff&page=1" role="button"
+					<a class="container btn btn-success rounded-3 d-flex gap-3 p-4" href="i_users.php?site=Available%20Staff&page=1" role="button"
 					style="margin-bottom:4px;white-space: normal;">
 						<p class="display-3  font-weight-bold"><?php
 							include 'backend/idle_users.p.php';
@@ -61,8 +61,8 @@
 					</a>
 				</div>
 				<div class="col text-light p-2">
-					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="u_tasks.php?site=Pending%20Tasks&page=1" role="button"
-					style="margin-bottom:4px;white-space: normal;">
+					<a class="container btn btn-warning rounded-3 d-flex gap-3 p-4" href="u_tasks.php?site=Pending%20Tasks&page=1" role="button"
+					style="margin-bottom:4px;white-space: normal; background-color: #fd7e14; color: white;">
 						<p class="display-3  font-weight-bold"><?php 
 							include 'backend/count_unfinished.p.php';
 						?></p>
@@ -73,7 +73,7 @@
 					</a>
 				</div>
 				<div class="col text-light p-2">
-					<a class="container btn btn-primary rounded-3 d-flex gap-3 p-4" href="o_tasks.php?site=Overdue%20Tasks&page=1" role="button"
+					<a class="container btn btn-danger rounded-3 d-flex gap-3 p-4" href="o_tasks.php?site=Overdue%20Tasks&page=1" role="button"
 					style="margin-bottom:4px; white-space: normal;">
 						<p class="display-3 font-weight-bold"><?php
 							include 'backend/count_equipment_issues.p.php';
