@@ -26,41 +26,15 @@
 				  <td><?php echo $row['date_of_purchase'];?></td>
 				  <td><?php echo $row['condition'];?></td>
 				  <td><?php 
-					if($row['operating'] == 0){
-						echo 'out of commission'; 
+					if($row['operating'] == 1){
+						echo 'operating'; 
 					}else{
-						echo 'operating';
+						echo 'not operating';
 					}?></td>
 					<td><a href="machines.php?page=1&site=Equipment Information&e_id=<?php echo $row['equipment_id'];?>&t=reports" class="btn btn-info">View equipment</a></td>
-					<td><a class="btn btn-secondary get_id" data-toggle="modal" href="backend/archive_equipment.p.php?page=1&site=Equipment&e_id=<?php echo $row['equipment_id'];?>" data-target="#<?php echo $row['equipment_id'];?>" > Archive Equipment</a></td>
 				</tr>
 
-				<div class="modal fade" id="<?php echo $row['equipment_id'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				  <div class="modal-dialog" role="document">
-					<div class="modal-content">
-					  <div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Archive Equipment</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						  <span aria-hidden="true">&times;</span>
-						</button>
-					  </div>
-					  <div class="modal-body">
-						Are you sure you want to 
-						<?php
-							if($row['operating'] == '1'){
-								echo 'Archive equipment?';
-							}else{
-								echo 'Unarchive equipment?';
-							}
-						?>?  <strong><?php echo $row['equipment_name'];?> ?</strong> 
-					  </div>
-					  <div class="modal-footer">
-						<button type="button" class="btn btn-danger " data-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
-						<a href ="backend/archive_equipment.p.php?equipmentid=<?php echo $row['equipment_id'];?>&role=<?php echo $row['operating'];?>" role="button" class="btn btn-primary"><i class="fas fa-check"></i> Archive</a></td>
-					  </div>
-					</div>
-				  </div>
-				</div>
+
 			<?php
 			}
 		}else{
