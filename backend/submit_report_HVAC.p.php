@@ -71,8 +71,15 @@ if(isset($_POST['submit']))
         mysqli_stmt_execute($stmt);
 
         //email properties
+        $sql_id= "SELECT `AUTO_INCREMENT`
+                    FROM  INFORMATION_SCHEMA.TABLES
+                    WHERE TABLE_SCHEMA = 'DatabaseName'
+                    AND   TABLE_NAME   = 'TableName'";
+        $results_id = mysqli_query($conn, $sql_id);
+        $row_id = mysqli_fetch_array($results_id);
+
         $e_subject = "ANOMALY DETECTED OF REPORT: ".$row_report["task"]."";
-        $e_body = '<h3>WARNING ABNORMAL READING OF EQUIPMENT</h3>Abnormal reading of temperature on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br><h3>User report</h3>'.$repair_remarks.'';
+        $e_body = '<h3>WARNING ABNORMAL READING OF EQUIPMENT</h3>Abnormal reading of temperature on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.' <a href="http://localhost:8080/Finals_pending/assign_new_issue.php?site=Assign%20New%20Issue&id='.$row_id['id'].'">you can check out the report here</a><br><h3>User report</h3>'.$repair_remarks.'';
 
         //insert guzzler mailer
 
@@ -154,10 +161,18 @@ if(isset($_POST['submit']))
         mysqli_stmt_bind_param($stmt, "iiiidsssss", $e_id, $r_id, $volt, $pressure, $temp, $for_repair, $repair_remarks, $other_remarks, $time_submitted, $_SESSION['userId']);
         mysqli_stmt_execute($stmt);
 
+        //getting the id of the ticket
+        $sql_ticket ="SELECT `AUTO_INCREMENT` as id
+            FROM  INFORMATION_SCHEMA.TABLES
+            WHERE TABLE_SCHEMA = 'final_pending'
+            AND   TABLE_NAME   = 'issue'";
+
+        $ticket_results = mysqli_query($conn, $sql_ticket);
+		$ticket = mysqli_fetch_assoc($ticket_results);
+
         //email properties
         $e_subject = "ANOMALY DETECTED OF REPORT: ".$row_report["task"]."";
-        $e_body = '<h3>WARNING ABNORMAL READING OF EQUIPMENT</h3>Abnormal reading of temperature on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'';
-
+        $e_body = '<h3>WARNING ABNORMAL READING OF EQUIPMENT - Issue #'.$ticket['id'].'</h3>Abnormal reading of temperature on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'  <a href="http://localhost:8080/Finals_pending/assign_new_issue.php?site=Assign%20New%20Issue&id='.$ticket['id'].'">you can check out the issue #'.$ticket['id'].' here</a><br><h3>User report</h3>'.$repair_remarks.'';
         //insert guzzler mailer
 
         $body = [
@@ -236,7 +251,7 @@ if(isset($_POST['submit']))
 
     //UPDATE DATA IN THE REPORTS TABLE
 
-    echo $r_id. $e_id. $volt.$pressure.$temp.$repair_remarks.$other_remarks.$report_status.$time_submitted.$for_repair.$_SESSION['username'];
+    //echo $r_id. $e_id. $volt.$pressure.$temp.$repair_remarks.$other_remarks.$report_status.$time_submitted.$for_repair.$_SESSION['username'];
 }
 else
 {

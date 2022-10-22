@@ -67,15 +67,15 @@
 									
 									<?php
 										if(is_null($row['assigned_to'])){?>
-											<td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#<?php echo $row['issue_id'];?>">
+											<td><a href="assign_new_issue.php?site=Assign%20New%20Issue&id=<?php echo $row['issue_id'];?>" type="button" class="btn btn-success" >
 											  <i class="fas fa-paper-plane"></i> Assign to employee
-											</button></td>
+											</a></td>
 										<?php
 										}
 									?>
 									
 								</tr>
-								<div class="modal fade" id="<?php echo $row['issue_id'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade" id="<?php echo $row['issue_id'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				  
 				  <div class="modal-dialog" role="document">
 					<div class="modal-content">

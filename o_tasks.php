@@ -31,6 +31,7 @@
 	<table id="o_tasks_table">
 		<thead class="thead-dark">
 				<tr>
+				<th scope="col">Task ID</th>
 				<th scope="col">Task</th>
 				<th scope="col">Equipment</th>
 				<th scope="col">Asset</th>
@@ -46,6 +47,8 @@
 							?>
                 <tr role="button" data-href="viewPendingTasks.php?r=<?php echo  $row['report_id'];?>&e=10&site=Pending%20Task">
                     <td>
+                        <?php echo $row['report_id'];?>
+                    </td><td>
                         <?php echo $row['task'];?>
                     </td>
                     <td>

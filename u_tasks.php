@@ -31,6 +31,7 @@
 	<table id="u_tasks_table">
 		<thead class="thead-dark">
 				<tr>
+					<th scope="col">Tasks ID</th>
 					<th scope="col">Tasks</th>
 					<th scope="col">Equipment</th>
 					<th scope="col">Asset</th>
@@ -45,6 +46,7 @@
 						while($row = mysqli_fetch_array($results)){
 							?>
 								<tr role="button" data-href="viewPendingTasks.php?r=<?php echo $row['report_id'];?>&e=<?php echo $row['machine_id'];?>&site=Pending%20Task">
+									<td><?php echo $row['report_id'];?></td>
 									<td><?php echo $row['task'];?></td>
 									<td><?php echo $row['equipment_name'];?></td>
 									<td><?php echo $row['asset'];?></td>

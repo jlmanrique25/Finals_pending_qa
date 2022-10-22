@@ -20,6 +20,7 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
         while($row = mysqli_fetch_array($results)){
 		?>
 	   <tr>
+		   <td> <?php echo $row['report_id'];?></td>
 		   <td> <?php echo $row['task'];?></td>
 		   <td> <?php echo $row['equipment_name'];?></td>
 		   <td> <?php echo $row['floor'];?></td>

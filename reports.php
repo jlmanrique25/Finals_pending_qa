@@ -28,13 +28,14 @@
 	<div class="container py-4">
 	<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back" /><br /><br />
     <h2>
-        <text style="font-weight:bold;">Equipment reports</text>
+        <text style="font-weight:bold;">Equipment reports   <input type="button" class="btn btn-success" value="Export Table" onclick="exportToExcel('reports_table')"/></text>
     </h2>
     <i class="bi bi-info-circle-fill"></i>
     <br />
 	<table  id="reports_table" >
 	  <thead >
 		<tr>
+		  <th scope="col">Report ID</th>
 		  <th scope="col">Task</th>
 		  <th scope="col">Equipment</th>
 		  <th scope="col">Floor</th>
@@ -117,6 +118,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
 
+	<script src="exportToExcel.js" defer></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

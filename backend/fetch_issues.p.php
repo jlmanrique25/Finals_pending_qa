@@ -19,6 +19,8 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
 <!--<tr role="button" data-href="issue_report.php?site=issue&i_id=<?php echo $row['issue_id']?>&Generator%20set%20II"> -->
 <tr >
     <td>
+        <?php echo $row['issue_id'];?>
+    </td><td>
         <?php echo $row['issue'];?>
     </td>
     <td>

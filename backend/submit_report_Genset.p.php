@@ -56,6 +56,14 @@ if(isset($_POST['submit']))
     }
 
 
+    $sql_ticket ="SELECT `AUTO_INCREMENT` as id
+            FROM  INFORMATION_SCHEMA.TABLES
+            WHERE TABLE_SCHEMA = 'final_pending'
+            AND   TABLE_NAME   = 'issue'";
+
+    $ticket_results = mysqli_query($conn, $sql_ticket);
+    $ticket = mysqli_fetch_assoc($ticket_results);
+
     //check if user submitted the report with issue
     if($for_repair)
     {
@@ -103,7 +111,7 @@ if(isset($_POST['submit']))
 
             //send email notification to BMO head
             $e_subject = "ANOMALY DETECTED OF REPORT: ".$row_report["task"]."";
-            $e_body = '<h3>WARNING EQUIPMENT ISSUE</h3>BMO technician issue detected on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br/><br/>'.$issue_desc.'';
+            $e_body = '<h3>WARNING EQUIPMENT ISSUE</h3>BMO technician issue detected on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br/><br/>'.$issue_desc.'. <a href="http://localhost:8080/Finals_pending/assign_new_issue.php?site=Assign%20New%20Issue&id='.$ticket['id'].'">You can check out the issue #'.$ticket['id'].' here</a>';
 
 
             //insert guzzler mailer
@@ -194,7 +202,7 @@ if(isset($_POST['submit']))
 
             //send email notification to BMO head
             $e_subject = "ANOMALY DETECTED OF REPORT: ".$row_report["task"]."";
-            $e_body = '<h3>WARNING EQUIPMENT ISSUE</h3>BMO technician issue detected on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br/><br/>'.$issue_desc.'';
+            $e_body = '<h3>WARNING EQUIPMENT ISSUE</h3>BMO technician issue detected on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br/><br/>'.$issue_desc.'. <a href="http://localhost:8080/Finals_pending/assign_new_issue.php?site=Assign%20New%20Issue&id='.$ticket['id'].'">You can check out the issue #'.$ticket['id'].' here</a>';
 
 
             //insert guzzler mailer
@@ -280,10 +288,18 @@ if(isset($_POST['submit']))
             mysqli_stmt_bind_param($stmt, "iissiis",$e_id, $r_id, $issue, $issue_desc,$_SESSION['userId'],$zero,$time_submitted);
             mysqli_stmt_execute($stmt);
 
+            $sql_ticket ="SELECT `AUTO_INCREMENT` as id
+            FROM  INFORMATION_SCHEMA.TABLES
+            WHERE TABLE_SCHEMA = 'final_pending'
+            AND   TABLE_NAME   = 'issue'";
+
+            $ticket_results = mysqli_query($conn, $sql_ticket);
+            $ticket = mysqli_fetch_assoc($ticket_results);
+
 
             //send email notification to BMO head
             $e_subject = "ANOMALY DETECTED OF REPORT: ".$row_report["task"]."";
-            $e_body = '<h3>WARNING EQUIPMENT ISSUE</h3>BMO technician issue detected on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br/><br/>'.$issue_desc.'';
+            $e_body = '<h3>WARNING EQUIPMENT ISSUE - Issue #'.$ticket['id'].'</h3>BMO technician issue detected on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br/><br/>'.$issue_desc.' . <a href="http://localhost:8080/Finals_pending/assign_new_issue.php?site=Assign%20New%20Issue&id='.$ticket['id'].'">You can check out the issue #'.$ticket['id'].' here</a>';
 
 
             //insert guzzler mailer
@@ -391,7 +407,7 @@ if(isset($_POST['submit']))
 
         //send email notification to BMO head
         $e_subject = "ANOMALY DETECTED OF REPORT: ".$row_report["task"]."";
-        $e_body = '<h3>WARNING EQUIPMENT ISSUE</h3>BMO technician issue detected on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br/><br/>'.$issue_desc.'';
+        $e_body = '<h3>WARNING EQUIPMENT ISSUE</h3>BMO technician issue detected on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br/><br/>'.$issue_desc.'. <a href="http://localhost:8080/Finals_pending/assign_new_issue.php?site=Assign%20New%20Issue&id='.$ticket['id'].'">You can check out the issue #'.$ticket['id'].' here</a>';
 
 
         //insert guzzler mailer
@@ -487,7 +503,7 @@ if(isset($_POST['submit']))
 
         //send email notification to BMO head
         $e_subject = "ANOMALY DETECTED OF REPORT: ".$row_report["task"]."";
-        $e_body = '<h3>WARNING EQUIPMENT ISSUE</h3>BMO technician issue detected on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br/><br/>'.$issue_desc.'';
+        $e_body = '<h3>WARNING EQUIPMENT ISSUE</h3>BMO technician issue detected on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br/><br/>'.$issue_desc.' . <a href="http://localhost:8080/Finals_pending/assign_new_issue.php?site=Assign%20New%20Issue&id='.$ticket['id'].'">You can check out the issue #'.$ticket['id'].' here</a>';
 
 
         //insert guzzler mailer
