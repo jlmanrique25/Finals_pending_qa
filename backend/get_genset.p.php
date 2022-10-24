@@ -1,7 +1,7 @@
 <?php
 	include 'dbh.p.php';
 	
-	$sql = "SELECT * FROM `equipment`, `location` where asset = 'Genset' AND location.location_id = equipment.location_id AND equipment.condition != 'not available' ORDER BY equipment.equipment_name";
+	$sql = "SELECT * FROM `equipment`, `location` where asset = 'Genset' AND location.location_id = equipment.location_id AND equipment.condition != 'not available' AND operating ORDER BY equipment.equipment_name";
 	$stmt = mysqli_stmt_init($conn);
 	
 	if(!mysqli_stmt_prepare($stmt, $sql)){
