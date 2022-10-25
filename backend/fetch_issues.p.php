@@ -16,7 +16,6 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
 	{
         while($row = mysqli_fetch_array($results)){
 ?>
-<!--<tr role="button" data-href="issue_report.php?site=issue&i_id=<?php echo $row['issue_id']?>&Generator%20set%20II"> -->
 <tr >
     <td>
         <?php echo $row['issue_id'];?>
@@ -88,9 +87,31 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
     {
 ?>
 <tr>
-    <td colspan="7" class="text-center">
+    <td class="text-center">
+        
+    </td>
+    <td class="text-center">
+        
+    </td>
+    <td class="text-center">
+        
+    </td>
+    <td class="text-center">
         There are no issues
     </td>
+    <td class="text-center">
+        
+    </td>
+    <td class="text-center">
+        
+    </td>
+    <td class="text-center">
+        
+    </td>
+    <td class="text-center">
+        
+    </td>
+    
 </tr>
 <?php
    }
