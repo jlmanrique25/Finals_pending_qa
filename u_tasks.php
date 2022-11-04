@@ -21,8 +21,7 @@
 ?>
 
 <div class="container py-4 overflow-hidden">
-	<i class="fa-solid fa-chevrons-left"></i><input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back">
-	<br /><br />
+	<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back"><br><br>
 
 	<h2><text style="font-weight:bold;">Unresolved Tasks Reports</text> </h2> 
 

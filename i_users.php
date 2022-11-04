@@ -20,7 +20,7 @@
 	
 ?>
 <div class="container py-4 overflow-hidden">
-	<i class="icon-backward"></i><input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back"><br /><br />
+	<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back"><br><br>
 
 	<h2><text style="font-weight:bold;">Available Staff</text> </h2> 
 
