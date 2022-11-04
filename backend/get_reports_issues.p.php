@@ -31,6 +31,7 @@
 				while($row = mysqli_fetch_array($result)){
 					?>
 					<tr role="button" data-href="viewPastReports.php?r=<?php echo $row['report_id'];?>&e=<?php echo $row['machine_id'];?>&site=My%20Past%20Reports">
+						<td>R-<?php echo $row['report_id'];?></td>
 						<td><?php echo $row['task'];?></td>
 						<td><?php echo $row['equipment_name'];?></td>
 						<td><?php echo $row['floor'];?></td>
@@ -60,6 +61,7 @@
 				while($row = mysqli_fetch_array($result)){
 					?>
 					<tr role="button" >
+						<td>I-<?php echo $row['issue_id'];?></td>
 						<td><?php echo $row['issue'];?></td>
 						<td><?php echo $row['equipment_name'];?></td>
 						<td><?php echo $row['floor'];?></td>

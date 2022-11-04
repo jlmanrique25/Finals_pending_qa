@@ -1,7 +1,7 @@
 <?php
 	include 'dbh.p.php';
 	
-	$sql = "SELECT COUNT(assigned_user) as total FROM `reports` WHERE assigned_user = ".$_SESSION['userId']."";
+	$sql = "SELECT COUNT(assigned_user) as total FROM `reports` WHERE assigned_user = ".$_SESSION['userId']." and  report_status != 'done'";
 	$stmt = mysqli_stmt_init($conn);
 	
 	if(!mysqli_stmt_prepare($stmt, $sql)){

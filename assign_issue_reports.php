@@ -58,6 +58,7 @@
 	<table  id="issue_reports">
 	  <thead class="thead-dark">
 		<tr>
+		  <th scope="col">Issue ID</th>
 		  <th scope="col">Issue</th>
 		  <th scope="col">Equipment</th>
 		  <th scope="col">Asset</th>

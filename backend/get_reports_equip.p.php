@@ -35,6 +35,7 @@
 				while($row = mysqli_fetch_array($result)){
 				?>
 				<tr role="button" data-href="#">
+					<td>R-<?php echo $row['report_id'];?></td>
 					<td><?php echo $row['task'];?></td>
 					<td><?php echo $row['report_status'];?></td>
 					<td><?php echo $row['date_created'];?></td>
@@ -66,6 +67,7 @@
 				while($row = mysqli_fetch_array($result)){
 				?>
 				<tr role="button" data-href="#">
+					<td>I-<?php echo $row['issue_id'];?></td>
 					<td><?php echo $row['issue'];?></td>
 					<td><?php if($row['issue_status'] == 0){
 						echo 'Not resolved';

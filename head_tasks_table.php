@@ -24,6 +24,7 @@ include 'header.php';
 
         <table id="tasks_table">
             <thead class="thead-dark">
+                <th scope="col">Issues ID</th>
                 <th scope="col">Issues</th>
                 <th scope="col">Equipment</th>
                 <th scope="col">Floor</th>

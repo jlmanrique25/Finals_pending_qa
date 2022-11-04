@@ -1,8 +1,9 @@
 <?php
 include 'dbh.p.php';
 
-$sql = "SELECT * FROM `issue`, `equipment`, `users`
+$sql = "SELECT * FROM `issue`, `equipment`, `users`, location
 		WHERE 	issue.machine_id = equipment.equipment_id AND
+        		equipment.location_id = location.location_id AND
 				assigned_to = users.users_id
 			ORDER by date_created desc";
 $stmt = mysqli_stmt_init($conn);
@@ -18,12 +19,14 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
 ?>
 <tr >
     <td>
-        <?php echo $row['issue_id'];?>
+        I-<?php echo $row['issue_id'];?>
     </td><td>
         <?php echo $row['issue'];?>
     </td>
     <td>
         <?php echo $row['equipment_name'];?>
+    </td><td>
+        <?php echo $row['floor'];?>
     </td>
 
     <?php if(is_null($row['issue_status'])){
@@ -32,9 +35,9 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
     ?><td>
         <?php
               if($row['issue_status'] == 1){
-                  echo 'Resolved';
+                  echo 'Done';
               }else{
-                  echo 'Not resolved';
+                  echo 'Not Resolved';
               }
         ?>
     </td><?php

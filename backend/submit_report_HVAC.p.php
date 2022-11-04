@@ -13,7 +13,12 @@ if(isset($_POST['submit']))
 	$volt = $_POST['volt'];
 	$pressure = $_POST['pressure'];
 	$temp = $_POST['temp'];
-    $repair_remarks = $_POST['repair_remarks'];
+    if($_POST['repair_remarks'] == ''){
+        $repair_remarks = 'N/A';
+    }else{
+        $repair_remarks = $_POST['repair_remarks'];
+    }
+
     $other_remarks = $_POST['other_remarks'];
     $report_status = "done";
     if($_POST['for_repair'] != NULL){
@@ -52,6 +57,14 @@ if(isset($_POST['submit']))
         $sql = "UPDATE `reports` SET `abnormal_data` = 1, report_status='done', date_submitted='".$time_submitted."', for_repair=".$for_repair." WHERE `report_id` = ".$r_id."";
         mysqli_query($conn, $sql);
 
+        //email properties
+        $sql_id= "SELECT `AUTO_INCREMENT`
+                    FROM  INFORMATION_SCHEMA.TABLES
+                    WHERE TABLE_SCHEMA = 'final_pending'
+                    AND   TABLE_NAME   = 'issue'";
+        $results_id = mysqli_query($conn, $sql_id);
+        $row_id = mysqli_fetch_array($results_id);
+
         //create an issue for the abnormal data
         $sql_report = "SELECT * FROM `reports` WHERE report_id = ".$r_id."";
         $result_report = mysqli_query($conn, $sql_report);
@@ -70,13 +83,6 @@ if(isset($_POST['submit']))
         mysqli_stmt_bind_param($stmt, "iiiidsssss", $e_id, $r_id, $volt, $pressure, $temp, $for_repair, $repair_remarks, $other_remarks, $time_submitted, $_SESSION['userId']);
         mysqli_stmt_execute($stmt);
 
-        //email properties
-        $sql_id= "SELECT `AUTO_INCREMENT`
-                    FROM  INFORMATION_SCHEMA.TABLES
-                    WHERE TABLE_SCHEMA = 'DatabaseName'
-                    AND   TABLE_NAME   = 'TableName'";
-        $results_id = mysqli_query($conn, $sql_id);
-        $row_id = mysqli_fetch_array($results_id);
 
         $e_subject = "ANOMALY DETECTED OF REPORT: ".$row_report["task"]."";
         $e_body = '<h3>WARNING ABNORMAL READING OF EQUIPMENT</h3>Abnormal reading of temperature on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.' <a href="http://localhost:8080/Finals_pending/assign_new_issue.php?site=Assign%20New%20Issue&id='.$row_id['id'].'">you can check out the report here</a><br><h3>User report</h3>'.$repair_remarks.'';
@@ -147,6 +153,16 @@ if(isset($_POST['submit']))
         $issue = 'Abnormal Reading of temperature';
         $issue_desc = 'Abnormal reading of temperature on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'';
 
+
+        //getting the id of the ticket
+        $sql_ticket ="SELECT `AUTO_INCREMENT` as id
+            FROM  INFORMATION_SCHEMA.TABLES
+            WHERE TABLE_SCHEMA = 'final_pending'
+            AND   TABLE_NAME   = 'issue'";
+        $ticket_results = mysqli_query($conn, $sql_ticket);
+		$ticket = mysqli_fetch_assoc($ticket_results);
+
+
         $sql = "INSERT INTO `issue`( `machine_id`, `report_id`, `issue`, `issue description`, `submitted_by`, `issue_status`, `date_created`) VALUES (?,?,?,?,?,?,?)";
         mysqli_stmt_prepare($stmt, $sql);
         mysqli_stmt_bind_param($stmt, "iissiis",$e_id, $r_id, $issue, $issue_desc,$_SESSION['userId'],$zero,$time_submitted);
@@ -161,18 +177,10 @@ if(isset($_POST['submit']))
         mysqli_stmt_bind_param($stmt, "iiiidsssss", $e_id, $r_id, $volt, $pressure, $temp, $for_repair, $repair_remarks, $other_remarks, $time_submitted, $_SESSION['userId']);
         mysqli_stmt_execute($stmt);
 
-        //getting the id of the ticket
-        $sql_ticket ="SELECT `AUTO_INCREMENT` as id
-            FROM  INFORMATION_SCHEMA.TABLES
-            WHERE TABLE_SCHEMA = 'final_pending'
-            AND   TABLE_NAME   = 'issue'";
-
-        $ticket_results = mysqli_query($conn, $sql_ticket);
-		$ticket = mysqli_fetch_assoc($ticket_results);
-
         //email properties
         $e_subject = "ANOMALY DETECTED OF REPORT: ".$row_report["task"]."";
         $e_body = '<h3>WARNING ABNORMAL READING OF EQUIPMENT - Issue #'.$ticket['id'].'</h3>Abnormal reading of temperature on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'  <a href="http://localhost:8080/Finals_pending/assign_new_issue.php?site=Assign%20New%20Issue&id='.$ticket['id'].'">you can check out the issue #'.$ticket['id'].' here</a><br><h3>User report</h3>'.$repair_remarks.'';
+
         //insert guzzler mailer
 
         $body = [

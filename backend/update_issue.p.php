@@ -11,9 +11,16 @@ if($tm == 'Genset'){
 }
 
 $task = $_POST['task'];
+
 $td = $_POST['taskDesc'];
+
 $duedate = $_POST['dueDate'];
 $assign = $_POST['assignedTo'];
+
+if(!$td){
+    $td = NULL;
+    echo 'empty';
+}
 
 
 

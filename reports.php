@@ -1,23 +1,6 @@
 <head>
-	<style>
-		#filters{
-			display: flex;
-			align-items: baseline;
-		}
-		/*.TF caption {
-		  caption-side: top;
-		  padding: 0;
-		}*/
-	</style>
+
 	<title>Reports</title>
-	<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
-	<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
-	
-	<!-- Font awesome elements link -->
-	<link href="/elements/css/fontawesome.css" rel="stylesheet">
-	<link href="/elements/css/all.min.css" rel="stylesheet">
-	<link href="/elements/css/brands.css" rel="stylesheet">
-	<link href="/elements/css/solid.css" rel="stylesheet">
 </head>
 <?php
 	session_start();
@@ -28,7 +11,7 @@
 	<div class="container py-4">
 	<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back" /><br /><br />
     <h2>
-        <text style="font-weight:bold;">Equipment reports   <input type="button" class="btn btn-success" value="Export Table" onclick="exportToExcel('reports_table')"/></text>
+        <text style="font-weight:bold;">Equipment reports   <input type="button" class="btn btn-success" value="Export Table" onclick="$('#reports_table').tableExport({type:'csv'});"/></text>
     </h2>
     <i class="bi bi-info-circle-fill"></i>
     <br />
@@ -50,28 +33,14 @@
 	  </thead>
 	  <tbody>
 
-
-		<?php
-			//include 'backend/dropdown_filter_status.p.php'; 
-		?>
-	
-		<?php
-			//include 'backend/search.php'; 
-		?>
-
 		<?php 
 			include 'backend/fetch_reports.p.php'
-		?>
-
-		<?php 
-			//include 'backend/dropdown_filters.p.php'
         ?>
-
 	  </tbody>
 	</table>
 	
 </div>
-
+<script src="tableExport.js"></script>
 <script src="tablefilter/tablefilter.js"></script>
 
 <script data-config>
@@ -123,3 +92,4 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="tableexport.js"></script>

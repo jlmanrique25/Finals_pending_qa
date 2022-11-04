@@ -36,6 +36,7 @@
     <table  id="reports_table">
         <thead >
             <tr role="button" data-href="viewPastReports.php?r=<?php echo $row['report_id'];?>&e=<?php echo $row['machine_id'];?>&site=My%20Past%20Reports">
+                <th scope="col">Tasks ID</th>
                 <th scope="col">Tasks</th>
                 <th scope="col">Equipment</th>
                 <th scope="col">Floor</th>
@@ -61,7 +62,8 @@
 		<table id="issues_table">
 			<thead class="thead-dark">
 				<tr>
-				<th scope="col">Issues</th>
+				<th scope="col">Issue ID</th>
+				<th scope="col">Issue</th>
 				<th scope="col">Equipment</th>
 				<th scope="col">Floor</th>
 				<th scope="col">Room</th>

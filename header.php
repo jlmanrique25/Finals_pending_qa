@@ -20,10 +20,12 @@
 	<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
 	<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<link rel="icon" href="images/keoms_logo.png" />
 	<link href="style.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="tablefilter/style/tablefilter.css" />
+	<script type="text/javascript" src="tableExport.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body style="background-color: rgba(0, 0, 0, .1);">	
 
@@ -60,7 +62,12 @@
 		  	 	<a class="navbar-brand" style="color: white;"><?php echo $_SESSION['username'];?></a>
 		      <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#" id="dropdownMenuLinkuser" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user" aria-hidden="true"></i><span class="badge badge-pill badge-danger"><?php 
 					
-					include 'backend/count_task_assigned_admin.p.php';
+					if($_SESSION['role'] != 'technician'){
+                        include 'backend/count_task_assigned_admin.p.php';
+                    }else{
+                        include 'backend/count_task_assigned_technician.p.php';
+                    }
+																																																																   
 					
                                                                                                                                                                                                                                          ?></span></a>
 		      <div class="dropdown-menu" aria-labelledby="dropdownMenuLinkuser">
