@@ -45,7 +45,7 @@
 						while($row = mysqli_fetch_array($results)){
 							?>
 								<tr role="button" data-href="viewPendingIssue.php?i_id=<?php echo $row['issue_id'];?>&site=Overdue%20Issue%20Report">
-									<td><?php echo $row['issue_id'];?></td>
+									<td>I-<?php echo $row['issue_id'];?></td>
 									<td><?php echo $row['issue'];?></td>
 									<td><?php echo $row['equipment_name'];?></td>
 									<td><?php echo $row['asset'];?></td>

@@ -32,7 +32,7 @@ else
     {
 
 
-        $sql = 'SELECT issue, issue description, date_created, issue_status, date_due, machine_id, assigned_to FROM `issue` WHERE issue_id = '.$_GET['id'].'';
+        $sql = 'SELECT issue, `issue description` as issue_desc, date_created, issue_status, date_due, machine_id, assigned_to FROM `issue` WHERE issue_id = '.$_GET['id'].'';
         $stmt = mysqli_stmt_init($conn);
 
 

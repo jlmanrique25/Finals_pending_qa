@@ -110,6 +110,7 @@
 			<table id="tasks_table">
 			  <thead class="thead-dark">
 				<tr>
+				  <th scope="col">Task ID</th>
 				  <th scope="col">Task</th>
 				  <th scope="col">Report status</th>
 				  <th scope="col">Date created</th>
@@ -133,6 +134,7 @@
 			<table id="issues_table">
 			  <thead class="thead-dark">
 				<tr>
+				  <th scope="col">Issue ID</th>
 				  <th scope="col">Issue</th>
 				  <th scope="col">Issue status</th>
 				  <th scope="col">Date created</th>
@@ -183,7 +185,7 @@
 		status_bar: true,
 		mark_active_columns: true,
 		highlight_keywords: true,
-
+		single_filter: true,
 		col_types: ['string',
 					'string',
 					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },
@@ -219,7 +221,7 @@
 		status_bar: true,
 		mark_active_columns: true,
 		highlight_keywords: true,
-
+		single_filter: true,
 		col_types: ['string',
 					'string',
 					{ type: 'date', locale: 'en', format: '{dd}-{MM}-{yyyy|yy}' },

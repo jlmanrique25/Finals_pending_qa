@@ -81,7 +81,7 @@ $row_u = mysqli_fetch_assoc($result_u);
 			</div>
 			<div class="form-group">
 				<label for="formGroupExampleInput2">Issue Description (optional)</label>
-				<input type="text" class="form-control" name="taskDesc" placeholder="Describe what the task is all about" value="<?php echo $row_i['description'];?>" <?php if ($row_i['issue_status'] == 1){
+				<input type="text" class="form-control" name="taskDesc" placeholder="Describe what the task is all about" value="<?php echo $row_i['issue_desc'];?>" <?php if ($row_i['issue_status'] == 1){
                                                                                                         echo 'disabled';
                                                                                                     }?>>
 			</div>

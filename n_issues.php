@@ -32,12 +32,18 @@
 	<table  id="n_issues_table">
 		<thead class="thead-dark">
 				<tr>
+					<th scope="col">Issue ID</th>
 					<th scope="col">Issue</th>
 					<th scope="col">Equipment</th>
 					<th scope="col">Asset</th>
 					<th scope="col">Date Created</th>
 					<th scope="col">Submitted by</th>
-					<th scope="col">Action</th>
+					<?php
+						if($_SESSION['role'] == 'Head'){
+                            echo '<th scope="col">Action</th>';
+                        }
+					?>
+					
 				</tr>
 			</thead>
 			<tbody>
@@ -46,6 +52,7 @@
 						while($row = mysqli_fetch_array($results)){
 							?>
 								<tr role="button" data-toggle="modal" data-target="#<?php echo $row_issue['issue_id'];?>">
+									<td>I-<?php echo $row['issue_id'];?></td>
 									<td><?php echo $row['issue'];?></td>
 									<td><?php
 
@@ -66,7 +73,7 @@
 									<td><?php echo $row_u['username'];?></td>
 									
 									<?php
-										if(is_null($row['assigned_to'])){?>
+										if($_SESSION['role'] == 'Head'){?>
 											<td><a href="assign_new_issue.php?site=Assign%20New%20Issue&id=<?php echo $row['issue_id'];?>" type="button" class="btn btn-success" >
 											  <i class="fas fa-paper-plane"></i> Assign to employee
 											</a></td>

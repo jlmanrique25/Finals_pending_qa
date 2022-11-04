@@ -48,7 +48,7 @@
 						while($row = mysqli_fetch_array($results)){
 							?>
 								<tr role="button" role="button" data-href="viewPendingIssue.php?site=Pending%20Issue%20Report&i_id=<?php echo $row['issue_id']?>" data-toggle="modal" data-target="#<?php echo $row_issue['issue'];?>">
-									<td><?php echo $row['issue_id'];?></td>
+									<td>I-<?php echo $row['issue_id'];?></td>
 									<td><?php echo $row['issue'];?></td>
 									<td><?php echo $row['equipment_name'];?></td>
 									<td><?php echo $row['asset'];?></td>

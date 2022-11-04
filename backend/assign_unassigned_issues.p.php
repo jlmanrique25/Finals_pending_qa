@@ -19,6 +19,7 @@
 			while($row_issue = mysqli_fetch_assoc($result_issue)){
 			?>
 				<tr class="table-light" role="button">
+				  <td><?php echo $row_issue['issue_id'];?></td>
 				  <td><?php echo $row_issue['issue'];?></td>
 				  <td><?php echo $row_issue['equipment_name'];?></td>
 				  <td><?php echo $row_issue['asset'];?></td>

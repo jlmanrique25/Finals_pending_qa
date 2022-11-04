@@ -35,6 +35,9 @@ if($result->num_rows > 0){
 
 <tr role="button" data-href="issue_report.php?i_id=<?php echo $row['issue_id'];?>&<?php echo $row['equipment_name'];?>&site=Issue%20Report">
     <td>
+        I-<?php echo $row['issue_id'];?>
+    </td>
+    <td>
         <?php echo $row['issue'];?>
     </td>
     <td>

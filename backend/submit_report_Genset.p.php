@@ -23,7 +23,11 @@ if(isset($_POST['submit']))
     $oil_temperature = $_POST['oil_temperature'];
     $oil_rotation = $_POST['rotation'];
     $fuel_level = $_POST['fuel_level'];
-    $repair_remarks = $_POST['repair_remarks'];
+    if($_POST['repair_remarks'] == ''){
+        $repair_remarks = 'N/A';
+    }else{
+        $repair_remarks = $_POST['repair_remarks'];
+    }
     $other_remarks = $_POST['other_remarks'];
     $report_status = "done";
     $zero = 0;
@@ -110,7 +114,7 @@ if(isset($_POST['submit']))
 
 
             //send email notification to BMO head
-            $e_subject = "ANOMALY DETECTED OF REPORT: ".$row_report["task"]."";
+            $e_subject = "ANOMALY DETECTED OF REPORT: ".$ticket["id"]."";
             $e_body = '<h3>WARNING EQUIPMENT ISSUE</h3>BMO technician issue detected on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br/><br/>'.$issue_desc.'. <a href="http://localhost:8080/Finals_pending/assign_new_issue.php?site=Assign%20New%20Issue&id='.$ticket['id'].'">You can check out the issue #'.$ticket['id'].' here</a>';
 
 
@@ -201,7 +205,7 @@ if(isset($_POST['submit']))
 
 
             //send email notification to BMO head
-            $e_subject = "ANOMALY DETECTED OF REPORT: ".$row_report["task"]."";
+            $e_subject = "ANOMALY DETECTED OF REPORT: ".$ticket["id"]."";
             $e_body = '<h3>WARNING EQUIPMENT ISSUE</h3>BMO technician issue detected on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br/><br/>'.$issue_desc.'. <a href="http://localhost:8080/Finals_pending/assign_new_issue.php?site=Assign%20New%20Issue&id='.$ticket['id'].'">You can check out the issue #'.$ticket['id'].' here</a>';
 
 
@@ -298,7 +302,7 @@ if(isset($_POST['submit']))
 
 
             //send email notification to BMO head
-            $e_subject = "ANOMALY DETECTED OF REPORT: ".$row_report["task"]."";
+            $e_subject = "ANOMALY DETECTED OF REPORT: ".$ticket["id"]."";
             $e_body = '<h3>WARNING EQUIPMENT ISSUE - Issue #'.$ticket['id'].'</h3>BMO technician issue detected on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br/><br/>'.$issue_desc.' . <a href="http://localhost:8080/Finals_pending/assign_new_issue.php?site=Assign%20New%20Issue&id='.$ticket['id'].'">You can check out the issue #'.$ticket['id'].' here</a>';
 
 
@@ -367,6 +371,17 @@ if(isset($_POST['submit']))
     {
         $for_repair = 1;
 
+        // update report status to done
+        $sql = "UPDATE `reports` SET `date_submitted` = '".$time_submitted."',`report_status` = '".$report_status."'  WHERE `report_id` = ".$r_id."";
+        $stmt = mysqli_stmt_init($conn);
+
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo 'error updating reports database';
+        }else{
+            mysqli_query($conn, $sql);
+            //echo 'reports date submitted set';
+        }
+
         //updates equipment info
         $sql = "UPDATE `equipment` SET `condition` = 'with issues/abnormal reading' WHERE `equipment_id` = ".$e_id."";
 
@@ -406,7 +421,7 @@ if(isset($_POST['submit']))
 
 
         //send email notification to BMO head
-        $e_subject = "ANOMALY DETECTED OF REPORT: ".$row_report["task"]."";
+        $e_subject = "ANOMALY DETECTED OF REPORT: ".$ticket["id"]."";
         $e_body = '<h3>WARNING EQUIPMENT ISSUE</h3>BMO technician issue detected on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br/><br/>'.$issue_desc.'. <a href="http://localhost:8080/Finals_pending/assign_new_issue.php?site=Assign%20New%20Issue&id='.$ticket['id'].'">You can check out the issue #'.$ticket['id'].' here</a>';
 
 
@@ -472,6 +487,17 @@ if(isset($_POST['submit']))
     {
         $for_repair = 1;
 
+        // update report status to done
+        $sql = "UPDATE `reports` SET `date_submitted` = '".$time_submitted."',`report_status` = '".$report_status."'  WHERE `report_id` = ".$r_id."";
+        $stmt = mysqli_stmt_init($conn);
+
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo 'error updating reports database';
+        }else{
+            mysqli_query($conn, $sql);
+            //echo 'reports date submitted set';
+        }
+
         //updates equipment info
         $sql = "UPDATE `equipment` SET `condition` = 'with issues/abnormal reading' WHERE `equipment_id` = ".$e_id."";
 
@@ -502,7 +528,7 @@ if(isset($_POST['submit']))
 
 
         //send email notification to BMO head
-        $e_subject = "ANOMALY DETECTED OF REPORT: ".$row_report["task"]."";
+        $e_subject = "ANOMALY DETECTED OF REPORT: ".$ticket["id"]."";
         $e_body = '<h3>WARNING EQUIPMENT ISSUE</h3>BMO technician issue detected on report "'.$row_report["task"].'" submitted by '.$_SESSION['username'].' on '.$time_submitted.'<br/><br/>'.$issue_desc.' . <a href="http://localhost:8080/Finals_pending/assign_new_issue.php?site=Assign%20New%20Issue&id='.$ticket['id'].'">You can check out the issue #'.$ticket['id'].' here</a>';
 
 

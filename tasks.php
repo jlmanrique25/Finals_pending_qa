@@ -162,7 +162,7 @@
 		status_bar: true,
 		mark_active_columns: true,
 		highlight_keywords: true,
-
+        single_filter: true,
 		col_types: ['string',
 					'string',
 					'string',

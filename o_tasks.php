@@ -46,7 +46,7 @@
 						while($row = mysqli_fetch_array($results)){
 							?>
                 <tr role="button" data-href="viewPendingTasks.php?r=<?php echo  $row['report_id'];?>&e=10&site=Pending%20Task">
-                    <td>
+                    <td>R-
                         <?php echo $row['report_id'];?>
                     </td><td>
                         <?php echo $row['task'];?>
