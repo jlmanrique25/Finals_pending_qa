@@ -81,7 +81,7 @@
 			}else{
 				$result = mysqli_query($conn,$sql_i);
 
-				header('Location:..//tasks.php?site=Issues&page=1&submition=success&i='.$issue_id.'');
+				header('Location:../admin_issues_table.php?site=Unresolved%20Issues&table=unresolved');
 				exit();
 			}
 		}

@@ -298,7 +298,6 @@
 					
 				}
 				?>>
-				<?php echo $row['date_reinstalled'];?>
 				<div class="invalid-feedback">
 					Please fill in this field
 				</div>
