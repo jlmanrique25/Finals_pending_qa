@@ -26,8 +26,24 @@ include 'header.php';
             <a class="dropdown-item" href="admin_tasks_table.php?site=Unresolved%20Tasks&table=unresolved">Task Reports</a>
             <a class="dropdown-item" href="admin_issues_table.php?site=Unresolved%20Issues&table=unresolved">Issue Reports</a>
         </div>
-        <a href="admin_tasks_table.php?site=Unresolved%20Tasks&table=unresolved" type="button" class="btn btn-warning btn-lg my-2">Unresolved Tasks</a>
-        <a href="admin_tasks_table.php?site=Resolved%20Tasks&table=resolved" type="button" class="btn btn-success btn-lg my-2">Resolved Tasks</a>
+        <?php
+        if(isset($_GET['table']) && $_GET['table'] == 'resolved')
+        {
+        ?>
+            <a href="admin_tasks_table.php?site=Unresolved%20Tasks&table=unresolved" type="button" class="btn btn-warning btn-lg my-2">Unresolved Tasks</a>
+            <a href="admin_tasks_table.php?site=Resolved%20Tasks&table=resolved" type="button" class="btn btn-success btn-lg my-2">Resolved Tasks</a>
+            <?php
+             
+        }
+        else
+        {
+            ?>
+            <a href="admin_tasks_table.php?site=Unresolved%20Tasks&table=unresolved" type="button" class="btn btn-success btn-lg my-2">Unresolved Tasks</a>
+            <a href="admin_tasks_table.php?site=Resolved%20Tasks&table=resolved" type="button" class="btn btn-warning btn-lg my-2">Resolved Tasks</a>
+            <?php
+        }
+        ?>
+       
 
         <table id="tasks_table">
             <thead class="thead-dark">

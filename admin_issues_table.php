@@ -26,9 +26,23 @@ include 'header.php';
             <a class="dropdown-item" href="admin_tasks_table.php?site=Unresolved%20Tasks&table=unresolved">Task Reports</a>
             <a class="dropdown-item" href="admin_issues_table.php?site=Unresolved%20Issues&table=unresolved">Issue Reports</a>
         </div>
+        <?php
+        if(isset($_GET['table']) && $_GET['table'] == 'resolved')
+        {
+        ?>
         <a href="admin_issues_table.php?site=Unresolved%20Issues&table=unresolved" type="button" class="btn btn-warning btn-lg my-2">Unresolved Issues</a>
         <a href="admin_issues_table.php?site=Resolved%20Issues&table=resolved" type="button" class="btn btn-success btn-lg my-2">Resolved Issues</a>
+        <?php
 
+        }
+        else
+        {
+        ?>
+        <a href="admin_issues_table.php?site=Unresolved%20Issues&table=unresolved" type="button" class="btn btn-success btn-lg my-2">Unresolved Issues</a>
+        <a href="admin_issues_table.php?site=Resolved%20Issues&table=resolved" type="button" class="btn btn-warning btn-lg my-2">Resolved Issues</a>
+        <?php
+        }
+        ?>
         <table id="tasks_table">
             <thead class="thead-dark">
                 <th scope="col">Issues</th>

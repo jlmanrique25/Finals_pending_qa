@@ -121,6 +121,8 @@
 ?>
 				<tr role="button" data-href="createStatusReport.php?task=<?php echo $row['report_id'];?>&e=<?php echo $row['machine_id'];?>&site=Create%20Status%20Report">
 					<td>
+						<?php echo $row['report_id'];?>
+					</td><td>
 						<?php echo $row['task'];?>
 					</td>
 					<td>
@@ -152,6 +154,7 @@
 				else if($_SESSION['role'] == "Technician"){
 ?>
 					<tr role="button" data-href="createStatusReport.php?task=<?php echo $row['report_id'];?>&e=<?php echo $row['machine_id'];?>&site=Create%20Status%20Report">
+						<td>R-<?php echo $row['report_id'];?></td>
 						<td><?php echo $row['task'];?></td>
 						<td><?php echo $row['equipment_name'];?></td>
 						<td><?php echo $row['floor'];?></td>

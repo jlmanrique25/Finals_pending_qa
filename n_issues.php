@@ -141,6 +141,7 @@
 				<tr>
 					<td colspan="0" class="text-center"></td>
 					<td colspan="0" class="text-center"></td>
+					<td colspan="0" class="text-center"></td>
 					<td colspan="0" class="text-center"> There are no new issue reports.</td>
 					<td colspan="0" class="text-center"></td>
 					<td colspan="0" class="text-center"></td>

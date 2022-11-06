@@ -69,6 +69,7 @@
                     <?php
 				if($_SESSION['role'] == "Head"){
                     ?>
+                    <th scope="col">Issues ID</th>
                     <th scope="col">Issues</th>
                     <th scope="col">Equipment</th>
                     <th scope="col">Floor</th>
@@ -84,6 +85,7 @@
                     if($_GET['site'] == 'task reports'){
                     ?>
 
+                    <th scope="col">Tasks ID</th>
                     <th scope="col">Tasks</th>
                     <th scope="col">Equipment</th>
                     <th scope="col">Floor</th>
@@ -96,6 +98,7 @@
                     <?php
                     }else{
                     ?>
+                    <th scope="col">Issues ID</th>
                     <th scope="col">Issues</th>
                     <th scope="col">Equipment</th>
                     <th scope="col">Floor</th>
@@ -111,6 +114,7 @@
 
 				else{
                     ?>
+                    <th scope="col">Tasks ID</th>
                     <th scope="col">Tasks</th>
                     <th scope="col">Equipment</th>
                     <th scope="col">Floor</th>

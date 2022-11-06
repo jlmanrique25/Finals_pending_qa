@@ -1,5 +1,4 @@
-
-	<div class="container py-4">
+	<div class="container py-4 overflow-hidden">
 	<!--START OF CODE FOR DASHBOARD DATA-->
 		<div class="p-5 mb-3 bg-light rounded-3 shadow-sm">
 		  <div class="container-fluid py-3 overflow-hidden">
