@@ -198,7 +198,7 @@
 		
 		
 		  <li class="mb-1">
-			<a class="btn btn align-items-center rounded" href="index.php?site=Dashboard&page=1">
+			<a class="btn btn align-items-center rounded" href="dashboard.php?site=Dashboard&page=1">
 			  Dashboard
 			</a>
 		  </li>
