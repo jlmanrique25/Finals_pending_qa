@@ -1,11 +1,17 @@
-	<div class="container py-4 overflow-hidden">
+<?php
+if(!isset($_SESSION['role'])){
+    session_start();
+}
+include 'header.php';
+?>	
+<div class="container py-4 overflow-hidden">
 	<!--START OF CODE FOR DASHBOARD DATA-->
 		<div class="p-5 mb-3 bg-light rounded-3 shadow-sm">
 		  <div class="container-fluid py-3 overflow-hidden">
 		  <h4> The reports are the following as of: <?php 
 		  date_default_timezone_set('Asia/Hong_Kong');
 			$date_created = date('Y-m-d h:i:s a', time());
-			echo date('F d, Y', strtotime($date_created));
+			echo date('F d, Y h:i a', strtotime($date_created));
 		  ?></h4>
 			<div class="row mb-2">
 				<div class="col text-light p-2">
