@@ -54,7 +54,7 @@ if($_GET['site'] == "Create Status Report"){
 		<input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back">
 		<br /><br />
 		<!-- assigned task info -->
-		<h2><?php echo  '#R-'.$row_report['report_id'].' '.$row_report['task']; ?> : equipment <?php echo $row_equipment['equipment_name']; ?></h2>
+		<h2><?php echo  '#R-'.$row_report['report_id'].' '.$row_report['task']; ?> : equipment <?php echo $row_equipment['equipment_name'];?></h2>
 		<hr class="rounded" />
 		<div class="row mb-4">
 			<div class="col-8">
@@ -90,11 +90,11 @@ if($_GET['site'] == "Create Status Report"){
 
 
                 ?>
-				<form class="needs-validation"  method="post" novalidate>
+				<form class="needs-validation"  method="post"  action="backend/redo_report.p.php?r_id=<?php echo $row_report['report_id'];?>&e_id=<?php echo $row_report['machine_id'];?>&site=Report%20Submitted" novalidate>
 				<div class="row mb-4">
 	              <div class="col-4">
 	                <label for="volt">Voltage<text style="color:red;"> *</text></label>
-	                <input type="number" class="form-control w-100" name="volt" id="volt" value="<?php echo $row_equipment['volt']; ?> V" disabled>
+	                <input type="text" class="form-control w-100" name="volt" id="volt" value="<?php echo $row_equipment['volt']; ?> V" disabled>
 	                	<div class="invalid-feedback">
 							Please fill in this field
 						</div>
@@ -102,7 +102,7 @@ if($_GET['site'] == "Create Status Report"){
 
 				  <div class="col-4">
 	                <label for="pressure">Pressure<text style="color:red;"> *</text></label>
-	                <input type="number" class="form-control w-100" name="pressure" id="pressure" value="<?php echo $row_equipment['pressure'] ?> psi" disabled>
+	                <input type="text" class="form-control w-100" name="pressure" id="pressure" value="<?php echo $row_equipment['pressure'] ?> psi" disabled>
 	                	<div class="invalid-feedback">
 							Please fill in this field
 						</div>
@@ -110,7 +110,7 @@ if($_GET['site'] == "Create Status Report"){
 
 				  <div class="col-4">
 	                <label for="temp">Temperature<text style="color:red;"> *</text></label>
-	                <input type="number" class="form-control w-100" name="temp" id="temp" value="<?php echo $row_equipment['temp'] ?> F" disabled>
+	                <input type="text" class="form-control w-100" name="temp" id="temp" value="<?php echo $row_equipment['temp'] ?> F" disabled>
 	                	<div class="invalid-feedback">
 							Please fill in this field
 						</div>

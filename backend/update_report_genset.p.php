@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'dbh.p.php';
 if(isset($_POST['submit']))
 {
@@ -95,8 +96,14 @@ if(isset($_POST['submit']))
         }else{
             $result = mysqli_query($conn,$sql);
 
-            header('Location:../technician_reports.php?site=My%20Reports&page=1');
-            exit();
+            if($_SESSION['role'] == 'Admin'){
+                header('Location:../admin_tasks_table.php?site=Resolved%20Tasks&table=resolved');
+                exit();
+            }else{
+                header('Location:../technician_reports.php?site=My%20Reports&page=1');
+                exit();
+            }
+
         }
 
 
