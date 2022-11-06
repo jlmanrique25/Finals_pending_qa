@@ -18,5 +18,8 @@
   "homepage": "https://github.com/DemeterCaubang/Finals_pending#readme",
   "devDependencies": {
     "grunt": "^1.5.3"
+  },
+  "dependencies": {
+    "tableexport": "^5.2.0"
   }
 }
