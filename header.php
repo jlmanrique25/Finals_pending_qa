@@ -25,7 +25,7 @@
 	<link href="style.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="tablefilter/style/tablefilter.css" />
 	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript" src="tableExport.min.js"></script>
+	<script type="text/javascript" src="backend/tableExport.min.js"></script>
 </head>
 <body style="background-color: rgba(0, 0, 0, .1);">	
 
