@@ -10,7 +10,9 @@
     <!--<table class="table rounded-3 shadow-lg table-hover mb-5" id="issues_table"> -->
     <input type="button" class="btn btn-secondary" onclick="history.back()" value="<< Back" /><br /><br />
     <h2>
-        <text style="font-weight:bold;"> Issue reports <input type="button" class="btn btn-success" value="Export Table" onclick="$('#issues_table').tableExport({type:'csv'});" /></text>
+        <!--<text style="font-weight:bold;"> Issue reports <input type="button" class="btn btn-success" value="Export Table" onclick="$('#issues_table').tableExport({type:'csv'});" /></text>-->
+        <!--this is the new table export-->
+        <text style="font-weight:bold;"> Issue reports <input type="button" class="btn btn-success" value="Export Table" onclick="$('#issues_table').tableExport({type:'csv',escape:'false'});" /></text>
     </h2>
     <i class="bi bi-info-circle-fill"></i>
     <br />
@@ -53,7 +55,7 @@
         </table>
 
 </div>
-<script src="tableexport/tableExport.js"></script>
+<!--<script src="tableexport/tableExport.js"></script>-->
 <script src="tablefilter/tablefilter.js"></script>
 
 <script data-config>
@@ -99,3 +101,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<!--<script src="js/tableexport.js"></script>-->
+    <script type="text/javascript" src="tableExport.js"></script>
+    <script type="text/javascript" src="jquery.base64.js"></script>
+    

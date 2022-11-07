@@ -5,7 +5,6 @@
 
 <html lang="en">
 <head>
-	<title>Header</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script
@@ -24,8 +23,11 @@
 	<link rel="icon" href="images/keoms_logo.png" />
 	<link href="style.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="tablefilter/style/tablefilter.css" />
+	<!--<script type="text/javascript" src="tableexport/tableExport.min.js"></script>-->
+	<script type="text/javascript" src="tableExport.js"></script>
+	<script type="text/javascript" src="jquery.base64.js"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript" src="js/tableExport.min.js"></script>
+	<title>Header</title>
 </head>
 <body style="background-color: rgba(0, 0, 0, .1);">	
 
